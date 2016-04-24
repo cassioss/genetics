@@ -1,3 +1,4 @@
+% !TEX encoding = UTF-8 Unicode
 %\documentclass[12pt]{book}
 \documentclass[12pt,plainheader,pnumplain]{abnt}
 \usepackage[brazil,brazilian]{babel}
@@ -16,7 +17,7 @@
 \usepackage{pdfpages}
 \usepackage{bookmark}
 
-% inÌcio da configuraÁ„o de listagens
+% in√≠cio da configura√ß√£o de listagens
 \lstset{basicstyle=\small, frame=single}
 
 \lstset{emph={%  
@@ -26,7 +27,7 @@
 
 \renewcommand{\lstlistingname}{Listagem}
 \renewcommand{\lstlistlistingname}{Lista de Listagens}
-% fim da configuraÁ„o de listagens
+% fim da configura√ß√£o de listagens
 
 % A setting that would be applied to all pgfplots
 \pgfplotsset{every axis/.append style={
@@ -38,7 +39,6 @@
                             int detect, 1000 sep={},precision=3}
     }
 }
-
 
 \begin{document}
 
@@ -52,11 +52,11 @@
 \bookmark[level=0, page=3]{Verso da Folha de Rosto}
 
 \includepdf{folha_aprovacao_tg.pdf}
-\bookmark[level=0, page=4]{Folha de AprovaÁ„o}
+\bookmark[level=0, page=4]{Folha de Aprova√ß√£o}
 
 \input{dedicatoria}
 \thispagestyle{empty}
-\bookmark[level=0, page=5]{DedicatÛria}
+\bookmark[level=0, page=5]{Dedicat√≥ria}
 
 \chapter*{Agradecimentos}
 \input{agradecimentos}
@@ -64,7 +64,7 @@
 
 \input{citacao}
 \thispagestyle{empty}
-\bookmark[level=0, page=7]{CitaÁ„o}
+\bookmark[level=0, page=7]{Cita√ß√£o}
 
 \chapter*{Resumo}
 \input{resumo}
@@ -75,14 +75,14 @@
 \thispagestyle{empty}
 
 \tableofcontents
-\bookmark[level=0, page=10]{Sum·rio}
+\bookmark[level=0, page=10]{Sum√°rio}
 \addtocontents{sumario}{\protect\thispagestyle{empty}}
 %\thispagestyle{empty}
-% TODO: Descobrir como tirar numeraÁ„o do Sum·rio
+% TODO: Descobrir como tirar numera√ß√£o do Sum√°rio
 
 \listoffigures
 %\thispagestyle{empty}
-% TODO: Descobrir como tirar numeraÁ„o da lista de figuras
+% TODO: Descobrir como tirar numera√ß√£o da lista de figuras
 
 \listoftables
 \thispagestyle{empty}
@@ -95,41 +95,42 @@
 
 \chapter*{Lista de Abreviaturas}
 \begin{acronym}
-\acro{FFT}{Transformada r·pida de Fourier}
+\acro{FFT}{Transformada r√°pida de Fourier}
 \end{acronym}
 \thispagestyle{empty}
 
-\chapter{IntroduÁ„o}
+\chapter{Introdu√ß√£o}
 \input{introducao}
 
 \chapter{Instrumentos analisados}
 \label{chap:instrumentos_analisados}
 \input{instrumentos_analisados}
 
-\chapter{Algoritmos de OtimizaÁ„o}
+\chapter{Algoritmos de Otimiza√ß√£o}
 \input{algoritmos_otimizacao}
 
 \chapter{Tecnologias Utilizadas}
 \input{tecnologias}
 
-\chapter{Modelo de SimulaÁ„o}
+\chapter{Modelo de Simula√ß√£o}
 \input{modelo_usarsim}
 
 \chapter{Programa do Agente}
 \input{agente}
 
-\chapter{Processo de OtimizaÁ„o}
+\chapter{Processo de Otimiza√ß√£o}
 \label{chap:processo_otimizacao}
 \input{processo_otimizacao}
 
-\chapter{TransferÍncia para o RobÙ Real}
+\chapter{Transfer√™ncia para o Rob√¥ Real}
 \input{robo_real}
 
-\chapter{ValidaÁ„o com Outro RobÙ}
+\chapter{Valida√ß√£o com Outro Rob√¥}
 \input{outros_robos}
 
-\chapter{Conclusıes e Trabalhos Futuros}
-\input{conclusoes}
+% TODO: descobrir por que este .tex est√° dando problemas aqui
+%\chapter{Conclus√µes e Trabalhos Futuros}
+%\input{conclusoes}
 
 \bibliography{referencias}
 \bibliographystyle{plain}
