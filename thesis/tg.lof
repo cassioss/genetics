@@ -1,0 +1,37 @@
+\select@language {brazilian}
+\contentsline {figure}{\numberline {1}{\ignorespaces Espectro para a nota C5 tocada em uma flauta doce Yamaha YRS-23Y obtido a partir da FFT em 1 segundo de grava\c c\~ao.}}{27}{figure.2.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces Espectro para um G5 (azul) e um G6 (verde) tocados em uma flauta doce Yamaha YRS-23Y obtido a partir da FFT em 1 segundo de grava\c c\~ao.}}{28}{figure.2.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces Espectro para a nota D5 tocada em um \textit {whistle} Clarke SBDC obtido a partir da FFT em 1 segundo de grava\c c\~ao.}}{30}{figure.2.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Espectro para um G5 (verde) e um G6 (azul) tocados em um \textit {whistle} Clarke SBDC obtido a partir da FFT em 1 segundo de grava\c c\~ao.}}{31}{figure.2.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Espectro para a nota C5 tocada em um p\IeC {\'\i }fano Yamaha YRF-21 obtido a partir da FFT em 1 segundo de grava\c c\~ao.}}{32}{figure.2.5}
+\contentsline {figure}{\numberline {6}{\ignorespaces Espectro para a nota C4 tocada em uma flauta transversal Hallelu HFL-200 obtido a partir da FFT em 1 segundo de grava\c c\~ao.}}{34}{figure.2.6}
+\contentsline {figure}{\numberline {7}{\ignorespaces Espectro para um G4 (verde) e um G6 (azul) tocados em uma flauta transversal Hallelu HFL-200C obtido a partir da FFT em 1 segundo de grava\c c\~ao.}}{35}{figure.2.7}
+\contentsline {figure}{\numberline {8}{\ignorespaces Espectro para um A4 (azul) e um A5 (verde) tocados na ocarina escolhida, obtido a partir da FFT em 1 segundo de grava\c c\~ao.}}{37}{figure.2.8}
+\contentsline {figure}{\numberline {9}{\ignorespaces Junta de revolu\c c\~ao.}}{45}{figure.4.9}
+\contentsline {figure}{\numberline {10}{\ignorespaces Diferen\c cas entre modelos f\IeC {\'\i }sicos gerados com K-DOF (os modelos f\IeC {\'\i }sicos s\~ao apresentados em \emph {wireframe}).}}{47}{figure.4.10}
+\contentsline {figure}{\numberline {11}{\ignorespaces Robonova-I. Extra\IeC {\'\i }do de \cite {robonova_manual}.}}{49}{figure.4.11}
+\contentsline {figure}{\numberline {12}{\ignorespaces Juntas do Robonova-I. Extra\IeC {\'\i }do de \cite {robonova_manual}.}}{50}{figure.4.12}
+\contentsline {figure}{\numberline {13}{\ignorespaces Servomotores Hitec HSR-8498HB. Extra\IeC {\'\i }do de \cite {robonova_manual}.}}{50}{figure.4.13}
+\contentsline {figure}{\numberline {14}{\ignorespaces Detalhe das costas do Robonova-I mostrando a placa MR-C3204 instalada. Extra\IeC {\'\i }do de \cite {robonova_manual}.}}{51}{figure.4.14}
+\contentsline {figure}{\numberline {15}{\ignorespaces Modelo completo montado do Robonova-I.}}{52}{figure.5.15}
+\contentsline {figure}{\numberline {16}{\ignorespaces Modelo completo explodido do Robonova-I.}}{53}{figure.5.16}
+\contentsline {figure}{\numberline {17}{\ignorespaces Juntas implementadas no modelo de simula\c c\~ao.}}{54}{figure.5.17}
+\contentsline {figure}{\numberline {18}{\ignorespaces Robonova-I simulado dentro do \ac {USARSim}.}}{55}{figure.5.18}
+\contentsline {figure}{\numberline {19}{\ignorespaces Camadas do programa do agente.}}{56}{figure.6.19}
+\contentsline {figure}{\numberline {20}{\ignorespaces ExampleMap.}}{64}{figure.7.20}
+\contentsline {figure}{\numberline {21}{\ignorespaces Sistema de coordenadas no USARSim.}}{65}{figure.7.21}
+\contentsline {figure}{\numberline {22}{\ignorespaces Resultados da otimiza\c c\~ao com Modelo Simples e \ac {AG}.}}{67}{figure.7.22}
+\contentsline {figure}{\numberline {23}{\ignorespaces Resultados da otimiza\c c\~ao com Modelo com Movimento de Bra\c cos e \ac {AG}.}}{68}{figure.7.23}
+\contentsline {figure}{\numberline {24}{\ignorespaces Resultados da otimiza\c c\~ao com Modelo Complexo e \ac {AG}.}}{68}{figure.7.24}
+\contentsline {figure}{\numberline {25}{\ignorespaces Resultados da otimiza\c c\~ao com Modelo Simples e \ac {PSO}.}}{69}{figure.7.25}
+\contentsline {figure}{\numberline {26}{\ignorespaces Resultados da otimiza\c c\~ao com Modelo com Movimento de Bra\c cos e \ac {PSO}.}}{69}{figure.7.26}
+\contentsline {figure}{\numberline {27}{\ignorespaces Resultados da otimiza\c c\~ao com Modelo Complexo e \ac {PSO}.}}{70}{figure.7.27}
+\contentsline {figure}{\numberline {28}{\ignorespaces Sequ\^encia de imagens para ilustrar a caminhada aprendida com Modelo Simples e \ac {PSO}.}}{71}{figure.7.28}
+\contentsline {figure}{\numberline {29}{\ignorespaces Sequ\^encia de imagens para ilustrar a caminhada aprendida com Modelo com Movimento de Bra\c cos e \ac {PSO}.}}{72}{figure.7.29}
+\contentsline {figure}{\numberline {30}{\ignorespaces Sequ\^encia de imagens para ilustrar a caminhada aprendida com Modelo Complexo e \ac {PSO}.}}{72}{figure.7.30}
+\contentsline {figure}{\numberline {31}{\ignorespaces Sequ\^encia de imagens para ilustrar a caminhada final do Robonova real. A taxa de quadros usada para grava\c c\~ao foi de 30 quadros por segundo.}}{76}{figure.8.31}
+\contentsline {figure}{\numberline {32}{\ignorespaces Ambiente do experimento de medida de velocidade do rob\^o real.}}{77}{figure.8.32}
+\contentsline {figure}{\numberline {33}{\ignorespaces Rob\^o Nao simulado chutando uma bola no \ac {SimSpark}.}}{78}{figure.9.33}
+\contentsline {figure}{\numberline {34}{\ignorespaces Esquema das juntas do Nao simulado do \ac {SimSpark}.}}{79}{figure.9.34}
+\contentsline {figure}{\numberline {35}{\ignorespaces Resultados da otimiza\c c\~ao com \ac {PSO} realizada no ambiente da \ac {Soccer 3D}.}}{82}{figure.9.35}
+\contentsline {figure}{\numberline {36}{\ignorespaces Sequ\^encia de imagens para ilustrar a caminhada aprendida para o Nao simulado do \ac {SimSpark}. H\'a uma diferen\c ca de tempo de 0,1 segundo entre uma imagem e a posterior.}}{83}{figure.9.36}

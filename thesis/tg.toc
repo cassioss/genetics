@@ -1,0 +1,88 @@
+\select@language {brazilian}
+\contentsline {chapter}{Agradecimentos}{6}{chapter*.1}
+\contentsline {chapter}{Resumo}{8}{chapter*.2}
+\contentsline {chapter}{Abstract}{9}{chapter*.3}
+\contentsline {chapter}{Lista de Figuras}{14}{chapter*.4}
+\contentsline {chapter}{Lista de Tabelas}{17}{chapter*.10}
+\contentsline {chapter}{Lista de Algoritmos}{18}{chapter*.11}
+\contentsline {chapter}{Lista de Abreviaturas}{20}{chapter*.12}
+\contentsline {chapter}{\numberline {1}Introdu\c c\~ao}{21}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motiva\c c\~ao}{21}{section.1.1}
+\contentsline {section}{\numberline {1.2}Objetivos}{22}{section.1.2}
+\contentsline {section}{\numberline {1.3}Abordagem}{22}{section.1.3}
+\contentsline {section}{\numberline {1.4}Plano de Trabalho}{22}{section.1.4}
+\contentsline {section}{\numberline {1.5}Organiza\c c\~ao do Trabalho}{23}{section.1.5}
+\contentsline {chapter}{\numberline {2}Instrumentos analisados}{24}{chapter.2}
+\contentsline {section}{\numberline {2.1}Caracter\IeC {\'\i }sticas de interesse}{24}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Mec\^anismo de produ\c c\~ao de som}{24}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Timbre}{25}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Tom}{25}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Popularidade}{25}{subsection.2.1.4}
+\contentsline {section}{\numberline {2.2}Instrumentos escolhidos}{25}{section.2.2}
+\contentsline {section}{\numberline {2.3}Flauta doce}{26}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Caracter\IeC {\'\i }sticas}{26}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}An\'alise espectral}{27}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Conclus\~oes}{29}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}\textit {Tin Whistle}}{29}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Caracter\IeC {\'\i }sticas}{29}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}An\'alise espectral}{30}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Conclus\~oes}{31}{subsection.2.4.3}
+\contentsline {section}{\numberline {2.5}P\IeC {\'\i }fano}{31}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Caracter\IeC {\'\i }sticas}{31}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}An\'alise espectral}{32}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}Conclus\~oes}{33}{subsection.2.5.3}
+\contentsline {section}{\numberline {2.6}Flauta transversal ocidental}{33}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Caracter\IeC {\'\i }sticas}{33}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}An\'alise espectral}{34}{subsection.2.6.2}
+\contentsline {subsection}{\numberline {2.6.3}Conclus\~oes}{35}{subsection.2.6.3}
+\contentsline {section}{\numberline {2.7}Flauta transversal chinesa (\textit {dizi})}{36}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Caracter\IeC {\'\i }sticas}{36}{subsection.2.7.1}
+\contentsline {subsection}{\numberline {2.7.2}An\'alise espectral}{36}{subsection.2.7.2}
+\contentsline {subsection}{\numberline {2.7.3}Conclus\~oes}{36}{subsection.2.7.3}
+\contentsline {section}{\numberline {2.8}Ocarina}{37}{section.2.8}
+\contentsline {subsection}{\numberline {2.8.1}Caracter\IeC {\'\i }sticas}{37}{subsection.2.8.1}
+\contentsline {subsection}{\numberline {2.8.2}An\'alise espectral}{37}{subsection.2.8.2}
+\contentsline {subsection}{\numberline {2.8.3}Conclus\~oes}{38}{subsection.2.8.3}
+\contentsline {chapter}{\numberline {3}Algoritmos de Otimiza\c c\~ao}{39}{chapter.3}
+\contentsline {section}{\numberline {3.1}Algoritmo Gen\'etico}{39}{section.3.1}
+\contentsline {subsection}{Cromossomo}{39}{section.3.1}
+\contentsline {subsection}{Fun\c c\~ao de \textit {Fitness}}{39}{section.3.1}
+\contentsline {subsection}{Sele\c c\~ao}{40}{section.3.1}
+\contentsline {subsection}{Muta\c c\~ao}{40}{section.3.1}
+\contentsline {subsection}{\textit {Crossover}}{40}{section.3.1}
+\contentsline {subsection}{Sobreviv\^encia dos Mais Aptos}{40}{section.3.1}
+\contentsline {section}{\numberline {3.2}Particle Swarm Optimization}{41}{section.3.2}
+\contentsline {chapter}{\numberline {4}Tecnologias Utilizadas}{44}{chapter.4}
+\contentsline {section}{\numberline {4.1}USARSim}{44}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Nvidia PhysX}{44}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}UDK Editor}{46}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}UnrealScript}{46}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Implementa\c c\~ao de Rob\^os em USARSim}{48}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.5}Comunica\c c\~ao entre Agentes e USARSim}{48}{subsection.4.1.5}
+\contentsline {section}{\numberline {4.2}Robonova-I}{49}{section.4.2}
+\contentsline {chapter}{\numberline {5}Modelo de Simula\c c\~ao}{52}{chapter.5}
+\contentsline {section}{\numberline {5.1}Modelos CAD}{52}{section.5.1}
+\contentsline {section}{\numberline {5.2}Configura\c c\~ao no UDK Editor}{53}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Implementa\c c\~ao no USARSim}{53}{subsection.5.2.1}
+\contentsline {chapter}{\numberline {6}Programa do Agente}{56}{chapter.6}
+\contentsline {section}{\numberline {6.1}Comunica\c c\~ao}{57}{section.6.1}
+\contentsline {section}{\numberline {6.2}Interface}{58}{section.6.2}
+\contentsline {section}{\numberline {6.3}Controle}{59}{section.6.3}
+\contentsline {chapter}{\numberline {7}Processo de Otimiza\c c\~ao}{60}{chapter.7}
+\contentsline {section}{\numberline {7.1}Modelos de Caminhada}{60}{section.7.1}
+\contentsline {section}{\numberline {7.2}Configura\c c\~ao dos Algoritmos de Otimiza\c c\~ao}{61}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Configura\c c\~ao do Algoritmo Gen\'etico}{61}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Configura\c c\~ao do Particle Swarm Optimization}{62}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Montagem do Experimento Simulado}{64}{section.7.3}
+\contentsline {section}{\numberline {7.4}Resultados e Discuss\~oes}{66}{section.7.4}
+\contentsline {chapter}{\numberline {8}Transfer\^encia para o Rob\^o Real}{73}{chapter.8}
+\contentsline {section}{\numberline {8.1}Desafios Envolvidos}{73}{section.8.1}
+\contentsline {section}{\numberline {8.2}Processo de Transfer\^encia}{73}{section.8.2}
+\contentsline {chapter}{\numberline {9}Valida\c c\~ao com Outro Rob\^o}{78}{chapter.9}
+\contentsline {section}{\numberline {9.1}RoboCup 3D Soccer Simulation League}{78}{section.9.1}
+\contentsline {section}{\numberline {9.2}Implementa\c c\~ao}{80}{section.9.2}
+\contentsline {section}{\numberline {9.3}Processo de Otimiza\c c\~ao}{81}{section.9.3}
+\contentsline {chapter}{\numberline {10}Conclus\~oes e Trabalhos Futuros}{84}{chapter.10}
+\contentsline {section}{\numberline {10.1}Conclus\~ao}{84}{section.10.1}
+\contentsline {section}{\numberline {10.2}Trabalhos Futuros}{84}{section.10.2}
+\contentsline {chapter}{Refer\^encias}{86}{section.10.2}

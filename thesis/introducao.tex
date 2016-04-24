@@ -1,0 +1,41 @@
+\label{introducao}
+
+O uso de tecnologias eletrônicas e digitais na industria musical já é realidade há anos: instrumentos eltrônicos como o teclado e a bateria digital são populares, a produção musical é uma etapa essencialmente digital, compositores criam e compartilham músicas em seus computadores pessoais, etc. Entretanto, as ferramentas utilizadas nesses casos precisam ser manuseadas por um humano. A análise automatizada de sinais musicais ainda é um campo pouco explorado e bastante limitado quando comparado com os casos citados.
+
+Considerando a complexidade de sinais musicais, essa limitação é justificada: músicas costumam ter diversos instrumentos com sonoridade distinta tocando simultaneamente, muitos dos quais podem produzir múltiplas notas independentemente. Além disso, os sinais musicais produzidos por instrumentos físicos são invariavelmente imperfeitos, possuindo diversas formas de ruídos e atributos orgânicos e subjetivos. A música é, afinal, uma expressão artística.
+
+Apesar da dificuldade técnica envolvida, diversas tarefas podem ser beneficiadas por ferramentas automatizadas para análise musical: a identificação precisa de tons pode ajudar um estudante de música a aperfeiçoar as suas habilidades, a representação de músicas em formatos digitais como MIDI facilita a análise computacional de peças musicais, a análise de quão bem uma peça foi executada é a base para muitas atividades de entretenimento, etc.
+
+\section{Motivação}
+
+Três das tarefas centrais para a análise de sinais musicais são a determinação, para cada nota, da frequência fundamental, da intensidade e da duração. Apesar de sua importância, mesmo músicos treinados podem ter dificuldade nessas tarefas.
+
+\section{Objetivos}
+
+Este projeto objetiva transcrever sinais musicais para notação musical moderna através da extração das características citadas, consideradas as mais importantes em uma composição.
+
+\section{Abordagem}
+
+Devido à complexidade da tarefa proposta, o projeto é voltado para instrumentos monofônicos (capazes de produzir apenas uma nota por instante de tempo) e temperados (que produzem notas em frequências bem definidas). Para que o projeto tenha aplicações reais, os sinais analisados são provenientes de instrumentos físicos gravados com microfones de baixa qualidade. Ainda, o projeto foi desenvolvido para ser utilizado em tempo real, pois diversas das aplicações deste tipo de projeto dependem dessa característica.
+
+O projeto foi dividido em 4 módulos:
+
+\begin{enumerate}
+	\item Determinador de frequência fundamental.
+	\item Analisador de intensidade.
+	\item Analisador de tempo.
+	\item Gerador de notação musical moderna.
+\end{enumerate}
+
+As etapas de determinação de frequência fundamental, intensidade e tempo são consideradas independentes. Cada algoritmo realiza a sua própria tarefa sem conhecer os resultados dos demais. Isso facilita o desenvolvimento de cada algoritmo individual, além de deixar o projeto modularizado e facilitar o ganho de performance por multiprocessamento. A etapa final de gerar a notação musical depende do resultado das 3 etapas anteriores, mas não depende dos detalhes de implementação delas.
+
+\section{Plano de Trabalho}
+\label{sec:plano_trabalho}
+
+Cada um dos 4 módulos foi desenvolvido seguindo uma metodologia simples: pesquisas anteriores que comparam diversos algoritmos para cada etapa foram estudadas. A partir dessas pesquisas escolheu-se um algoritmo específico. O algoritmo escolhido foi implementado e, analisando os seus resultados, foi então modificado para servir os propósitos específicos desse projeto. Por fim, o algoritmo foi validado analisando performances de músicas do repertório clássico ocidental tocadas por instrumentos variados. As composições escolhidas exercitam técnicas comuns de composição que podem afetar os resultados dos algoritmos.
+
+\section{Organização do Trabalho}
+
+\begin{itemize}
+	\item \textbf{Capítulo 1:} Listagem de capítulos.
+\end{itemize}
