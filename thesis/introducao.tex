@@ -1,41 +1,43 @@
 \label{introducao}
 
-O uso de tecnologias eletrônicas e digitais na industria musical já é realidade há anos: instrumentos eltrônicos como o teclado e a bateria digital são populares, a produção musical é uma etapa essencialmente digital, compositores criam e compartilham músicas em seus computadores pessoais, etc. Entretanto, as ferramentas utilizadas nesses casos precisam ser manuseadas por um humano. A análise automatizada de sinais musicais ainda é um campo pouco explorado e bastante limitado quando comparado com os casos citados.
+Diversas situaÃ§Ãµes do cotidiano podem ser reduzidas a algoritmos dos mais simples aos mais complexos. Do tÃ­pico "Hello World!"
 
-Considerando a complexidade de sinais musicais, essa limitação é justificada: músicas costumam ter diversos instrumentos com sonoridade distinta tocando simultaneamente, muitos dos quais podem produzir múltiplas notas independentemente. Além disso, os sinais musicais produzidos por instrumentos físicos são invariavelmente imperfeitos, possuindo diversas formas de ruídos e atributos orgânicos e subjetivos. A música é, afinal, uma expressão artística.
+O uso de tecnologias eletrÃ´nicas e digitais na industria musical jÃ¡ Ã© realidade hÃ¡ anos: instrumentos eltrÃ´nicos como o teclado e a bateria digital sÃ£o populares, a produÃ§Ã£o musical Ã© uma etapa essencialmente digital, compositores criam e compartilham mÃºsicas em seus computadores pessoais, etc. Entretanto, as ferramentas utilizadas nesses casos precisam ser manuseadas por um humano. A anÃ¡lise automatizada de sinais musicais ainda Ã© um campo pouco explorado e bastante limitado quando comparado com os casos citados.
 
-Apesar da dificuldade técnica envolvida, diversas tarefas podem ser beneficiadas por ferramentas automatizadas para análise musical: a identificação precisa de tons pode ajudar um estudante de música a aperfeiçoar as suas habilidades, a representação de músicas em formatos digitais como MIDI facilita a análise computacional de peças musicais, a análise de quão bem uma peça foi executada é a base para muitas atividades de entretenimento, etc.
+Considerando a complexidade de sinais musicais, essa limitaÃ§Ã£o Ã© justificada: mÃºsicas costumam ter diversos instrumentos com sonoridade distinta tocando simultaneamente, muitos dos quais podem produzir mÃºltiplas notas independentemente. AlÃ©m disso, os sinais musicais produzidos por instrumentos fÃ­sicos sÃ£o invariavelmente imperfeitos, possuindo diversas formas de ruÃ­dos e atributos orgÃ¢nicos e subjetivos. A mÃºsica Ã©, afinal, uma expressÃ£o artÃ­stica.
 
-\section{Motivação}
+Apesar da dificuldade tÃ©cnica envolvida, diversas tarefas podem ser beneficiadas por ferramentas automatizadas para anÃ¡lise musical: a identificaÃ§Ã£o precisa de tons pode ajudar um estudante de mÃºsica a aperfeiÃ§oar as suas habilidades, a representaÃ§Ã£o de mÃºsicas em formatos digitais como MIDI facilita a anÃ¡lise computacional de peÃ§as musicais, a anÃ¡lise de quÃ£o bem uma peÃ§a foi executada Ã© a base para muitas atividades de entretenimento, etc.
 
-Três das tarefas centrais para a análise de sinais musicais são a determinação, para cada nota, da frequência fundamental, da intensidade e da duração. Apesar de sua importância, mesmo músicos treinados podem ter dificuldade nessas tarefas.
+\section{MotivaÃ§Ã£o}
+
+TrÃªs das tarefas centrais para a anÃ¡lise de sinais musicais sÃ£o a determinaÃ§Ã£o, para cada nota, da frequÃªncia fundamental, da intensidade e da duraÃ§Ã£o. Apesar de sua importÃ¢ncia, mesmo mÃºsicos treinados podem ter dificuldade nessas tarefas.
 
 \section{Objetivos}
 
-Este projeto objetiva transcrever sinais musicais para notação musical moderna através da extração das características citadas, consideradas as mais importantes em uma composição.
+Este projeto objetiva transcrever sinais musicais para notaÃ§Ã£o musical moderna atravÃ©s da extraÃ§Ã£o das caracterÃ­sticas citadas, consideradas as mais importantes em uma composiÃ§Ã£o.
 
 \section{Abordagem}
 
-Devido à complexidade da tarefa proposta, o projeto é voltado para instrumentos monofônicos (capazes de produzir apenas uma nota por instante de tempo) e temperados (que produzem notas em frequências bem definidas). Para que o projeto tenha aplicações reais, os sinais analisados são provenientes de instrumentos físicos gravados com microfones de baixa qualidade. Ainda, o projeto foi desenvolvido para ser utilizado em tempo real, pois diversas das aplicações deste tipo de projeto dependem dessa característica.
+Devido Ã  complexidade da tarefa proposta, o projeto Ã© voltado para instrumentos monofÃ´nicos (capazes de produzir apenas uma nota por instante de tempo) e temperados (que produzem notas em frequÃªncias bem definidas). Para que o projeto tenha aplicaÃ§Ãµes reais, os sinais analisados sÃ£o provenientes de instrumentos fÃ­sicos gravados com microfones de baixa qualidade. Ainda, o projeto foi desenvolvido para ser utilizado em tempo real, pois diversas das aplicaÃ§Ãµes deste tipo de projeto dependem dessa caracterÃ­stica.
 
-O projeto foi dividido em 4 módulos:
+O projeto foi dividido em 4 mÃ³dulos:
 
 \begin{enumerate}
-	\item Determinador de frequência fundamental.
+	\item Determinador de frequÃªncia fundamental.
 	\item Analisador de intensidade.
 	\item Analisador de tempo.
-	\item Gerador de notação musical moderna.
+	\item Gerador de notaÃ§Ã£o musical moderna.
 \end{enumerate}
 
-As etapas de determinação de frequência fundamental, intensidade e tempo são consideradas independentes. Cada algoritmo realiza a sua própria tarefa sem conhecer os resultados dos demais. Isso facilita o desenvolvimento de cada algoritmo individual, além de deixar o projeto modularizado e facilitar o ganho de performance por multiprocessamento. A etapa final de gerar a notação musical depende do resultado das 3 etapas anteriores, mas não depende dos detalhes de implementação delas.
+As etapas de determinaÃ§Ã£o de frequÃªncia fundamental, intensidade e tempo sÃ£o consideradas independentes. Cada algoritmo realiza a sua prÃ³pria tarefa sem conhecer os resultados dos demais. Isso facilita o desenvolvimento de cada algoritmo individual, alÃ©m de deixar o projeto modularizado e facilitar o ganho de performance por multiprocessamento. A etapa final de gerar a notaÃ§Ã£o musical depende do resultado das 3 etapas anteriores, mas nÃ£o depende dos detalhes de implementaÃ§Ã£o delas.
 
 \section{Plano de Trabalho}
 \label{sec:plano_trabalho}
 
-Cada um dos 4 módulos foi desenvolvido seguindo uma metodologia simples: pesquisas anteriores que comparam diversos algoritmos para cada etapa foram estudadas. A partir dessas pesquisas escolheu-se um algoritmo específico. O algoritmo escolhido foi implementado e, analisando os seus resultados, foi então modificado para servir os propósitos específicos desse projeto. Por fim, o algoritmo foi validado analisando performances de músicas do repertório clássico ocidental tocadas por instrumentos variados. As composições escolhidas exercitam técnicas comuns de composição que podem afetar os resultados dos algoritmos.
+Cada um dos 4 mÃ³dulos foi desenvolvido seguindo uma metodologia simples: pesquisas anteriores que comparam diversos algoritmos para cada etapa foram estudadas. A partir dessas pesquisas escolheu-se um algoritmo especÃ­fico. O algoritmo escolhido foi implementado e, analisando os seus resultados, foi entÃ£o modificado para servir os propÃ³sitos especÃ­ficos desse projeto. Por fim, o algoritmo foi validado analisando performances de mÃºsicas do repertÃ³rio clÃ¡ssico ocidental tocadas por instrumentos variados. As composiÃ§Ãµes escolhidas exercitam tÃ©cnicas comuns de composiÃ§Ã£o que podem afetar os resultados dos algoritmos.
 
-\section{Organização do Trabalho}
+\section{OrganizaÃ§Ã£o do Trabalho}
 
 \begin{itemize}
-	\item \textbf{Capítulo 1:} Listagem de capítulos.
+	\item \textbf{CapÃ­tulo 1:} Listagem de capÃ­tulos.
 \end{itemize}

@@ -1,8 +1,11 @@
 % !TEX encoding = UTF-8 Unicode
+% -*- coding: UTF-8; -*-
+% vim: set fenc=utf-8
 %\documentclass[12pt]{book}
 \documentclass[12pt,plainheader,pnumplain]{abnt}
 \usepackage[brazil,brazilian]{babel}
-\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage[portuguese,ruled]{algorithm2e}
@@ -27,6 +30,8 @@
 
 \renewcommand{\lstlistingname}{Listagem}
 \renewcommand{\lstlistlistingname}{Lista de Listagens}
+\newcommand{\ca}{\c c\~a}
+
 % fim da configuração de listagens
 
 % A setting that would be applied to all pgfplots
@@ -52,11 +57,11 @@
 \bookmark[level=0, page=3]{Verso da Folha de Rosto}
 
 \includepdf{folha_aprovacao_tg.pdf}
-\bookmark[level=0, page=4]{Folha de Aprovação}
+\bookmark[level=0, page=4]{Folha de Aprova\ca o}
 
 \input{dedicatoria}
 \thispagestyle{empty}
-\bookmark[level=0, page=5]{Dedicatória}
+\bookmark[level=0, page=5]{Dedicat\'oria}
 
 \chapter*{Agradecimentos}
 \input{agradecimentos}
@@ -64,7 +69,7 @@
 
 \input{citacao}
 \thispagestyle{empty}
-\bookmark[level=0, page=7]{Citação}
+\bookmark[level=0, page=7]{Cita\ca o}
 
 \chapter*{Resumo}
 \input{resumo}
@@ -75,7 +80,7 @@
 \thispagestyle{empty}
 
 \tableofcontents
-\bookmark[level=0, page=10]{Sumário}
+\bookmark[level=0, page=10]{Sum\'ario}
 \addtocontents{sumario}{\protect\thispagestyle{empty}}
 %\thispagestyle{empty}
 % TODO: Descobrir como tirar numeração do Sumário
@@ -93,40 +98,44 @@
 \lstlistoflistings
 \thispagestyle{empty}
 
-\chapter*{Lista de Abreviaturas}
-\begin{acronym}
-\acro{FFT}{Transformada rápida de Fourier}
-\end{acronym}
-\thispagestyle{empty}
+%\chapter*{Lista de Abreviaturas}
+%\begin{acronym}
+%\acro{FFT}{Transformada rápida de Fourier}
+%\end{acronym}
+%\thispagestyle{empty}
 
-\chapter{Introdução}
+\chapter{Introdu\ca o}
 \input{introducao}
 
-\chapter{Instrumentos analisados}
-\label{chap:instrumentos_analisados}
-\input{instrumentos_analisados}
+%Trabalho antigo
 
-\chapter{Algoritmos de Otimização}
-\input{algoritmos_otimizacao}
+%\chapter{Instrumentos analisados}
+%\label{chap:instrumentos_analisados}
+%\input{instrumentos_analisados}
 
-\chapter{Tecnologias Utilizadas}
-\input{tecnologias}
+%\chapter{Algoritmos de Otimização}
+%\input{algoritmos_otimizacao}
 
-\chapter{Modelo de Simulação}
-\input{modelo_usarsim}
+%\chapter{Tecnologias Utilizadas}
+%\input{tecnologias}
 
-\chapter{Programa do Agente}
-\input{agente}
+%\chapter{Modelo de Simulação}
+%\input{modelo_usarsim}
 
-\chapter{Processo de Otimização}
-\label{chap:processo_otimizacao}
-\input{processo_otimizacao}
+%\chapter{Programa do Agente}
+%\input{agente}
 
-\chapter{Transferência para o Robô Real}
-\input{robo_real}
+%\chapter{Processo de Otimização}
+%\label{chap:processo_otimizacao}
+%\input{processo_otimizacao}
 
-\chapter{Validação com Outro Robô}
-\input{outros_robos}
+%\chapter{Transferência para o Robô Real}
+%\input{robo_real}
+
+%\chapter{Validação com Outro Robô}
+%\input{outros_robos}
+
+%Fim do trabalho antigo
 
 % TODO: descobrir por que este .tex está dando problemas aqui
 %\chapter{Conclusões e Trabalhos Futuros}
