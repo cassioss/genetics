@@ -10,4 +10,6 @@
 \contentsline {section}{\numberline {1.1}Motiva\IeC {\c c}\IeC {\~a}o}{18}{section.1.1}
 \contentsline {section}{\numberline {1.2}Objetivo}{18}{section.1.2}
 \contentsline {section}{\numberline {1.3}Abordagem}{18}{section.1.3}
-\contentsline {chapter}{Refer\^encias}{20}{Item.9}
+\contentsline {section}{\numberline {1.4}Plano de Trabalho}{20}{section.1.4}
+\contentsline {chapter}{\numberline {2}Algoritmo Evolutivo}{21}{chapter.2}
+\contentsline {chapter}{Refer\^encias}{22}{chapter.2}
