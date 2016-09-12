@@ -1,0 +1,44 @@
+\begin{thebibliography}{1}
+
+\bibitem{campbell1977gauss}
+Paul~J Campbell.
+\newblock Gauss and the eight queens problem: a study in miniature of the
+  propagation of historical error.
+\newblock {\em Historia mathematica}, 4(4):397--404, 1977.
+
+\bibitem{eiben1999parameter}
+A.~E. Eiben, R.~Hinterding, and Z.~Michalewicz.
+\newblock Parameter control in evolutionary algorithms.
+\newblock {\em Evolutionary Computation, IEEE Transactions}, 3(2):124--141,
+  1999.
+
+\bibitem{eiben2011parameter}
+A.~E. Eiben and S.~K. Smit.
+\newblock Parameter tuning for configuring and analyzing evolutionary
+  algorithms.
+\newblock {\em Swarm and Evolutionary Computation}, 1(1):19--31, 2011.
+
+\bibitem{eiben2003introduction}
+A.~E. Eiben and J.~E. Smith.
+\newblock {\em Introduction To Evolutionary Computing}, volume~53.
+\newblock Springer-Verlag, 2003.
+
+\bibitem{giguere1998population}
+P.~Giguere and D.~E. Goldberg.
+\newblock Population sizing for optimum sampling with genetic algorithms: A
+  case study of the onemax problem.
+\newblock {\em Genetic Programming}, 98:496--503, 1998.
+
+\bibitem{hansen2006cma}
+Nikolaus Hansen.
+\newblock The cma evolution strategy: a comparing review.
+\newblock In {\em Towards a new evolutionary computation}, pages 75--102.
+  Springer, 2006.
+
+\bibitem{smit2009comparing}
+K.~S. Smit and A.~E. Eiben.
+\newblock Comparing parameter tuning methods for evolutionary algorithms.
+\newblock In {\em Evolutionary Computation, 2009. CEC'09. IEEE Congress}, pages
+  399--406. IEEE, 2009.
+
+\end{thebibliography}

@@ -1,158 +1,44 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{1}
 
-\bibitem{mr-c3024_protocol}
-{Hitec MR-C3024 to PC Protocol for RoboNova}.
+\bibitem{campbell1977gauss}
+Paul~J Campbell.
+\newblock Gauss and the eight queens problem: a study in miniature of the
+  propagation of historical error.
+\newblock {\em Historia mathematica}, 4(4):397--404, 1977.
 
-\bibitem{3dsmax}
-Autodesk.
-\newblock {Autodesk 3D Studio Max}.
-\newblock \url{http://usa.autodesk.com/3ds-max/}, 2012.
+\bibitem{eiben1999parameter}
+A.~E. Eiben, R.~Hinterding, and Z.~Michalewicz.
+\newblock Parameter control in evolutionary algorithms.
+\newblock {\em Evolutionary Computation, IEEE Transactions}, 3(2):124--141,
+  1999.
 
-\bibitem{autocad}
-Autodesk.
-\newblock {Autodesk Autocad}.
-\newblock \url{http://usa.autodesk.com/autocad/}, 2012.
+\bibitem{eiben2011parameter}
+A.~E. Eiben and S.~K. Smit.
+\newblock Parameter tuning for configuring and analyzing evolutionary
+  algorithms.
+\newblock {\em Swarm and Evolutionary Computation}, 1(1):19--31, 2011.
 
-\bibitem{fbx}
-Autodesk.
-\newblock {Autodesk FBX}.
-\newblock \url{http://usa.autodesk.com/fbx/}, 2012.
+\bibitem{eiben2003introduction}
+A.~E. Eiben and J.~E. Smith.
+\newblock {\em Introduction To Evolutionary Computing}, volume~53.
+\newblock Springer-Verlag, 2003.
 
-\bibitem{auvray_2014}
-R.~Auvray, B.~Fabre, and P.-Y. Lagrée.
-\newblock {Harmonics generation in flute-like instruments}.
-\newblock In {\em Proceedings of the International Symposium on Musical
-  Acoustics}, pages 40--43, 2014.
+\bibitem{giguere1998population}
+P.~Giguere and D.~E. Goldberg.
+\newblock Population sizing for optimum sampling with genetic algorithms: A
+  case study of the onemax problem.
+\newblock {\em Genetic Programming}, 98:496--503, 1998.
 
-\bibitem{mr-c3024}
-David Buckley.
-\newblock {MR-C3024 ROBOT CONTROLLER}.
+\bibitem{hansen2006cma}
+Nikolaus Hansen.
+\newblock The cma evolution strategy: a comparing review.
+\newblock In {\em Towards a new evolutionary computation}, pages 75--102.
+  Springer, 2006.
 
-\bibitem{robocup}
-RoboCup Federation.
-\newblock {RoboCup}.
-\newblock \url{http://www.robocup.org/}, 2012.
-\newblock [Online; acessado em 25 de outubro de 2012].
-
-\bibitem{fletcher_1975}
-N.~H. Fletcher.
-\newblock {Acoustical correlates of flute performance technique}.
-\newblock {\em Journal of the Acoustical Society of America}, pages 233--237,
-  1975.
-
-\bibitem{fletcher_1979}
-N.~H. Fletcher.
-\newblock {Air flow and sound generation in musical wind instruments}.
-\newblock {\em Annual Review of Fluid Mechanics}, pages 123--146, 1979.
-
-\bibitem{udk}
-Epic Games.
-\newblock {Unreal Development Kit}.
-\newblock \url{http://www.unrealengine.com/udk/}, 2008--2012.
-\newblock [Online; acessado em 25 de outubro de 2012].
-
-\bibitem{gumstix}
-Gumstix.
-\newblock {Gumstix}.
-\newblock \url{http://www.gumstix.com/}, 2012.
-\newblock [Online; acessado em 25 de outubro de 2012].
-
-\bibitem{holland_1975}
-J.~H. Holland.
-\newblock {\em {Adaptation in Natural and Artificial Systems}}.
-\newblock The University of Michigan Press, 1975.
-
-\bibitem{esther_2007}
-Jackson~Paul Matsuura, Esther~Luna Colombini, and Alexandre da~Silva~Simões.
-\newblock {Desenvolvimento de Robô Humanóide Autônomo de Baixo Custo}.
-\newblock In {\em Simpósio Brasileiro de Automação Inteligente (SBAI) 2007},
-  2007.
-
-\bibitem{qt}
-Nokia.
-\newblock Qt.
-\newblock \url{http://qt.nokia.com/}, 2012.
-\newblock [Online; acessado em 28 de outubro de 2012].
-
-\bibitem{physx}
-Nvidia.
-\newblock Physx.
-\newblock \url{http://www.geforce.com/hardware/technology/physx}, 2012.
-\newblock [Online; acessado em 28 de outubro de 2012].
-
-\bibitem{simspark}
-Oliver Obst and Markus Rollmann.
-\newblock {SPARK - A Generic Simulator for Physical Multiagent Simulations}.
-\newblock {\em Computer Systems Science and Engineering 20}, pages 347--356,
-  2005.
-
-\bibitem{nao}
-Albebaran Robotics.
-\newblock {Nao H25: Humanoid Robot Platform}.
-\newblock
-  \url{http://www.aldebaran-robotics.com/en/Discover-NAO/nao-datasheet-h25.html},
-  2012.
-\newblock [Online; acessado em 25 de outubro de 2012].
-
-\bibitem{robonova_manual}
-Hitec Robotics.
-\newblock {Robonova-I English Instruction Manual}.
-
-\bibitem{robonova_fast_walk}
-Hitec Robotics.
-\newblock New source code with fast walk and fast turn.
-\newblock
-  \url{http://www.robonova.de/store/support/index.php?_m=downloads&_a=viewdownload&downloaditemid=93&nav=0,5,7},
-  2006.
-
-\bibitem{norvig}
-Stuart Russell and Peter Norvig.
-\newblock {\em {Artificial Intelligence: A Modern Approach}}.
-\newblock Prentice Hall, 2009.
-
-\bibitem{shafii_2010}
-Nima Shafii, Siavash Aslani, Omid~Mohamad Nezami, and Saeed Shiry.
-\newblock {Evolution of Biped Walking Using Truncated Fourier Series and
-  Particle Swarm Optimization}.
-\newblock In {\em Baltes, J., Lagoudakis, M.G., Naruse, T;, Ghidary, S.S.
-  (eds.) RoboCup 2009}, pages 344--354, 2010.
-
-\bibitem{shafii_2009}
-Nima Shafii, Ali Khorsandian, Abbas Abdolmaleki, and Bahram Jozi.
-\newblock {An Optimized Gait Generator Based on Fourier Series Toward Fast and
-  Robust Biped Locomotion Involving Arms Swing}.
-\newblock In {\em Proceedings of the IEEE International Conference on
-  Automation and Logistics}, 2009.
-
-\bibitem{shafii_rc}
-Nima Shafii, Luís~Paulo Reis, and Nuno Lau.
-\newblock {Biped Walking Using Coronal and Sagittal Movements Based on
-  Truncated Fourier Series}.
-\newblock In {\em RoboCup 2010: Robot Soccer World Cup XIV, Lecture Notes in
-  Computer Science}, pages 324--335, 2010.
-
-\bibitem{simspark_agents}
-SimSpark.
-\newblock {SimSpark Agents}.
-\newblock \url{http://simspark.sourceforge.net/wiki/index.php/Agents}, 2012.
-\newblock [Online; acessado em 25 de outubro de 2012].
-
-\bibitem{ode}
-Russell Smith.
-\newblock {Open Dynamics Engine}.
-\newblock \url{http://www.ode.org/}, 2012.
-\newblock [Online; acessado em 25 de outubro de 2012].
-
-\bibitem{tinman}
-TinMan.
-\newblock {TinMan}.
-\newblock \url{http://code.google.com/p/tin-man/}, 2012.
-\newblock [Online; acessado em 25 de outubro de 2012].
-
-\bibitem{sander_2012}
-Sander van Noort and Arnoud Visser.
-\newblock {Validation of the dynamics of an humanoid robot in USARSim}.
-\newblock In {\em Proceedings of the Performance Metrics for Intelligent
-  Systems Workshop (PerMIS'12)}, March 2012.
+\bibitem{smit2009comparing}
+K.~S. Smit and A.~E. Eiben.
+\newblock Comparing parameter tuning methods for evolutionary algorithms.
+\newblock In {\em Evolutionary Computation, 2009. CEC'09. IEEE Congress}, pages
+  399--406. IEEE, 2009.
 
 \end{thebibliography}

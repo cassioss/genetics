@@ -4,8 +4,9 @@
 %\documentclass[12pt]{book}
 \documentclass[12pt,plainheader,pnumplain]{abnt}
 \usepackage[brazil,brazilian]{babel}
+\usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
+\usepackage{textcomp}
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage[portuguese,ruled]{algorithm2e}
@@ -19,6 +20,7 @@
 \usepackage{pgfplots}
 \usepackage{pdfpages}
 \usepackage{bookmark}
+\usepackage{enumitem}
 
 % início da configuração de listagens
 \lstset{basicstyle=\small, frame=single}
@@ -82,11 +84,11 @@
 \tableofcontents
 \bookmark[level=0, page=10]{Sum\'ario}
 \addtocontents{sumario}{\protect\thispagestyle{empty}}
-%\thispagestyle{empty}
+\thispagestyle{empty}
 % TODO: Descobrir como tirar numeração do Sumário
 
 \listoffigures
-%\thispagestyle{empty}
+\thispagestyle{empty}
 % TODO: Descobrir como tirar numeração da lista de figuras
 
 \listoftables
@@ -98,11 +100,11 @@
 \lstlistoflistings
 \thispagestyle{empty}
 
-%\chapter*{Lista de Abreviaturas}
-%\begin{acronym}
-%\acro{FFT}{Transformada rápida de Fourier}
-%\end{acronym}
-%\thispagestyle{empty}
+\chapter*{Lista de Abreviaturas}
+\begin{acronym}
+\acro{AE}{Algoritmo Evolutivo}
+\end{acronym}
+\thispagestyle{empty}
 
 \chapter{Introdu\ca o}
 \input{introducao}
@@ -145,6 +147,6 @@
 \bibliographystyle{plain}
 
 \includepdf{folha_registro_documento.pdf}
-\bookmark[level=0, page=81]{Folha de Registro do Documento}
+\bookmark[level=0, page=21]{Folha de Registro do Documento}
 
 \end{document}
