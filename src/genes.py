@@ -1,6 +1,4 @@
-import numpy as np
 import numpy.random as rand
-import heapq
 
 
 # Gene types
@@ -46,7 +44,7 @@ class IntegerGene(Gene):
         self.max = max_value
 
     def random(self):
-        return np.random.randint(self.max)
+        return rand.randint(self.max)
 
     # Walking would be to go up or down by a unit
     def walk(self, val):
@@ -62,7 +60,7 @@ class EnumGene(Gene):
         self.max = len(enum)
 
     def random(self):
-        return self.enum[np.random.randint(self.max)]
+        return self.enum[rand.randint(self.max)]
 
     # Similar
     def walk(self, val):
