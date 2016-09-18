@@ -1,5 +1,5 @@
 from matplotlib import pyplot
-from geneflow import *
+from src.geneflow import *
 
 genestructure=[RealGene(-10.0,10.0),RealGene(-10.0,10.0)]
 

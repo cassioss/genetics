@@ -1,4 +1,4 @@
-from geneflow import *
+from src.geneflow import *
 
 queens=8
 

@@ -1,6 +1,6 @@
 import numpy as np
 from matplotlib import pyplot
-from geneflow import *
+from src.geneflow import *
 
 def sig(x):
     return 1.0/(1.0+np.exp(-x))

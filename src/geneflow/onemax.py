@@ -1,4 +1,4 @@
-from geneflow import *
+from src.geneflow import *
 import numpy as np
 
 genestructure=[BooleanGene()]*100
