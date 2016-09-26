@@ -66,5 +66,3 @@ target/
 
 #Mac files
 .DS_Store
-
-src/deap/onemax.py
