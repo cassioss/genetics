@@ -156,4 +156,4 @@ def main():
     print("Best individual is %s, %s" % (best_ind, best_ind.fitness.values[0]))
 
 if __name__ == "__main__":
-    main()
+    main()r
