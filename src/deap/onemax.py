@@ -22,6 +22,7 @@ import random
 from deap import base
 from deap import creator
 from deap import tools
+from deap import cma
 
 creator.create("FitnessMax", base.Fitness, weights=(1.0,))
 creator.create("Individual", list, fitness=creator.FitnessMax)
@@ -66,6 +67,7 @@ toolbox.register("mutate", tools.mutFlipBit, indpb=0.05)
 # is replaced by the 'fittest' (best) of three individuals
 # drawn randomly from the current generation.
 toolbox.register("select", tools.selTournament, tournsize=3)
+
 
 #----------
 
