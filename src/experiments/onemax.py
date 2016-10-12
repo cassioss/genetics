@@ -1,88 +1,12 @@
 import numpy.random as random
-import copy
-
-def new_object(class_id):
-    constructor = globals()[class_id]
-    return constructor()
-
-def onemax_fitness(population):
-    return sum(gene.value() for gene in population)
-
-def mean(numbers):
-    return float(sum(numbers)) / max(len(numbers), 1)
-
-def sum2(numbers):
-    return sum(x*x for x in numbers)
-
-def std(numbers):
-    length = len(numbers)
-    avg = mean(numbers)
-    sum_sum = sum2(numbers)
-    return abs(sum_sum/length - avg**2)**0.5
-
-class Gene:
-    def __init__(self):
-        self.fitness = 0.0
-        self.val = None
-
-    def __str__(self):
-        pass
-
-    def value(self):
-        pass
-
-    # Helper function for random boolean
-    # Numpy's random() iterates over [0,1), so a fair distribution would be between [0, 0.5) and [0.5, 1)
-    @staticmethod
-    def coin_toss():
-        return random.random() >= 0.5
-
-
-class BooleanGene(Gene):
-    def __init__(self, val=False):
-        Gene.__init__(self)
-        self.val = val
-
-    def __str__(self):
-        return str(self.value())
-
-    def value(self):
-        return 1 if self.val else 0
-
-    def mutate(self):
-        self.val = self.coin_toss()
-
-    def mate(self, gene2):
-        child1 = BooleanGene(self.val)
-        child2 = BooleanGene(gene2.val)
-        return child1, child2
-
-
-class RealGene(Gene):
-    def __init__(self, val=0.0):
-        Gene.__init__(self)
-        self.val = val
-
-    def __str__(self):
-        return str(self.val)
-
-    def value(self):
-        return self.val
-
-    def mutate(self):
-        self.val = random.random()
-
-    def mate(self, gene2):
-        cross_value = random.uniform(self.val, gene2.val)
-        child1 = RealGene(cross_value)
-        child2 = RealGene(self.val + gene2.val - cross_value)
-        return child1, child2
-
+import fitness
+from utils import *
+from genes import *
 
 class GeneFlow:
     def __init__(self, gene_type, ffit=None, pm=0.01, pc=0.7, mu=100, ngen=20):
         self.fitness = ffit
-        self.population = [new_object(gene_type) for x in range(mu)]
+        self.population = [new_gene(gene_type) for x in range(mu)]
         self.pm = pm
         self.pc = pc
         self.mu = mu
@@ -158,4 +82,4 @@ class GeneFlow:
 
 
 # GeneFlow('BooleanGene', onemax_fitness).generate()
-GeneFlow('RealGene', onemax_fitness).generate()
+GeneFlow('RealGene', fitness.onemax).generate()
