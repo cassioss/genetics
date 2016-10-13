@@ -1,31 +1,26 @@
 import numpy.random as random
 import fitness
 from utils import *
-from genes import *
+from individuals import new_individual
 
 class GeneFlow:
-    def __init__(self, gene_type, ffit=None, pm=0.01, pc=0.7, mu=100, ngen=20):
+    def __init__(self, ind_type, gene_type, ffit=None, pm=0.01, pc=0.9, mu=10, ngen=200):
         self.fitness = ffit
-        self.population = [new_gene(gene_type) for x in range(mu)]
+        self.population = [new_individual(ind_type, gene_type) for x in range(mu)]
         self.pm = pm
         self.pc = pc
         self.mu = mu
         self.ngen = ngen
 
-    def gene_str(self, genes):
-        genes.sort(key=lambda gene:gene.value(), reverse=True)
-        return [gene.value() for gene in genes]
-
-    def population_str(self):
-        return self.gene_str(self.population)
+    def calculate_fitness(self):
+        for individual in self.population:
+            individual.fitness = self.fitness(individual)
 
     def stats(self):
-        print('Population: %s' % self.population_str())
-        print('Fitness: %.6f' % self.fitness(self.population))
-        print('Min    : %.6f' % min([x.value() for x in self.population]))
-        print('Max    : %.6f' % max([x.value() for x in self.population]))
-        print('Average: %.6f' % mean([x.value() for x in self.population]))
-        print('Std    : %.6f' % std([x.value() for x in self.population]))
+        print('Min    : %.6f' % min([x.fitness for x in self.population]))
+        print('Max    : %.6f' % max([x.fitness for x in self.population]))
+        print('Average: %.6f' % mean([x.fitness for x in self.population]))
+        print('Std    : %.6f' % std([x.fitness for x in self.population]))
 
     def generate(self):
         print('Generation 0:')
@@ -46,40 +41,32 @@ class GeneFlow:
     # The population is selected to be crossed randomly
     def select(self):
         random.shuffle(self.population)
-        self.offspring = [None for x in range(len(self.population))]
-
-        # print('Population: %s' % self.population_str())
-        # print('Selection : %s' % self.gene_str(self.offspring))
+        self.offspring = []
 
     # Genes are crossed over with probability pc
     def crossover(self):
-        for i in range(0, len(self.offspring), 2):
-            for j in range(1, len(self.offspring), 2):
-                if random.random() < self.pc:
-                    child1, child2 = self.mate(self.population[i], self.population[j])
-                    self.offspring[i] = child1
-                    self.offspring[j] = child2
-
-        # print('X-over    : %s' % self.gene_str(self.offspring))
+        for parent1, parent2 in zip(self.population[::2], self.population[1::2]):
+            if random.random() < self.pc:
+                self.offspring.append(self.mate(parent1, parent2))
 
     # Two genes are crossed over, generating two new genes
     def mate(self, ind1, ind2):
         return ind1.mate(ind2)
 
-    # Mutation only acts over the offspring, with probability pm
+    # Mutation acts over each of the offspring's genes, with probability pm
     def mutate(self):
-        for gene in self.offspring:
-            if random.random() < self.pm:
-                gene.mutate()
-
-        # print('Mutation  : %s' % self.gene_str(self.offspring))
+        for ind in self.offspring:
+            for gene in ind.genes:
+                if random.random() < self.pm:
+                    gene.mutate()
 
     # Only the best members survive
     def replace(self):
         self.population = self.population + self.offspring
-        self.population.sort(key=lambda gene:gene.value(), reverse=True)
+        self.calculate_fitness()
+        self.population.sort(key=lambda ind:ind.fitness, reverse=True)
         self.population = self.population[:self.mu]
 
 
-# GeneFlow('BooleanGene', onemax_fitness).generate()
-GeneFlow('RealGene', fitness.onemax).generate()
+GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
+#GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()

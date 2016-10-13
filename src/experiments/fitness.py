@@ -1,4 +1,4 @@
 
 # Fitness function for OneMax
-def onemax(person):
-    return sum(gene.value() for gene in person)
+def onemax(individual):
+    return sum(gene.value() for gene in individual.genes)

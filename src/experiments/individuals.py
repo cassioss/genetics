@@ -10,6 +10,7 @@ class Individual:
 	def __init__(self, gene_type, gsize=100):
 		self.gene_type = gene_type
 		self.genes = [new_gene(gene_type) for x in range(gsize)]
+		self.fitness = 0.0
 
 	def __len__(self):
 		return len(self.genes)
@@ -22,6 +23,7 @@ class Individual:
 		ind = cls(gene_type)
 		ind.genes = genes
 		return ind
+
 
 	def mate(self, other_ind):
 		if self.gene_type != other_ind.gene_type:
@@ -43,3 +45,4 @@ class OneMaxIndividual(Individual):
 
 	def __repr__(self):
 		return 'OneMaxIndividual {Gene: %s, Count: %d}' % (self.gene_type, len(self))
+
