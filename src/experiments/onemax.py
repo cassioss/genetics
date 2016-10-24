@@ -4,30 +4,40 @@ from utils import *
 from individuals import new_individual
 
 class GeneFlow:
-    def __init__(self, ind_type, gene_type, ffit=None, pm=0.01, pc=0.9, mu=10, ngen=200):
+    def __init__(self, ind_type, gene_type, ffit=None, pm=0.01, pc=0.9, mu=10, ngen=200, print_stats=True):
         self.fitness = ffit
         self.population = [new_individual(ind_type, gene_type) for x in range(mu)]
         self.pm = pm
         self.pc = pc
         self.mu = mu
         self.ngen = ngen
+        self.print_stats = print_stats
 
     def calculate_fitness(self):
         for individual in self.population:
             individual.fitness = self.fitness(individual)
 
+    def avg_fitness(self):
+        return mean([x.fitness for x in self.population])
+
     def stats(self):
+        if self.print_stats is False:
+            return
+
         print('Min    : %.6f' % min([x.fitness for x in self.population]))
         print('Max    : %.6f' % max([x.fitness for x in self.population]))
         print('Average: %.6f' % mean([x.fitness for x in self.population]))
         print('Std    : %.6f' % std([x.fitness for x in self.population]))
 
     def generate(self):
-        print('Generation 0:')
+        if self.print_stats:
+            print('Generation 0:')
+
         self.stats()
 
         for i in range(self.ngen):
-            print('\nGeneration %s:' % (i+1))
+            if self.print_stats:
+                print('\nGeneration %s:' % (i+1))
             self.update()
             self.stats()
 
@@ -68,5 +78,5 @@ class GeneFlow:
         self.population = self.population[:self.mu]
 
 
-GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
+#GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
 #GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()

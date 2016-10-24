@@ -21,6 +21,7 @@ from deap import algorithms
 from deap import base
 from deap import creator
 from deap import tools
+from deap import cma
 
 #Problem parameter
 NB_QUEENS = 20
@@ -74,6 +75,10 @@ toolbox.register("mate", tools.cxPartialyMatched)
 toolbox.register("mutate", tools.mutShuffleIndexes, indpb=2.0/NB_QUEENS)
 toolbox.register("select", tools.selTournament, tournsize=3)
 
+#strategy = cma.Strategy(centroid=[5.0]*300, sigma=5.0, lambda_=20*300)
+#toolbox.register("generate", strategy.generate, creator.Individual)
+#toolbox.register("update", strategy.update)
+
 def main(seed=0):
     random.seed(seed)
 
@@ -85,7 +90,7 @@ def main(seed=0):
     stats.register("Min", numpy.min)
     stats.register("Max", numpy.max)
 
-    algorithms.eaSimple(pop, toolbox, cxpb=0.5, mutpb=0.2, ngen=100, stats=stats,
+    algorithms.eaSimple(pop, toolbox, cxpb=0.4, mutpb=0.1, ngen=100, stats=stats,
                         halloffame=hof, verbose=True)
 
     return pop, stats, hof
