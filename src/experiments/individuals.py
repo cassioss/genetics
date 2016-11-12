@@ -1,4 +1,5 @@
 from genes import new_gene
+import numpy.random as random
 
 
 def new_individual(ind_name, gene_type, gsize=100):
@@ -17,6 +18,9 @@ class Individual:
 
 	def __repr__(self):
 		return 'Individual {Gene: %s, Count: %d}' % (self.gene_type, len(self))
+
+	def __str__(self):
+		return str([x.value() for x in self.genes])
 
 	@classmethod
 	def from_genes(cls, gene_type, genes):
