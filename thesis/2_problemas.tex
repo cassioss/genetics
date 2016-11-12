@@ -40,7 +40,7 @@ Soma-se a expressividade de todos os genes de um indivíduo. Quanto maior a cont
 
 \section{Caixeiro Viajante}
 
-Dado um conjunto de cidades e as distâncias entre elas, o AE deve ser capaz de descobrir qual o menor caminho que possibilita a um caixeiro visitar todas as cidades uma única vez e retornar à cidade original. Tal problema é NP-Hard, e avaliar se uma solução candidata é algo tão complexo quanto a resolução do problema em si.
+Dado um conjunto de cidades e as distâncias entre elas, o AG deve ser capaz de descobrir qual o menor caminho que possibilita a um caixeiro visitar todas as cidades uma única vez e retornar à cidade original. Tal problema é NP-Hard, e avaliar se uma solução candidata é algo tão complexo quanto a resolução do problema em si.
 
 \subsection*{Gene}
 
@@ -51,7 +51,7 @@ Utilizou-se o \emph{IntegerGene}, um gene com expressividade inteira entre 0 e K
 No caso de um indivíduo do problema do Caixeiro Viajante, foi pensado que o mesmo indivíduo deveria ser capaz de gerar, a partir da expressividade de seus genes, um percurso que passasse por todas as cidades. Para isso, os genes foram organizados em cada indivíduo de acordo com as seguintes considerações:
 
 \begin{enumerate}[label={(\arabic*)}]
-	\item O grafo a ser analisado pelo AE é conexo e não-direcionado;
+	\item O grafo a ser analisado pelo AG é conexo e não-direcionado;
 	\item Escolhendo-se ir da cidade A à cidade B, a distância percorrida a partir desta decisão será sempre a menor possível (mesmo que seja necessário passar por outras cidades);
 	\item Por decisão de um indivíduo, uma cidade não pode ser visitada mais de uma vez (não se impede, no entanto, que uma cidade no caminho de duas outras seja atravessada em nome de um atalho, por exemplo).
 \end{enumerate}
@@ -67,7 +67,7 @@ Para garantir que cada gene deste indivíduo seja independente, os genes funcion
 	\item O quarto gene possui expressividade de 0 a 1.
 \end{itemize}
 
-Digamos que um dos indivíduos do AE tenha, pela expressividade de seus genes, os valores [3, 0, 1, 0]. Para se calcular o percurso feito por tal indivíduo, escolhe-se a cidade da lista naquela mesma posição, o qual é removido da mesma para se escolher a próxima. Ou seja:
+Digamos que um dos indivíduos do AG tenha, pela expressividade de seus genes, os valores [3, 0, 1, 0]. Para se calcular o percurso feito por tal indivíduo, escolhe-se a cidade da lista naquela posição, a qual é removida antes de se escolher a próxima cidade. Ou seja:
 
 \begin{itemize}
 	\item Gene 1: [3] mapeia a cidade E na lista [B, C, D, E, F]. Sem ela, a lista se torna [B, C, D, F];
