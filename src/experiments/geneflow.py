@@ -3,6 +3,7 @@ import fitness
 from utils import *
 from individuals import new_individual
 
+
 class GeneFlow:
     def __init__(self, ind_type, gene_type, ffit=None, pm=0.01, pc=0.9, mu=10, ngen=200, print_stats=True):
         self.fitness = ffit

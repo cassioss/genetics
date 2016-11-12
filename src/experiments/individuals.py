@@ -25,20 +25,6 @@ class Individual:
 		return ind
 
 
-	def mate(self, other_ind):
-		if self.gene_type != other_ind.gene_type:
-			raise ValueError('Tried to mate two individuals with different genes')
-
-		if len(self) != len(other_ind):
-			raise ValueError('Tried to mate individuals with different gene count')
-
-		new_genes = []
-		for gene1, gene2 in zip(self.genes, other_ind.genes):
-			new_genes.append(gene1.mate(gene2))
-
-		return self.from_genes(self.gene_type, new_genes)
-
-
 class OneMaxIndividual(Individual):
     def __init__(self, gene_type='BooleanGene', gsize=100):
         Individual.__init__(self, gene_type, gsize)

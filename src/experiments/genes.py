@@ -20,9 +20,6 @@ class Gene:
     def mutate(self):
         pass
 
-    def mate(self, gene2):
-        return None
-
 
 class BooleanGene(Gene):
     def __init__(self, val=False):
@@ -38,10 +35,6 @@ class BooleanGene(Gene):
     def mutate(self):
         self.val = coin_toss()
 
-    def mate(self, gene2):
-        combined = self.val if self.val is gene2.val else coin_toss()
-        return BooleanGene(combined)
-
 
 class RealGene(Gene):
     def __init__(self, val=0.0):
@@ -54,18 +47,15 @@ class RealGene(Gene):
     def mutate(self):
         self.val = random.random()
 
-    def mate(self, gene2):
-        cross_value = random.uniform(self.val, gene2.val)
-        return RealGene(cross_value)
-
 
 class IntegerGene(Gene):
     def __init__(self, k=2):
+        if k <= 1:
+            raise ValueError('IntegerGene should have a range greater than 1.')
+
         Gene.__init__(self)
         self.val = 0
         self.k = k
-        if k <= 1:
-            raise ValueError('IntegerGene should have a range greater than 1.')
 
     def __repr__(self):
         return 'IntegerGene {value: %s, k: %s}' % (self.val, self.k)
