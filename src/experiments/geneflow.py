@@ -5,7 +5,7 @@ from individuals import new_individual
 from individuals import Individual
 
 class GeneFlow:
-    def __init__(self, ind_type, gene_type, ffit=None, pc=0.95, pm=0.005, indm=0.925, mu=10, ngen=800, print_stats=True):
+    def __init__(self, ind_type, gene_type, ffit=None, pc=0.95, pm=0.005, indm=0.925, mu=10, ngen=200, print_stats=True):
         self.fitness = ffit
         self.population = [new_individual(ind_type, gene_type) for x in range(mu)]
         self.pm = pm
@@ -59,9 +59,9 @@ class GeneFlow:
         self.replace()
         pass
 
-    # The population is selected to be crossed randomly
+    # The population is selected to be crossed based on the best specimens
     def select(self):
-        random.shuffle(self.population)
+        self.population.sort(key=lambda ind:ind.fitness, reverse=True)
         self.offspring = []
 
     # Genes are crossed over with probability pc
@@ -71,10 +71,6 @@ class GeneFlow:
                 child1, child2 = self.cross(parent1, parent2)
                 self.offspring.append(child1)
                 self.offspring.append(child2)
-
-        self.population = self.population + self.offspring
-        self.offspring = []
-        self.calculate_fitness()
 
     # Two-point crossover - generates two individuals
     def cross(self, ind1, ind2):
@@ -99,17 +95,19 @@ class GeneFlow:
 
     # Mutation acts over all genes, with probability indm to mutate an individual, and pm to mutate a given gene
     def mutate(self):
-        for ind in self.population:
+        for ind in self.offspring:
             for gene in ind.genes:
                 if random.random() < self.indm:
                     gene.mutate(self.pm)
 
     # Only the best members survive
     def replace(self):
+        self.population = self.population + self.offspring
+        self.offspring = []
         self.calculate_fitness()
         self.population.sort(key=lambda ind:ind.fitness, reverse=True)
         self.population = self.population[:self.mu]
 
 
-#GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
+GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
 #GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()

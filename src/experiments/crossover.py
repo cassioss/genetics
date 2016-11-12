@@ -9,9 +9,6 @@ def crossover_two_point(ind1, ind2):
 		return
 
 	length = len(ind1)
-	gene_type = ind1.gene_type
-	genes1 = ind1.genes
-	genes2 = ind2.genes
 
 	if length == 2:
 		return ind1[:1] + ind2[1:], ind2[:1] + ind1[1:]
@@ -34,4 +31,4 @@ def crossover_two_point(ind1, ind2):
 	return one_crossed, two_crossed
 
 for i in range(2000):
-	print crossover_two_point([0,2,4,6,8,10], [1,3,5,7,9,11])
+	print crossover_two_point([0,1,1,0,0,0], [1,0,0,1,1,1])
