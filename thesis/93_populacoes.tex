@@ -1,0 +1,58 @@
+\label{3_populacao}
+
+\section{Genes}
+
+O AE teve sua construção iniciada pelos \textbf{genes}, os quais compõem os indivíduos de uma determinada população. Seu comportamento é essencialmente prefixado, reagindo aos processos evolutivos por conta própria. Da perspectiva do problema, não é possível ver como um gene se comporta.
+
+De modo geral, um gene possui uma \textbf{expressividade} e uma operação de \textbf{mutação}. A expressividade, normalmente dada ou traduzível para um valor numérico, é analisada junto à função de fitness para analisar a adaptação de um indivíduo ao sistema em que se encontra. A mutação é uma operação que altera esta expressividade de modo aleatório, permitindo que o gene não possua um único valor durante a execução do algoritmo. Cada um dos problemas aqui resolvidos pediu a criação de um gene diferente.
+
+O primeiro deles, para a resolução do OneMax tradicional, foi o \textit{BooleanGene}, um gene com expressividade booleana (0 ou 1). Sua operação de mutação consistiu numa operação semelhante ao cara-e-coroa, trocando o valor expresso para 0 ou 1 aleatoriamente, com igual probabilidade.
+
+O segundo deles, para a resolução do OneMax com expressividade real, foi o \textit{RealGene}, um gene com expressividade também contida entre 0.0 e 1.0, mas expressa com um valor de ponto flutuante (real). Sua operação de mutação consistiu numa operação aleatória que trouxesse um valor qualquer no intervalo [0, 1).
+
+O terceiro deles, para a resolução do Caixeiro Viajante, foi o \textit{IntegerGene}, um gene com expressividade inteira entre 0 e K, com uma operação de mutação capaz de escolher aleatoriamente um destes valores inteiros. Como será mostrado a seguir, cada gene representa uma das cidades do mapa do caixeiro.
+
+\section{Indivíduos}
+
+Um \textbf{indivíduo}, para uma dada população, é uma entidade composta por genes. Não é necessário que os genes de um indivíduo sejam necessariamente do mesmo tipo (ou, pensando em termos de código, da mesma estrutura de dados), mas para uma análise consistente da população, todos os indivíduos devem possuir a mesma composição genética. Neste trabalho, dois genes serão analisados pelo AE de modo independente.
+
+No caso dos indivíduos dos problemas de OneMax, cada um deles foi composto por 100 genes de um mesmo tipo (\textit{BooleanGene} ou \textit{RealGene}).
+
+No caso de um indivíduo do problema do Caixeiro Viajante, foi pensado que o mesmo indivíduo deveria ser capaz de gerar, a partir da expressividade de seus genes, um percurso que passasse por todas as cidades. Para isso, os genes foram organizados em cada indivíduo de acordo com as seguintes considerações:
+
+\begin{enumerate}[label={(\arabic*)}]
+	\item O grafo a ser analisado pelo AE é conexo e não-direcionado;
+	\item Escolhendo-se ir da cidade A à cidade B, a distância percorrida a partir desta decisão será sempre a menor possível (mesmo que seja necessário passar por outras cidades);
+	\item Por decisão de um indivíduo, uma cidade não pode ser visitada mais de uma vez (não se impede, no entanto, que uma cidade no caminho de duas outras seja atravessada em nome de um atalho, por exemplo).
+\end{enumerate}
+
+Para atender ao segundo ponto, uma etapa anterior à da execução do AE foi a de trazer as menores distâncias entre quaisquer dois nós. Para isso, executou-se o algoritmo de Dijkstra em cada um dos nós, de modo a se obter tais distâncias.
+
+Para garantir que cada gene deste indivíduo seja independente, os genes funcionarão de um jeito diferente dos demais problemas. Digamos, por exemplo, que um caixeiro em A precise passar pelas cidades [B, C, D, E, F] e voltar à cidade A. O indivíduo de tal problema teria então quatro genes (o número de cidades que ele precisa visitar além da sua cidade de origem, menos um) que funcionam da seguinte forma:
+
+\begin{itemize}
+	\item O primeiro gene possui expressividade de 0 a 4;
+	\item O segundo gene possui expressividade de 0 a 3;
+	\item O terceiro gene possui expressividade de 0 a 2;
+	\item O quarto gene possui expressividade de 0 a 1.
+\end{itemize}
+
+Digamos que um dos indivíduos do AE tenha, pela expressividade de seus genes, os valores [3, 0, 1, 0]. Para se calcular o percurso feito por tal indivíduo, escolhe-se a cidade da lista naquela mesma posição, o qual é removido da mesma para se escolher a próxima. Ou seja:
+
+\begin{itemize}
+	\item Gene 1: [3] mapeia a cidade E na lista [B, C, D, E, F]. Sem ela, a lista se torna [B, C, D, F];
+	\item Gene 2: [0] mapeia a cidade B na lista [B, C, D, F]. Sem ela, a lista se torna [C, D, F];
+	\item Gene 3: [1] mapeia a cidade D na lista [C, D, F]. Sem ela, a lista se torna [C, F];
+	\item Gene 4: [0] mapeia a cidade C na lista [C, F]. Sem ela, a lista se torna [F].
+\end{itemize}
+
+Como [F] foi a única cidade que tais genes não escolheram, ela será visitada por último. Com isso, o indivíduo com genes [3, 0, 1, 0] traz o percurso A -> E -> B -> D -> C -> F -> A.
+
+Para este trabalho, se, digamos, B for um atalho entre A e E, B ainda seria percorrida duas vezes (ou seja, o percurso com tal atalho seria A -> B -> E -> B -> D -> C -> F -> A). Isso não chega a desrespeitar a ideia do terceiro ponto, pois B não é visitada (por decisão do indivíduo) no percurso A -> E.
+
+Com isso, é garantido que todas as cidades serão visitados pelo caixeiro ao menos uma vez, é considerado retornar à cidade original, e todos os percursos são feitos do modo mais rápido.
+
+\section{Populações}
+
+Uma população consiste de um grupo de indivíduos de um mesmo tipo, capazes de se reproduzirem e compartilharem genes. O controle aqui, a princípio, se dá pela quantidade inicial de indivíduos. Por padrão, serão escolhidos 100 indivíduos para cada população, em cada problema.
+

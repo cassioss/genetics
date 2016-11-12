@@ -1,0 +1,36 @@
+\begin{thebibliography}{1}
+
+\bibitem{applegate2011traveling}
+D.~L. Applegate, R.~E. Bixby, V.~Chvatal, and W.~J. Cook.
+\newblock {\em The Traveling Salesman Problem: a computational study}.
+\newblock Princeton university press, 2011.
+
+\bibitem{dijkstra1959note}
+E.~W. Dijkstra.
+\newblock A note on two problems in connexion with graphs.
+\newblock {\em Numerische mathematik}, 1(1):269--271, 1959.
+
+\bibitem{eiben2011parameter}
+A.~E. Eiben and S.~K. Smit.
+\newblock Parameter tuning for configuring and analyzing evolutionary
+  algorithms.
+\newblock {\em Swarm and Evolutionary Computation}, 1(1):19--31, 2011.
+
+\bibitem{eiben2003introduction}
+A.~E. Eiben and J.~E. Smith.
+\newblock {\em Introduction To Evolutionary Computing}, volume~53.
+\newblock Springer-Verlag, 2003.
+
+\bibitem{giguere1998population}
+P.~Giguere and D.~E. Goldberg.
+\newblock Population sizing for optimum sampling with genetic algorithms: A
+  case study of the onemax problem.
+\newblock {\em Genetic Programming}, 98:496--503, 1998.
+
+\bibitem{algoritmopseudo}
+ICMC-USP.
+\newblock Algoritmos genéticos.
+\newblock \url{http://conteudo.icmc.usp.br/pessoas/andre/research/genetic/}.
+\newblock [Online; acessado em 06 de novembro de 2016].
+
+\end{thebibliography}
