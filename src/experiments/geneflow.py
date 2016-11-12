@@ -5,12 +5,13 @@ from individuals import new_individual
 from individuals import Individual
 
 class GeneFlow:
-    def __init__(self, ind_type, gene_type, ffit=None, pm=0.01, pc=0.9, mu=10, ngen=400, print_stats=True):
+    def __init__(self, ind_type, gene_type, ffit=None, pc=0.95, pm=0.005, indm=0.925, mu=10, ngen=800, print_stats=True):
         self.fitness = ffit
         self.population = [new_individual(ind_type, gene_type) for x in range(mu)]
         self.pm = pm
         self.pc = pc
         self.mu = mu
+        self.indm = indm
         self.ngen = ngen
         self.print_stats = print_stats
 
@@ -18,17 +19,26 @@ class GeneFlow:
         for individual in self.population:
             individual.fitness = self.fitness(individual)
 
+    def min_fitness(self):
+        return min([x.fitness for x in self.population])
+
+    def max_fitness(self):
+        return max([x.fitness for x in self.population])
+
     def avg_fitness(self):
         return mean([x.fitness for x in self.population])
+
+    def std_fitness(self):
+        return std([x.fitness for x in self.population])
 
     def stats(self):
         if self.print_stats is False:
             return
 
-        print('Min    : %.6f' % min([x.fitness for x in self.population]))
-        print('Max    : %.6f' % max([x.fitness for x in self.population]))
-        print('Average: %.6f' % mean([x.fitness for x in self.population]))
-        print('Std    : %.6f' % std([x.fitness for x in self.population]))
+        print('Min    : %.6f' % self.min_fitness())
+        print('Max    : %.6f' % self.max_fitness())
+        print('Average: %.6f' % self.avg_fitness())
+        print('Std    : %.6f' % self.std_fitness())
 
     def generate(self):
         if self.print_stats:
@@ -87,12 +97,12 @@ class GeneFlow:
 
         return one_crossed, two_crossed
 
-    # Mutation acts over all genes, with probability pm
+    # Mutation acts over all genes, with probability indm to mutate an individual, and pm to mutate a given gene
     def mutate(self):
         for ind in self.population:
             for gene in ind.genes:
-                if random.random() < self.pm:
-                    gene.mutate()
+                if random.random() < self.indm:
+                    gene.mutate(self.pm)
 
     # Only the best members survive
     def replace(self):
@@ -101,5 +111,5 @@ class GeneFlow:
         self.population = self.population[:self.mu]
 
 
-GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
+#GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
 #GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()
