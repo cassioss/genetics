@@ -2,15 +2,18 @@ import fitness
 import numpy as np
 from geneflow import *
 
-def test_tuning(NGEN=500):
+def test_tuning(NGEN=200):
 	best_fitness = 0.0
 	best_pc = 0.0
+	i = 0
 
-	for tuning_pc in np.linspace(0.8, 1., 41):
+	for tuning_pc in np.linspace(0.9, 1., 51):
 		flow = GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax, ngen=NGEN,
 			print_stats=False, pc=tuning_pc)
 
 		flow.generate()
+		print 'Finished', i+1
+		i = i + 1
 
 		if best_fitness < flow.avg_fitness():
 			best_fitness = flow.avg_fitness()
@@ -22,11 +25,13 @@ def test_tuning(NGEN=500):
 	best_fitness = 0.0
 	best_pm = 0.0
 
-	for tuning_pm in np.linspace(0, 0.1, 41):
+	for tuning_pm in np.linspace(0.001, 0.1, 51):
 		flow = GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax, ngen=NGEN,
 			print_stats=False, pc=best_pc, pm=tuning_pm)
 
 		flow.generate()
+		print 'Finished', i+1
+		i = i + 1
 
 		if best_fitness < flow.avg_fitness():
 			best_fitness = flow.avg_fitness()
@@ -35,20 +40,5 @@ def test_tuning(NGEN=500):
 	print("Best Fitness: %.6f" % best_fitness)
 	print("Best pm     : %.6f" % best_pm)
 
-	best_fitness = 0.0
-	best_indm = 0.0
-
-	for tuning_indm in np.linspace(0, 1., 41):
-		flow = GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax, ngen=NGEN,
-			print_stats=False, pc=best_pc, pm=best_pm, indm=tuning_indm)
-
-		flow.generate()
-
-		if best_fitness < flow.avg_fitness():
-			best_fitness = flow.avg_fitness()
-			best_indm = tuning_indm
-
-	print("Best Fitness: %.6f" % best_fitness)
-	print("Best indm   : %.6f" % best_indm)
 
 test_tuning()

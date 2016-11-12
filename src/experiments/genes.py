@@ -17,7 +17,7 @@ class Gene:
     def value(self):
         return self.val
 
-    def mutate(self, pm):
+    def mutate(self):
         pass
 
 
@@ -32,9 +32,8 @@ class BooleanGene(Gene):
     def value(self):
         return 1 if self.val else 0
 
-    def mutate(self, pm=1.0):
-        if random.random() < pm:
-            self.val = not self.val
+    def mutate(self):
+        self.val = coin_toss()
 
 
 class RealGene(Gene):
@@ -45,9 +44,8 @@ class RealGene(Gene):
     def __repr__(self):
         return 'RealGene {value: %s}' % (self.val)
 
-    def mutate(self, pm=1.0):
-        if random.random() < pm:
-            self.val = random.random()
+    def mutate(self):
+        self.val = random.random()
 
 
 class IntegerGene(Gene):
@@ -62,7 +60,6 @@ class IntegerGene(Gene):
     def __repr__(self):
         return 'IntegerGene {value: %s, k: %s}' % (self.val, self.k)
 
-    def mutate(self, pm=1.0):
-        if random.random() < pm:
-            self.val = random.randint(self.k)
+    def mutate(self):
+        self.val = random.randint(self.k)
 
