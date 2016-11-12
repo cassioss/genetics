@@ -57,3 +57,19 @@ class RealGene(Gene):
     def mate(self, gene2):
         cross_value = random.uniform(self.val, gene2.val)
         return RealGene(cross_value)
+
+
+class IntegerGene(Gene):
+    def __init__(self, k=2):
+        Gene.__init__(self)
+        self.val = 0
+        self.k = k
+        if k <= 1:
+            raise ValueError('IntegerGene should have a range greater than 1.')
+
+    def __repr__(self):
+        return 'IntegerGene {value: %s, k: %s}' % (self.val, self.k)
+
+    def mutate(self):
+        self.val = random.randint(self.k)
+

@@ -15,22 +15,22 @@
 \contentsline {chapter}{\numberline {2}Problemas Escolhidos}{20}{chapter.2}
 \contentsline {section}{\numberline {2.1}OneMax Booleano}{20}{section.2.1}
 \contentsline {subsection}{Gene}{20}{section.2.1}
-\contentsline {subsection}{Indiv\IeC {\'\i }duo}{20}{section.2.1}
+\contentsline {subsection}{Indiv\IeC {\'\i }duo}{21}{section.2.1}
 \contentsline {subsection}{Fun\IeC {\c c}\IeC {\~a}o de fitness}{21}{section.2.1}
 \contentsline {section}{\numberline {2.2}OneMax Real}{21}{section.2.2}
 \contentsline {subsection}{Gene}{21}{section.2.2}
 \contentsline {subsection}{Indiv\IeC {\'\i }duo}{21}{section.2.2}
 \contentsline {subsection}{Fun\IeC {\c c}\IeC {\~a}o de fitness}{21}{section.2.2}
-\contentsline {section}{\numberline {2.3}Caixeiro Viajante}{21}{section.2.3}
+\contentsline {section}{\numberline {2.3}Caixeiro Viajante}{22}{section.2.3}
 \contentsline {subsection}{Gene}{22}{section.2.3}
 \contentsline {subsection}{Indiv\IeC {\'\i }duo}{22}{section.2.3}
 \contentsline {subsection}{Fun\IeC {\c c}\IeC {\~a}o de fitness}{23}{Item.7}
-\contentsline {chapter}{\numberline {3}Algoritmo Gen\'etico}{24}{chapter.3}
-\contentsline {section}{\numberline {3.1}Sele\IeC {\c c}\IeC {\~a}o}{24}{section.3.1}
-\contentsline {section}{\numberline {3.2}Crossover}{25}{section.3.2}
-\contentsline {section}{\numberline {3.3}Muta\IeC {\c c}\IeC {\~a}o}{25}{section.3.3}
-\contentsline {section}{\numberline {3.4}Sobreviv\IeC {\^e}ncia}{25}{section.3.4}
-\contentsline {chapter}{\numberline {4}Otimiza\IeC {\c c}\IeC {\~a}o de Muta\c c\~ao e Recombina\c c\~ao }{26}{chapter.4}
-\contentsline {chapter}{\numberline {5}Valida\c c\~ao com Outros Trabalhos}{27}{chapter.5}
-\contentsline {chapter}{\numberline {6}Conclus\~oes e Trabalhos Futuros}{28}{chapter.6}
-\contentsline {chapter}{Refer\^encias}{29}{chapter.6}
+\contentsline {chapter}{\numberline {3}Algoritmo Gen\'etico}{25}{chapter.3}
+\contentsline {section}{\numberline {3.1}Sele\IeC {\c c}\IeC {\~a}o}{25}{section.3.1}
+\contentsline {section}{\numberline {3.2}Crossover}{26}{section.3.2}
+\contentsline {section}{\numberline {3.3}Muta\IeC {\c c}\IeC {\~a}o}{26}{section.3.3}
+\contentsline {section}{\numberline {3.4}Sobreviv\IeC {\^e}ncia}{26}{section.3.4}
+\contentsline {chapter}{\numberline {4}Otimiza\IeC {\c c}\IeC {\~a}o de Muta\c c\~ao e Recombina\c c\~ao }{27}{chapter.4}
+\contentsline {chapter}{\numberline {5}Valida\c c\~ao com Outros Trabalhos}{28}{chapter.5}
+\contentsline {chapter}{\numberline {6}Conclus\~oes e Trabalhos Futuros}{29}{chapter.6}
+\contentsline {chapter}{Refer\^encias}{30}{chapter.6}
