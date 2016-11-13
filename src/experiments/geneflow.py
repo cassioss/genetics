@@ -1,6 +1,7 @@
 import numpy.random as random
 import fitness
 import copy
+import os
 from utils import *
 from individuals import new_individual, from_genes
 from individuals import Individual
@@ -15,6 +16,9 @@ class GeneFlow:
         self.ngen = ngen
         self.print_stats = print_stats
         self.maximum = maximum
+        cur_path = os.path.dirname(__file__)
+        new_path = os.path.relpath('../out/' + ind_type + '.txt', cur_path)
+        self.file = open(new_path, 'w')
 
     def calculate_fitness(self):
         for individual in self.population:
@@ -54,6 +58,17 @@ class GeneFlow:
                 print('\nGeneration %s:' % (i+1))
             self.update()
             self.stats()
+
+            self.file.write(str(i+1))
+            self.file.write(',')
+            self.file.write(str(self.min_fitness()))
+            self.file.write(',')
+            self.file.write(str(self.max_fitness()))
+            self.file.write(',')
+            self.file.write(str(self.avg_fitness()))
+            self.file.write(',')
+            self.file.write(str(self.std_fitness()))
+            self.file.write('\n')
 
     def update(self):
         self.select()
@@ -116,3 +131,6 @@ class GeneFlow:
 #GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
 #GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()
 GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False).generate()
+
+
+
