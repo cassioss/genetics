@@ -22,3 +22,7 @@ def std(numbers):
     avg = mean(numbers)
     sum_sum = sum2(numbers)
     return abs(sum_sum/length - avg**2)**0.5
+
+# Adds arrows between values of a list
+def arrow_list_str(some_list):
+	return str(some_list).replace(', ', ' -> ').replace('[', '').replace(']', '').replace("'", '')

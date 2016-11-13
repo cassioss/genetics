@@ -46,6 +46,7 @@ class GeneFlow:
         if self.print_stats:
             print('Generation 0:')
 
+        self.calculate_fitness()
         self.stats()
 
         for i in range(self.ngen):
@@ -93,7 +94,7 @@ class GeneFlow:
         rand1, rand2 = (rand1, rand2) if rand1 < rand2 else (rand2, rand1)
         genes1[rand1:rand2], genes2[rand1:rand2] = genes2[rand1:rand2], genes1[rand1:rand2]
 
-        return Individual.from_genes(gene_type, genes1), Individual.from_genes(gene_type, genes2)
+        return Individual.from_genes(gene_type, genes1, length), Individual.from_genes(gene_type, genes2, length)
 
     # Mutation acts over all genes (except the elite), with probability pm
     def mutate(self):
@@ -111,5 +112,6 @@ class GeneFlow:
         self.population = self.population[:self.mu]
 
 
-GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
-#GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()
+#GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
+GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()
+#GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False).generate()

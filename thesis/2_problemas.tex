@@ -48,7 +48,35 @@ Utilizou-se o \emph{IntegerGene}, um gene com expressividade inteira entre 0 e K
 
 \subsection*{Indivíduo}
 
-No caso de um indivíduo do problema do Caixeiro Viajante, foi pensado que o mesmo indivíduo deveria ser capaz de gerar, a partir da expressividade de seus genes, um percurso que passasse por todas as cidades. Para isso, os genes foram organizados em cada indivíduo de acordo com as seguintes considerações:
+No caso de um indivíduo do problema do Caixeiro Viajante, foi pensado que o mesmo deveria ser capaz de gerar, a partir da expressividade de seus genes, um percurso que passasse uma única vez por todas as cidades. Para isso, os genes aqui foram organizados de modo um pouco diferente dos problemas OneMax.
+
+Digamos, por exemplo, que um caixeiro na cidade A precise passar pelas cidades [B, C, D, E, F] e voltar à cidade A. O indivíduo de tal problema teria então quatro genes (o número total de cidades, menos dois) criados da seguinte forma:
+
+\begin{itemize}
+	\item O primeiro gene possui expressividade de 0 a 4;
+	\item O segundo gene possui expressividade de 0 a 3;
+	\item O terceiro gene possui expressividade de 0 a 2;
+	\item O quarto gene possui expressividade de 0 a 1.
+\end{itemize}
+
+Digamos que um dos indivíduos do AG tenha, pela expressividade de seus genes, os valores [3, 0, 1, 0]. Para se calcular o percurso feito por tal indivíduo, escolhe-se a cidade da lista naquela posição, a qual é removida antes de se escolher a próxima cidade. Ou seja:
+
+\begin{itemize}
+	\item Gene 1: [3] mapeia a cidade E na lista [B, C, D, E, F]. Sem ela, a lista se torna [B, C, D, F];
+	\item Gene 2: [0] mapeia a cidade B na lista [B, C, D, F]. Sem ela, a lista se torna [C, D, F];
+	\item Gene 3: [1] mapeia a cidade D na lista [C, D, F]. Sem ela, a lista se torna [C, F];
+	\item Gene 4: [0] mapeia a cidade C na lista [C, F]. Sem ela, a lista se torna [F].
+\end{itemize}
+
+Como [F] foi a única cidade que tais genes não escolheram, ela será visitada por último. Com isso, o indivíduo com genes [3, 0, 1, 0] traz o percurso A -> E -> B -> D -> C -> F -> A.
+
+O percurso inicial terá sempre genes com expressividade zero. No exemplo fornecido, o caminho inicial (trazido por [0, 0, 0, 0]) de todos os indivíduos seria A -> B -> C -> D -> E -> F -> A.
+
+\subsection*{Função de fitness}
+
+A função de fitness aqui calcula a distância percorrida pelo caixeiro no trajeto completo trazido pelo indivíduo, considerando as distâncias percorridas após se utilizar o algoritmo de Dijkstra. Quanto menor a distância percorrida, melhor. Note que não se tenta verificar se tal distância é a menor - minimizá-la se torna um traço evolutivo do AG.
+
+Para isso, os genes foram organizados em cada indivíduo de acordo com as seguintes considerações:
 
 \begin{enumerate}[label={(\arabic*)}]
 	\item O grafo a ser analisado pelo AG é conexo e não-direcionado;
@@ -82,6 +110,6 @@ Para este trabalho, se, digamos, B for um atalho entre A e E, B ainda seria perc
 
 Com isso, é garantido que todas as cidades serão visitados pelo caixeiro ao menos uma vez, é considerado retornar à cidade original, e todos os percursos são feitos do modo mais rápido.
 
-\subsection*{Função de fitness}
+\subsubsection*{Algoritmo de Dijkstra}
 
 A função de fitness aqui calcula a distância percorrida pelo caixeiro no trajeto completo trazido pelo indivíduo, considerando as distâncias percorridas após se utilizar o algoritmo de Dijkstra. Quanto menor a distância percorrida, melhor. Note que não se tenta verificar se tal distância é a menor - minimizá-la se torna um traço evolutivo do AG.
