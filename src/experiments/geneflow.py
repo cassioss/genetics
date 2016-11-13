@@ -2,7 +2,7 @@ import numpy.random as random
 import fitness
 import copy
 from utils import *
-from individuals import new_individual
+from individuals import new_individual, from_genes
 from individuals import Individual
 
 class GeneFlow:
@@ -79,6 +79,7 @@ class GeneFlow:
     # Two-point crossover - two children mix their genes, based in a two-point section switch of their genes
     def cross(self, ind1, ind2):
         length = len(ind1)
+        ind_type = ind1.__class__.__name__
         gene_type = ind1.gene_type
 
         genes1 = copy.deepcopy(ind1.genes)
@@ -94,7 +95,7 @@ class GeneFlow:
         rand1, rand2 = (rand1, rand2) if rand1 < rand2 else (rand2, rand1)
         genes1[rand1:rand2], genes2[rand1:rand2] = genes2[rand1:rand2], genes1[rand1:rand2]
 
-        return Individual.from_genes(gene_type, genes1, length), Individual.from_genes(gene_type, genes2, length)
+        return from_genes(ind_type, genes1, gene_type), from_genes(ind_type, genes2, gene_type)
 
     # Mutation acts over all genes (except the elite), with probability pm
     def mutate(self):
@@ -113,5 +114,5 @@ class GeneFlow:
 
 
 #GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
-GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()
-#GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False).generate()
+#GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()
+GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False).generate()

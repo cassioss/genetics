@@ -14,6 +14,18 @@ def new_individual(ind_name, gene_type=None, gsize=None):
     	return constructor(gene_type, gsize)
 
 
+def from_genes(ind_name, genes, gene_type=None):
+	constructor = globals()[ind_name]
+	ind = None
+	if gene_type is None:
+		ind = constructor()
+	else:
+		ind = constructor(gene_type)
+
+	ind.genes = genes
+	return ind
+
+
 class Individual:
 	def __init__(self, gene_type, gsize):
 		self.gene_type = gene_type
@@ -25,12 +37,6 @@ class Individual:
 
 	def __repr__(self):
 		return 'Individual {Gene: %s, Count: %d}' % (self.gene_type, len(self))
-
-	@classmethod
-	def from_genes(cls, gene_type, genes, gsize):
-		ind = cls(gene_type, gsize)
-		ind.genes = genes
-		return ind
 
 
 class OneMaxIndividual(Individual):
@@ -60,3 +66,4 @@ class TSPIndividual(Individual):
 		string += '\nCities visited : ' + arrow_list_str(tsp_path(sequence))
 		string += '\nFull path      : ' + arrow_list_str(tsp_full_path(sequence))
 		return string
+
