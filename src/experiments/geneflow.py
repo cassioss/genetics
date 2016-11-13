@@ -6,7 +6,7 @@ from individuals import new_individual
 from individuals import Individual
 
 class GeneFlow:
-    def __init__(self, ind_type, gene_type, ffit=None, pc=0.9, pm=0.01, mu=100, ngen=200, print_stats=True):
+    def __init__(self, ind_type, gene_type, ffit=None, pc=0.9, pm=0.01, mu=100, ngen=120, print_stats=True, maximum=True):
         self.fitness = ffit
         self.population = [new_individual(ind_type, gene_type) for x in range(mu)]
         self.pm = pm
@@ -14,6 +14,7 @@ class GeneFlow:
         self.mu = mu
         self.ngen = ngen
         self.print_stats = print_stats
+        self.maximum = maximum
 
     def calculate_fitness(self):
         for individual in self.population:
@@ -60,13 +61,13 @@ class GeneFlow:
         self.survive()
         pass
 
-    # The offspring is selected based on the best fitness values - each parent selected generates one child
+    # The offspring is selected based on the best fitness values
     def select(self):
-        self.population.sort(key=lambda ind:ind.fitness, reverse=True)
+        self.population.sort(key=lambda ind:ind.fitness, reverse=self.maximum)
         self.elite = copy.deepcopy(self.population[0])
         self.offspring = []
 
-    # Offspring is paired and crossed over with probability pc
+    # Offspring is paired and crossed over with probability pc - two parents generate two children
     def crossover(self):
         for parent1, parent2 in zip(self.population[::2], self.population[1::2]):
             if random.random() < self.pc:
@@ -74,7 +75,7 @@ class GeneFlow:
                 self.offspring.append(child1)
                 self.offspring.append(child2)
 
-    # Two-point crossover - two children mix their genes, which are separated in two different points
+    # Two-point crossover - two children mix their genes, based in a two-point section switch of their genes
     def cross(self, ind1, ind2):
         length = len(ind1)
         gene_type = ind1.gene_type
@@ -94,7 +95,7 @@ class GeneFlow:
 
         return Individual.from_genes(gene_type, genes1), Individual.from_genes(gene_type, genes2)
 
-    # Mutation acts over all genes, with probability pm
+    # Mutation acts over all genes (except the elite), with probability pm
     def mutate(self):
         self.population = self.population[1:] + self.offspring
         for ind in self.population:
@@ -106,9 +107,9 @@ class GeneFlow:
     def survive(self):
         self.population.append(self.elite)
         self.calculate_fitness()
-        self.population.sort(key=lambda ind:ind.fitness, reverse=True)
+        self.population.sort(key=lambda ind:ind.fitness, reverse=self.maximum)
         self.population = self.population[:self.mu]
 
 
 #GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
-GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()
+#GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()

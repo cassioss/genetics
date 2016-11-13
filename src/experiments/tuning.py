@@ -25,7 +25,7 @@ def test_tuning(NGEN=200):
 	best_fitness = 0.0
 	best_pm = 0.0
 
-	for tuning_pm in np.linspace(0.001, 0.1, 51):
+	for tuning_pm in np.linspace(0, 0.05, 51):
 		flow = GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax, ngen=NGEN,
 			print_stats=False, pc=best_pc, pm=tuning_pm)
 
