@@ -111,5 +111,5 @@ class GeneFlow:
         self.population = self.population[:self.mu]
 
 
-#GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
+GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
 #GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()

@@ -19,9 +19,6 @@ class Individual:
 	def __repr__(self):
 		return 'Individual {Gene: %s, Count: %d}' % (self.gene_type, len(self))
 
-	def __str__(self):
-		return str([x.value() for x in self.genes])
-
 	@classmethod
 	def from_genes(cls, gene_type, genes):
 		ind = cls(gene_type)
@@ -36,3 +33,18 @@ class OneMaxIndividual(Individual):
 	def __repr__(self):
 		return 'OneMaxIndividual {Gene: %s, Count: %d}' % (self.gene_type, len(self))
 
+	def __str__(self):
+		return str([x.value() for x in self.genes])
+
+
+class TSPIndividual(Individual):
+	def __init__(self, gene_type='IntegerGene', cities=6):
+		self.gene_type = gene_type
+		self.genes = [new_gene(gene_type, csize) for csize in range(2, cities)]
+		self.fitness = 0.0
+
+	def __repr__(self):
+		return 'TSPIndividual {Gene: %s, Count: %d}' % (self.gene_type, len(self))
+
+	def __str__(self):
+		return str([(x.value(), x.k) for x in self.genes])

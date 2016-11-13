@@ -2,9 +2,9 @@ import numpy.random as random
 from utils import coin_toss
 
 
-def new_gene(gene_name):
+def new_gene(gene_name, args=None):
     constructor = globals()[gene_name]
-    return constructor()
+    return constructor() if args is None else constructor(args)
 
 
 class Gene:
