@@ -10,7 +10,9 @@ dijkstra_map = [
 	('B', 'C', 40),
 	('C', 'F', 12),
 	('D', 'E', 30),
-	('D', 'F', 40)
+	('D', 'F', 40),
+	('E', 'G', 10),
+	('F', 'G', 10)
 ]
 
 # Functions to find graph
