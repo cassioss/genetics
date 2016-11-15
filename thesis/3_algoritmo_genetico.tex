@@ -3,24 +3,25 @@
 O pseudocódigo tradicional de um algoritmo evolutivo pode ser dado por \cite{algoritmopseudo}:
 
 \begin{algorithm}[H]
+$\textbf{AG(} fitness \textbf{)}$
 \Begin{
-$P \gets InicializarPopulacao(fitness)$\;
-$P.fitness()$\;
-$t = 0$\;
-\While{t < número de gerações} {
-	$Pais \gets Selecao(P)$\;
-	$Filhos \gets Crossover(Pais)$\;
-	$P \gets P \cup Filhos$\;
-	$Mutacao(P)$\;
+	$P \gets InicializarPopulacao(fitness)$\;
 	$P.fitness()$\;
-	$P \gets Sobrevivem(P)$\;
-}
+	$t = 0$\;
+	\While{t < número de gerações} {
+		$Pais \gets Selecao(P)$\;
+		$Filhos \gets Crossover(Pais)$\;
+		$P \gets P \cup Filhos$\;
+		$Mutacao(P)$\;
+		$P.fitness()$\;
+		$P \gets Sobrevivem(P)$\;
+	}
 }
 \caption{Pseudocódigo do Algoritmo Genético.}
 \label{alg:ag}
 \end{algorithm}
 
-Cada uma destas funções principais (todas exceto a função de fitness, que é uma das entradas do problemas) pode ser feita de diferentes maneiras. No entanto, tais implementações independem do problema a ser resolvido, o que torna sua confecção e manutenção bem mais simples.
+Cada uma destas funções principais pode ser feita de diferentes maneiras. No entanto, tais implementações independem do problema a ser resolvido, o que torna sua confecção e manutenção bem mais simples.
 
 \section{Seleção}
 

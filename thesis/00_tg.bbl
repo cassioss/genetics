@@ -5,6 +5,11 @@ D.~L. Applegate, R.~E. Bixby, V.~Chvatal, and W.~J. Cook.
 \newblock {\em The Traveling Salesman Problem: a computational study}.
 \newblock Princeton university press, 2011.
 
+\bibitem{cormen2001dijkstra}
+T.~H. Cormen, C.~E. Leiserson, R.~L. Rivest, and outros.
+\newblock Dijkstra$\backslash$'s algorithm.
+\newblock 2001.
+
 \bibitem{dijkstra1959note}
 E.~W. Dijkstra.
 \newblock A note on two problems in connexion with graphs.

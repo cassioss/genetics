@@ -68,48 +68,53 @@ Digamos que um dos indivíduos do AG tenha, pela expressividade de seus genes, o
 	\item Gene 4: [0] mapeia a cidade C na lista [C, F]. Sem ela, a lista se torna [F].
 \end{itemize}
 
-Como [F] foi a única cidade que tais genes não escolheram, ela será visitada por último. Com isso, o indivíduo com genes [3, 0, 1, 0] traz o percurso A -> E -> B -> D -> C -> F -> A.
+Como [F] foi a única cidade que tais genes não escolheram, ela será visitada por último. Com isso, o indivíduo com genes [3, 0, 1, 0] traz o percurso $A \rightarrow E \rightarrow B \rightarrow D \rightarrow C \rightarrow F \rightarrow A$.
 
-O percurso inicial terá sempre genes com expressividade zero. No exemplo fornecido, o caminho inicial (trazido por [0, 0, 0, 0]) de todos os indivíduos seria A -> B -> C -> D -> E -> F -> A.
+O percurso inicial terá sempre genes com expressividade zero. No exemplo fornecido, o caminho inicial (trazido por [0, 0, 0, 0]) de todos os indivíduos seria $A \rightarrow B \rightarrow C \rightarrow D \rightarrow E \rightarrow F \rightarrow A$.
 
 \subsection*{Função de fitness}
 
-A função de fitness aqui calcula a distância percorrida pelo caixeiro no trajeto completo trazido pelo indivíduo, considerando as distâncias percorridas após se utilizar o algoritmo de Dijkstra. Quanto menor a distância percorrida, melhor. Note que não se tenta verificar se tal distância é a menor - minimizá-la se torna um traço evolutivo do AG.
+A função de fitness aqui calcula a distância percorrida pelo caixeiro no trajeto completo trazido pelo indivíduo, considerando sempre o menor caminho a ser percorrido entre quaisquer duas cidades. Isso é trazido pelo uso do algoritmo de Dijkstra \cite{dijkstra1959note} no grafo constituído pelas cidades. Seu uso será detalhado melhor a seguir, mas quanto menor a distância que um indivíduo encontrar, melhor.
 
-Para isso, os genes foram organizados em cada indivíduo de acordo com as seguintes considerações:
+Como parte do problema do Caixeiro Viajante é o de encontrar um trajeto de menor custo, não é dito à função de fitness qual é a menor distância que o grafo possui.
 
-\begin{enumerate}[label={(\arabic*)}]
-	\item O grafo a ser analisado pelo AG é conexo e não-direcionado;
-	\item Escolhendo-se ir da cidade A à cidade B, a distância percorrida a partir desta decisão será sempre a menor possível (mesmo que seja necessário passar por outras cidades);
-	\item Por decisão de um indivíduo, uma cidade não pode ser visitada mais de uma vez (não se impede, no entanto, que uma cidade no caminho de duas outras seja atravessada em nome de um atalho, por exemplo).
-\end{enumerate}
+\subsection*{Algoritmo de Dijkstra}
 
-Para atender ao segundo ponto, uma etapa anterior à da execução do AG foi a de trazer as menores distâncias entre quaisquer dois nós. Para isso, executou-se o algoritmo de Dijkstra \cite{dijkstra1959note} em cada um dos nós, de modo a se obter tais distâncias.
+O algoritmo de Dijkstra possui o seguinte pseudocódigo \cite{cormen2001dijkstra}:
 
-Para garantir que cada gene deste indivíduo seja independente, os genes funcionarão de um jeito diferente dos demais problemas. Digamos, por exemplo, que um caixeiro em A precise passar pelas cidades [B, C, D, E, F] e voltar à cidade A. O indivíduo de tal problema teria então quatro genes (o número de cidades que ele precisa visitar além da sua cidade de origem, menos um) que funcionam da seguinte forma:
+\begin{algorithm}[H]
+$\textbf{Dijkstra(} Grafo, cidade \textbf{)}$
+\Begin{
+	$Inicializar(Q)$\;
+	$Inicializar(dist)$\;
+	$Inicializar(prev)$\;
+	\ForEach{cidade v no Grafo} {
+		$dist[v] \gets \infty$\;
+		$prev[v] \gets desconhecido$\;
+		$Q.adicionar(v)$\;
+	}
+	$dist[cidade] \gets 0$\;
+	\While{Q não estiver vazio} {
+		$u \gets VerticeEmQComMenorDist(Q, dist)$\;
+		$Q.remover(u)$\;
+		\ForEach{Vizinho w de u} {
+			$atalho \gets dist[u] + DistanciaEntre(u, w)$\;
+			\If{atalho < dist[w]} {
+				$dist[w] \gets atalho$\;
+				$prev[w] \gets u$\;
+			}
+		}
+	}
+	\Return{dist, prev}
+}
+\caption{Pseudocódigo do Algoritmo de Dijkstra.}
+\label{alg:dijkstra}
+\end{algorithm}
 
-\begin{itemize}
-	\item O primeiro gene possui expressividade de 0 a 4;
-	\item O segundo gene possui expressividade de 0 a 3;
-	\item O terceiro gene possui expressividade de 0 a 2;
-	\item O quarto gene possui expressividade de 0 a 1.
-\end{itemize}
+A complexidade de tal algoritmo, por possuir um loop dentro de outro, é, para o pior caso, $O(N^2)$, sendo $N$ o número de cidades. No entanto, ele só descobre a menor distância tendo como referência a cidade utilizada como parâmetro. Por conta disso, o algoritmo precisa ser rodado uma vez para cada cidade, trazendo uma complexidade total $O(N^3)$ para o seu uso.
 
-Digamos que um dos indivíduos do AG tenha, pela expressividade de seus genes, os valores [3, 0, 1, 0]. Para se calcular o percurso feito por tal indivíduo, escolhe-se a cidade da lista naquela posição, a qual é removida antes de se escolher a próxima cidade. Ou seja:
+O requerimento para este algoritmo convergir é o de que a distância entre quaisquer duas cidades seja maior que zero. Para ser utilizada com o AG, foi considerado também que o grafo fosse conexo, de tal forma que qualquer percurso sugerido por um indivíduo tenha uma distância total finita e não-nula.
 
-\begin{itemize}
-	\item Gene 1: [3] mapeia a cidade E na lista [B, C, D, E, F]. Sem ela, a lista se torna [B, C, D, F];
-	\item Gene 2: [0] mapeia a cidade B na lista [B, C, D, F]. Sem ela, a lista se torna [C, D, F];
-	\item Gene 3: [1] mapeia a cidade D na lista [C, D, F]. Sem ela, a lista se torna [C, F];
-	\item Gene 4: [0] mapeia a cidade C na lista [C, F]. Sem ela, a lista se torna [F].
-\end{itemize}
+O algoritmo de Dijkstra tenta buscar atalhos entre quaisquer duas cidades em sua execução. Se ele for utilizado para completar o grafo, um percurso como $A \rightarrow B$ pode pedir que sejam visitadas outras cidades (o que, em casos reais de mapeamento de cidades, é comum acontecer).
 
-Como [F] foi a única cidade que tais genes não escolheram, ela será visitada por último. Com isso, o indivíduo com genes [3, 0, 1, 0] traz o percurso A -> E -> B -> D -> C -> F -> A.
-
-Para este trabalho, se, digamos, B for um atalho entre A e E, B ainda seria percorrida duas vezes (ou seja, o percurso com tal atalho seria A -> B -> E -> B -> D -> C -> F -> A). Isso não chega a desrespeitar a ideia do terceiro ponto, pois B não é visitada uma segunda vez (por decisão do indivíduo) no percurso A -> E.
-
-Com isso, é garantido que todas as cidades serão visitados pelo caixeiro ao menos uma vez, é considerado retornar à cidade original, e todos os percursos são feitos do modo mais rápido.
-
-\subsubsection*{Algoritmo de Dijkstra}
-
-A função de fitness aqui calcula a distância percorrida pelo caixeiro no trajeto completo trazido pelo indivíduo, considerando as distâncias percorridas após se utilizar o algoritmo de Dijkstra. Quanto menor a distância percorrida, melhor. Note que não se tenta verificar se tal distância é a menor - minimizá-la se torna um traço evolutivo do AG.
+Um indivíduo que propuser um percurso não saberá dizer se há atalhos entre duas cidades. No entanto, como estamos procurando a menor distância a ser percorrida no grafo, a função de fitness irá visitar todos os atalhos, sem considerar tal cidade como visitada. Esperou-se que, ao longo das gerações, os atalhos acabassem sendo escolhidos para visita naturalmente.

@@ -17,8 +17,9 @@ class GeneFlow:
         self.print_stats = print_stats
         self.maximum = maximum
         cur_path = os.path.dirname(__file__)
-        new_path = os.path.relpath('../out/' + ind_type + '.txt', cur_path)
+        new_path = os.path.relpath('../out/' + ind_type + '.csv', cur_path)
         self.file = open(new_path, 'w')
+        self.file.write('Generation,Min,Max,Avg,Std\n')
 
     def calculate_fitness(self):
         for individual in self.population:
@@ -52,6 +53,17 @@ class GeneFlow:
 
         self.calculate_fitness()
         self.stats()
+
+        self.file.write(str(0))
+        self.file.write(',')
+        self.file.write(str(self.min_fitness()))
+        self.file.write(',')
+        self.file.write(str(self.max_fitness()))
+        self.file.write(',')
+        self.file.write(str(self.avg_fitness()))
+        self.file.write(',')
+        self.file.write(str(self.std_fitness()))
+        self.file.write('\n')
 
         for i in range(self.ngen):
             if self.print_stats:
