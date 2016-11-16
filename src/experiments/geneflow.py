@@ -7,7 +7,8 @@ from individuals import new_individual, from_genes
 from individuals import Individual
 
 class GeneFlow:
-    def __init__(self, ind_type, gene_type, ffit=None, pc=0.9, pm=0.01, mu=100, ngen=120, print_stats=True, maximum=True):
+    def __init__(self, ind_type, gene_type, ffit=None, pc=0.9, pm=0.01, mu=100, ngen=200,
+                print_stats=True, maximum=True, elitism=True, adaptive=False):
         self.fitness = ffit
         self.population = [new_individual(ind_type, gene_type) for x in range(mu)]
         self.pm = pm
@@ -16,8 +17,10 @@ class GeneFlow:
         self.ngen = ngen
         self.print_stats = print_stats
         self.maximum = maximum
-        cur_path = os.path.dirname(__file__)
-        new_path = os.path.relpath('../out/' + ind_type + '.csv', cur_path)
+        self.elitism = elitism
+        self.adaptive = adaptive
+        new_path = os.path.relpath('../out/' + ind_type + '_' + gene_type + 
+            ('' if not adaptive else '_adaptive') + '.csv', os.path.dirname(__file__))
         self.file = open(new_path, 'w')
         self.file.write('Generation,Min,Max,Avg,Std\n')
 
@@ -53,46 +56,26 @@ class GeneFlow:
 
         self.calculate_fitness()
         self.stats()
-
-        self.file.write(str(0))
-        self.file.write(',')
-        self.file.write(str(self.min_fitness()))
-        self.file.write(',')
-        self.file.write(str(self.max_fitness()))
-        self.file.write(',')
-        self.file.write(str(self.avg_fitness()))
-        self.file.write(',')
-        self.file.write(str(self.std_fitness()))
-        self.file.write('\n')
+        self.write_to_file(0)
 
         for i in range(self.ngen):
             if self.print_stats:
                 print('\nGeneration %s:' % (i+1))
             self.update()
             self.stats()
-
-            self.file.write(str(i+1))
-            self.file.write(',')
-            self.file.write(str(self.min_fitness()))
-            self.file.write(',')
-            self.file.write(str(self.max_fitness()))
-            self.file.write(',')
-            self.file.write(str(self.avg_fitness()))
-            self.file.write(',')
-            self.file.write(str(self.std_fitness()))
-            self.file.write('\n')
+            self.write_to_file(i+1)
 
     def update(self):
-        self.select()
+        self.selection()
         self.crossover()
-        self.mutate()
-        self.survive()
+        self.mutation()
+        self.survival()
         pass
 
     # The offspring is selected based on the best fitness values
-    def select(self):
+    def selection(self):
         self.population.sort(key=lambda ind:ind.fitness, reverse=self.maximum)
-        self.elite = copy.deepcopy(self.population[0])
+        #random.shuffle(self.population)
         self.offspring = []
 
     # Offspring is paired and crossed over with probability pc - two parents generate two children
@@ -125,24 +108,45 @@ class GeneFlow:
         return from_genes(ind_type, genes1, gene_type), from_genes(ind_type, genes2, gene_type)
 
     # Mutation acts over all genes (except the elite), with probability pm
-    def mutate(self):
-        self.population = self.population[1:] + self.offspring
+    def mutation(self):
+        if self.elitism:
+            self.population.sort(key=lambda ind:ind.fitness, reverse=self.maximum)
+            self.elite = copy.deepcopy(self.population[0])
+            self.population = self.population[1:] + self.offspring
+
+        else:
+            self.population = self.population + self.offspring
+
         for ind in self.population:
             for gene in ind.genes:
                 if random.random() < self.pm:
                     gene.mutate()
 
     # Only the best mu individuals survive
-    def survive(self):
-        self.population.append(self.elite)
+    def survival(self):
+        if self.elitism:
+            self.population.append(self.elite)
         self.calculate_fitness()
         self.population.sort(key=lambda ind:ind.fitness, reverse=self.maximum)
         self.population = self.population[:self.mu]
 
+    def write_to_file(self, n):
+        self.file.write(str(n))
+        self.file.write(',')
+        self.file.write(str(self.min_fitness()))
+        self.file.write(',')
+        self.file.write(str(self.max_fitness()))
+        self.file.write(',')
+        self.file.write(str(self.avg_fitness()))
+        self.file.write(',')
+        self.file.write(str(self.std_fitness()))
+        self.file.write('\n')
+
+
 
 #GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
-#GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()
-GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False).generate()
+GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()
+#GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False).generate()
 
 
 

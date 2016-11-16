@@ -15,13 +15,12 @@ def mean(numbers):
 def sum2(numbers):
     return sum(x*x for x in numbers)
 
-
 # Standard deviation
 def std(numbers):
-    length = len(numbers)
-    avg = mean(numbers)
+    n = len(numbers)
     sum_sum = sum2(numbers)
-    return abs(sum_sum/length - avg**2)**0.5
+    avg = mean(numbers)
+    return abs((sum_sum - n*avg*avg) / (n - 1.0)) ** 0.5
 
 # Adds arrows between values of a list
 def arrow_list_str(some_list):

@@ -4,7 +4,7 @@ Por mais que a estrutura básica de um algoritmo evolutivo seja capaz de resolve
 
 Como o AG atua diretamente com populações, um problema deve defini-las de antemão, tanto em termos de indivíduo quanto em termos de gene. Conjuntamente, é necessário definir quão apto um indivíduo está frente à solução que ele propõe. Isso é feito por meio da \emph{função de fitness}. Para o número de indivíduos na população (ao menos inicialmente), utilizou-se um valor padrão de 100 indivíduos.
 
-Três problemas foram escolhidos: OneMax Booleano \cite{giguere1998population}, OneMax Real e o problema do Caixeiro Viajante \cite{applegate2011traveling}. Os dois primeiros foram escolhidos em termos não só de sua facilidade de implementação, mas também porque são problemas "fáceis" em termos de encontro de solução ótima (como será detalhado a seguir), o que permite testar hipóteses e heurísticas de modo bem mais simples. O terceiro problema foi escolhido por não só ter uma literatura rica, mas também por ser um problema complexo, cujos resultados podem ser analisados e comparados de modo mais rico.
+Três problemas foram escolhidos: OneMax Booleano \cite{giguere1998population}, OneMax Real e uma variação do problema do Caixeiro Viajante \cite{applegate2011traveling}. Os dois primeiros foram escolhidos em termos não só de sua facilidade de implementação, mas também porque são problemas "fáceis" em termos de encontro de solução ótima (como será detalhado a seguir), o que permite testar hipóteses e heurísticas de modo bem mais simples. O terceiro problema foi escolhido por não só ter uma literatura rica, mas também por ser um problema complexo, cujos resultados podem ser analisados e comparados de modo mais rico.
 
 \section{OneMax Booleano}
 
@@ -38,9 +38,11 @@ Cada indivíduo tentará resolver o problema, o que faz com que cada indivíduo 
 
 Soma-se a expressividade de todos os genes de um indivíduo. Quanto maior a contagem, melhor. Feita de maneira apropriada, esta função pode ser a mesma utilizada para o OneMax Booleano.
 
-\section{Caixeiro Viajante}
+\section{Caixeiro Viajante (Variação)}
 
-Dado um conjunto de cidades e as distâncias entre elas, o AG deve ser capaz de descobrir qual o menor caminho que possibilita a um caixeiro visitar todas as cidades uma única vez e retornar à cidade original. Tal problema é NP-Hard, e avaliar se uma solução candidata é algo tão complexo quanto a resolução do problema em si.
+Dado um conjunto de cidades e as distâncias entre elas, o AG deve ser capaz de descobrir qual o menor caminho que possibilita a um caixeiro visitar todas as cidades e retornar à cidade original. Tal problema é NP-Hard, e avaliar se uma solução candidata é algo tão complexo quanto a resolução do problema em si.
+
+Este problema é uma variação do original por não obrigar ao problema que as cidades sejam visitadas uma única vez. Isso permite que um indivíduo sugira um atalho entre duas cidades.
 
 \subsection*{Gene}
 

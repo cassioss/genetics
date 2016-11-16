@@ -1,3 +1,47 @@
 \label{4_otimizacao}
 
-Texto aqui.
+Como proposta deste trabalho, pensou-se em como seria possível otimizar um AG de modo a encontrar boas soluções em poucas gerações. Dado o pseudocódigo de um AE, é possível propor uma série de otimizações, desde aquelas voltadas à melhoria de processamento, como o processamento paralelo de indivíduos em uma dada geração, àquelas que otimizam cada uma das quatro operações evolutivas principais (seleção, recombinação, mutação e sobrevivência).
+
+De modo geral, o que traz novas soluções ao problema são as operações de variação (recombinação e mutação), e por conta disso, foram as mais analisadas neste capítulo. Otimizações mais simples discutidas em outros trabalhos, mas que se mostraram eficazes no encontro ou manutenção de boas soluções, também foram discutidas neste capítulo.
+
+A manutenção de boas soluções foi obtida pelo uso de \emph{elitismo}. A otimização nas operações de variação foi obtida pelo uso dos chamados Algoritmos Genéticos Adaptativos (AGA).
+
+\section{Elitismo}
+
+A literatura mostra uma série de possíveis formas de se interpretar elitismo. De modo geral, uma ação de elitismo age sobre os indivíduos mais adaptados em uma determinada geração, mantendo seus genes fora das ações de mutação. Isso serve para que uma boa solução não seja perdida por conta de tal operação, uma vez que toda a população é sujeita a uma série de mutações. Tais sujeitos ainda são considerados para recombinação, uma vez que o material genético dos pais não é modificado.
+
+É possível desenvolver um AG que permita optar ou não por elitismo na execução de um AG, assim como escolher quantos indivíduos (valor absoluto ou porcentagem da população) serão mantidos fora das operações de mutação. Os benefícios são variados, mas uma taxa muito alta de elitismo pode comprometer a variação dos indivíduos.
+
+Este trabalho trabalhou com elitismo ativo (mas opcional) em todas as gerações, mantendo o melhor indivíduo intacto. Isso garante que a melhor solução nunca é perdida, facilitando a convergência da população em direção à melhor solução.
+
+\section{Algoritmo Genético Adaptativo}
+
+Da forma como um AG é normalmente desenvolvido, os parâmetros de entrada que controlam as ações de variação (recombinação e mutação) são estáticos. De modo geral, é interessante que o parâmetro de crossover seja alto, compartilhando os genes entre os indivíduos o máximo possível, e que o parâmetro de mutação seja baixo, para que as soluções encontradas não sejam completamente aleatórias. No entanto, se o AG encontrar um extremo local, é possível que, com parâmetros estáticos, fique difícil encontrar o extremo global e a solução ótima. Sugere-se então o uso dos chamados Algoritmos Genéticos Adaptativos (AGA).
+
+Um AGA é uma implementação feita em cima de um AG capaz de modificar seus parâmetros ao longo do tempo, mais precisamente, os parâmetros de crossover e mutação. Um AGA é capaz de não só modificar $p_c$ e $p_m$ ao longo das gerações, como também associar valores diferentes destes parâmetros para cada indivíduo, de acordo com o valor de fitness. Isso permite que os indivíduos não fiquem travados em extremos locais e busquem melhores soluções.
+
+Para este trabalho, optou-se por trabalhar com modificações diretas aos parâmetros $p_c$ e $p_m$, sem chegar ao ponto de modificar seu valor para cada indivíduo. Tal implementação foi feita por meio do seguinte pensamento: se os pais estiverem mais adaptados que os filhos, os valores de $p_c$ e $p_m$ devem aumentar. Caso contrário, estes valores são mantidos ou vão diminuindo, sem, é claro, extrapolar limites para tais parâmetros. O algoritmo \ref{alg:aga}, a seguir, ilustra este pensamento.
+
+\begin{algorithm}[H]
+\Begin{
+	\If{$f_{pais} / f_{filhos} - 1 < -K_f$} {
+		$p_c \gets min(p_c + K_c, 1.0)$\;
+		$p_m \gets min(p_m + K_m, 0.1)$\;
+	}
+	\ElseIf{$f_{pais} / f_{filhos} - 1 > K_f$} {
+		$p_c \gets max(p_c - K_c, 0.5)$\;
+		$p_m \gets max(p_m - K_m, 0)$\;
+	}
+	\Else{
+		$p_c \gets p_c$\;
+		$p_m \gets p_m$\;
+	}
+}
+\caption{Pseudocódigo de um Algoritmo Evolutivo.}
+\label{alg:aga}
+\end{algorithm}
+
+Valores consistentes com outras literaturas sugerem $K_c = 0.05$ e $K_m = 0.015$, com $K_f$ sendo normalmente igual a 0.1 se o fitness crescer, e 10 se o fitness decrescer (em busca de uma boa solução). Os limites de $[0.5, 1]$ para $p_c$ e $[0, 0.1]$ para $p_m$ servem justamente para se manter a ideia inicial da implementação estática do AG.
+
+Foram feitas execuções tanto com o uso do AGA quanto do uso estático de $p_c$ e $p_m$.
+

@@ -15,13 +15,7 @@ def new_individual(ind_name, gene_type=None, gsize=None):
 
 
 def from_genes(ind_name, genes, gene_type=None):
-	constructor = globals()[ind_name]
-	ind = None
-	if gene_type is None:
-		ind = constructor()
-	else:
-		ind = constructor(gene_type)
-
+	ind = new_individual(ind_name, gene_type)
 	ind.genes = genes
 	return ind
 
@@ -42,6 +36,8 @@ class Individual:
 class OneMaxIndividual(Individual):
     def __init__(self, gene_type='BooleanGene', gsize=100):
         Individual.__init__(self, gene_type, gsize)
+        self.gene_type = gene_type
+        self.fitness = 0.0
 
 	def __repr__(self):
 		return 'OneMaxIndividual {Gene: %s, Count: %d}' % (self.gene_type, len(self))

@@ -61,5 +61,8 @@ class IntegerGene(Gene):
         return 'IntegerGene {value: %s, k: %s}' % (self.val, self.k)
 
     def mutate(self):
+        current_val = self.val
         self.val = random.randint(self.k)
+        while self.val == current_val:
+            self.val = random.randint(self.k)
 
