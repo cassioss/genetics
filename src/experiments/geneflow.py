@@ -7,7 +7,7 @@ from individuals import new_individual, from_genes
 from individuals import Individual
 
 class GeneFlow:
-    def __init__(self, ind_type, gene_type, ffit=None, pc=0.9, pm=0.01, mu=100, ngen=200,
+    def __init__(self, ind_type, gene_type, ffit=None, pc=0.9, pm=0.01, mu=100, ngen=800,
                 print_stats=True, maximum=True, elitism=True, adaptive=False):
         self.fitness = ffit
         self.population = [new_individual(ind_type, gene_type) for x in range(mu)]
@@ -20,11 +20,20 @@ class GeneFlow:
         self.maximum = maximum
         self.elitism = elitism
         self.adaptive = adaptive
-        self.difference = 0.0
-        new_path = os.path.relpath('../out/' + ind_type + '_' + gene_type + 
-            ('' if not adaptive else '_adaptive') + '.csv', os.path.dirname(__file__))
+        self.start_writing(ind_type, gene_type)
+
+
+    def start_writing(self, ind_type, gene_type):
+        file_name = '../out/' + ind_type + '_' + gene_type + ('' if not self.adaptive else '_adaptive')
+        new_path = os.path.relpath(file_name + '.csv', os.path.dirname(__file__))
         self.file = open(new_path, 'w')
         self.file.write('Generation,Min,Max,Avg,Std\n')
+
+        if self.adaptive:
+            new_path = os.path.relpath(file_name + '_pm.csv', os.path.dirname(__file__))
+            self.adapt_file = open(new_path, 'w')
+            self.adapt_file.write('Generation,pm\n')
+
 
     def calculate_all_fitness(self):
         self.parent_fitness()
@@ -149,22 +158,24 @@ class GeneFlow:
         if self.adaptive:
             self.adapt()
 
-
     def adapt(self):
         if abs(self.avg_fitness()) < 0.0000001:
             return
 
-        difference = abs(self.best_fitness() - self.avg_fitness()) / (self.avg_fitness())
+        deviation = abs(self.best_fitness() - self.avg_fitness()) / (self.avg_fitness())
+        self.going_down = False
 
-        if difference <= self.pm0:
-            self.difference = difference
+        if deviation <= self.pm0:
             self.pm = min(0.5, self.pm + 0.001)
+            if self.pm is 0.5:
+                self.pm0 = max(0.001, self.pm0 - 0.001)
 
         else:
             self.pm = max(0.001, self.pm - 0.001)
+            if self.pm is 0.001:
+                self.pm0 = min(0.5, self.pm0 + 0.001)
 
-        print self.difference, self.pm, self.best_fitness()
-
+        print deviation, self.pm, self.pm0, self.best_fitness()
 
     def write_to_file(self, n):
         self.file.write(str(n))
@@ -178,11 +189,16 @@ class GeneFlow:
         self.file.write(str(self.std_fitness()))
         self.file.write('\n')
 
+        if self.adaptive:
+            self.adapt_file.write(str(n))
+            self.adapt_file.write(',')
+            self.adapt_file.write(str(self.pm))
+            self.adapt_file.write('\n')
 
 
 #GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax, adaptive=True, print_stats=False).generate()
-#GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.01).generate()
-GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False, adaptive=True, print_stats=True, pm=0.01).generate()
+#GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax, adaptive=True, print_stats=False, pm=0.01).generate()
+GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False, adaptive=False, print_stats=True, pm=0.2).generate()
 
 
 
