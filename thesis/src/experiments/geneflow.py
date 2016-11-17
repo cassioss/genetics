@@ -195,6 +195,7 @@ class GeneFlow:
             self.adapt_file.write(str(self.pm))
             self.adapt_file.write('\n')
 
+# Uncomment one of the next three lines to simulate the algorithm
 
 #GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax, adaptive=True, print_stats=True).generate()
 #GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.01).generate()

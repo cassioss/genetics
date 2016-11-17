@@ -33,13 +33,14 @@
 \contentsline {section}{\numberline {3.5}Sobreviv\IeC {\^e}ncia}{29}{section.3.5}
 \contentsline {chapter}{\numberline {4}Otimiza\IeC {\c c}\IeC {\~a}o do Algoritmo}{30}{chapter.4}
 \contentsline {section}{\numberline {4.1}Elitismo}{30}{section.4.1}
-\contentsline {section}{\numberline {4.2}Algoritmo Gen\IeC {\'e}tico Adaptativo}{31}{section.4.2}
-\contentsline {chapter}{\numberline {5}An\'alises e Resultados}{33}{chapter.5}
-\contentsline {section}{\numberline {5.1}Par\IeC {\^a}metros analisados}{33}{section.5.1}
-\contentsline {section}{\numberline {5.2}OneMax Booleano}{33}{section.5.2}
-\contentsline {section}{\numberline {5.3}OneMax Real}{33}{section.5.3}
-\contentsline {section}{\numberline {5.4}Caixeiro Viajante Adaptado}{33}{section.5.4}
-\contentsline {chapter}{\numberline {6}Conclus\~oes e Trabalhos Futuros}{37}{chapter.6}
-\contentsline {chapter}{Refer\^encias}{38}{chapter.6}
-\contentsline {chapter}{Ap\^endice{} A{} -$\tmspace -\thinmuskip {.1667em}$-{} Genes Utilizados (genes.py)}{39}{appendix.A}
-\contentsline {chapter}{Ap\^endice{} B{} -$\tmspace -\thinmuskip {.1667em}$-{} Algoritmo Geneflow (geneflow.py)}{42}{appendix.B}
+\contentsline {section}{\numberline {4.2}Algoritmo Gen\IeC {\'e}tico Adaptativo (AGA)}{31}{section.4.2}
+\contentsline {chapter}{\numberline {5}An\'alises e Resultados}{34}{chapter.5}
+\contentsline {section}{\numberline {5.1}Par\IeC {\^a}metros analisados}{34}{section.5.1}
+\contentsline {section}{\numberline {5.2}OneMax Booleano}{34}{section.5.2}
+\contentsline {section}{\numberline {5.3}OneMax Real}{34}{section.5.3}
+\contentsline {section}{\numberline {5.4}Caixeiro Viajante Adaptado}{34}{section.5.4}
+\contentsline {chapter}{\numberline {6}Conclus\~oes e Trabalhos Futuros}{38}{chapter.6}
+\contentsline {chapter}{Refer\^encias}{39}{chapter.6}
+\contentsline {chapter}{Ap\^endice{} A{} -$\tmspace -\thinmuskip {.1667em}$-{} Genes Utilizados (genes.py)}{40}{appendix.A}
+\contentsline {chapter}{Ap\^endice{} B{} -$\tmspace -\thinmuskip {.1667em}$-{} Indiv\IeC {\'\i }duos para os Problemas (individuals.py)}{43}{appendix.B}
+\contentsline {chapter}{Ap\^endice{} C{} -$\tmspace -\thinmuskip {.1667em}$-{} Algoritmo Gen\IeC {\'e}tico (geneflow.py)}{46}{appendix.C}

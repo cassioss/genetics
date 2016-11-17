@@ -8,44 +8,76 @@ A manutenção de boas soluções foi obtida pelo uso de \emph{elitismo}. A otim
 
 \section{Elitismo}
 
-O elitismo é a manutenção do (ou dos $n$) indivíduos mais adaptado(s) de uma geração, imune(s) a mutações \cite{mitchell1998introduction}. Ele serve para que a melhor solução não seja perdida, uma vez que todos os genes da população são submetidos a mutações. Tais sujeitos ainda podem ser considerados para recombinação e geração de filhos, uma vez que as operações de mutação e recombinação são independentes.
+O elitismo é a manutenção do indivíduo mais adaptado de uma geração, deixando-o imune a mutações para que a melhor solução não seja perdida \cite{mitchell1998introduction}. Um indivíduo elitista ainda pode ser considerado para recombinação e geração de filhos, uma vez que as operações de mutação e recombinação são independentes. É possível também criar um grupo elitista, mantendo-se uma certa quantidade ou porcentagem de indivíduos imune a mutações.
 
-Este trabalho utilizou elitismo para o melhor indivíduo em todas as execuções do AG. Para o algoritmo, 
+Este trabalho utilizou elitismo para o melhor indivíduo em todas as execuções do AG. Tal propriedade pode ser desativada no código.
 
-Este trabalho utilizou elitismo como parâmetro de entrada (com default ativo).
+\section{Algoritmo Genético Adaptativo (AGA)}
 
-É possível desenvolver um AG que permita optar ou não por elitismo na execução de um AG, assim como escolher quantos indivíduos (valor absoluto ou porcentagem da população) serão mantidos fora das operações de mutação. Os benefícios são variados, mas uma taxa muito alta de elitismo pode comprometer a variação dos indivíduos.
+A forma mais tradicional de implementação de um AG atribui valores estáticos aos parâmetros de entrada, incluindo os parâmetros de crossover e mutação. No entanto, os indivíduos buscarão soluções de acordo com estes dois parâmetros, e deixá-los estáticos pode limitar o alcance do AG e impedi-lo de encontrar soluções melhores.
 
-Este trabalho trabalhou com elitismo ativo (mas opcional) em todas as gerações, mantendo o melhor indivíduo intacto. Isso garante que a melhor solução nunca é perdida, facilitando a convergência da população em direção à melhor solução.
+Se fosse possível modificar tais parâmetros enquanto o AG é executado, de modo a se adaptar às mudanças de fitness dos próprios indivíduos, teríamos uma solução. Um bom candidato para isso são os chamados Algoritmos Genéticos Adaptivos (AGAs) \cite{srinivas1994adaptive}.
 
-\section{Algoritmo Genético Adaptativo}
+O conceito por trás de um AGA envolve implementar em cima de um AG de modo a modificar os parâmetros de crossover e/ou mutação ao longo do tempo. Não obstante, é possível moldar um AGA de modo a tratar crossover e mutação com probabilidades diferentes para cada indivíduo, de acordo com seus valores de fitness.
 
-Da forma como um AG é normalmente desenvolvido, os parâmetros de entrada que controlam as ações de variação (recombinação e mutação) são estáticos. De modo geral, é interessante que o parâmetro de crossover seja alto, compartilhando os genes entre os indivíduos o máximo possível, e que o parâmetro de mutação seja baixo, para que as soluções encontradas não sejam completamente aleatórias. No entanto, se o AG encontrar um extremo local, é possível que, com parâmetros estáticos, fique difícil encontrar o extremo global e a solução ótima. Sugere-se então o uso dos chamados Algoritmos Genéticos Adaptativos (AGA).
+Para este trabalho, optou-se por trabalhar com versões adaptadas de outros AGAs \cite{jakobovic1999adaptive, wang2001improved} e implementar uma versão única, explicada a seguir:
 
-Um AGA é uma implementação feita em cima de um AG capaz de modificar seus parâmetros ao longo do tempo, mais precisamente, os parâmetros de crossover e mutação. Um AGA é capaz de não só modificar $p_c$ e $p_m$ ao longo das gerações, como também associar valores diferentes destes parâmetros para cada indivíduo, de acordo com o valor de fitness. Isso permite que os indivíduos não fiquem travados em extremos locais e busquem melhores soluções.
+\begin{itemize}
 
-Para este trabalho, optou-se por trabalhar com modificações diretas aos parâmetros $p_c$ e $p_m$, sem chegar ao ponto de modificar seu valor para cada indivíduo. Tal implementação foi feita por meio do seguinte pensamento: se os pais estiverem mais adaptados que os filhos, os valores de $p_c$ e $p_m$ devem aumentar. Caso contrário, estes valores são mantidos ou vão diminuindo, sem, é claro, extrapolar limites para tais parâmetros. O algoritmo \ref{alg:aga}, a seguir, ilustra este pensamento.
+	\item Apenas o parâmetro de mutação é modificado ao longo das gerações, uma vez que o crossover seja sempre um valor alto (como 0.7 ou 0.9);
 
-\begin{algorithm}[H]
+	\item A adaptação de $p_m$ acontece apenas depois que um ciclo de operações de evolução acontecer;
+
+	\item O que decidirá se $p_m$ mudará será o desvio do melhor valor de fitness $f_{best}$ em comparação com o fitness médio $\bar{f}$, como na equação a seguir:
+
+\begin{equation}
+	\left| \frac{f_{best} - \bar{f}}{\bar{f}} \right|
+\label{eq:aga}
+\end{equation}
+
+	\item Se este desvio for maior que um valor $p_{m0}$, isso significa que os indivíduos estão se aproximando de uma mesma solução. Uma possível interpretação seria a de que a mutação está fraca e o AG pode ter travado em uma solução. Por conta disso, $p_m$ irá aumentar;
+
+	\item Caso contrário, as soluções estão se desviando muito, o que pode ser resultado de uma mutação intensa. Para resolver isso, $p_m$ irá diminuir;
+
+	\item O valor de $p_{m0}$ é, a princípio, arbitrário, mas este trabalho utilizou o valor inicial de $p_m$ para o valor inicial de $p_{m0}$ (o que é razoável, uma vez que uma taxa de mutação muito alta acabará gerando um desvio mais alto, e vice-versa);
+
+	\item No entanto, $p_m$ não pode ser igual a zero nem maior que 1, dado que representa uma probabilidade. Seguindo a linha de outros trabalhos \cite{matthias2013variable}, $p_m$ será limitado ao intervalo [0.001, 0.5] (se $p_m$ tentar extrapolar estes limites, ele retornará ao valor extremo mais próximo);
+	
+	\item Mesmo assim, pode acontecer de $p_m$ ficar travado em um dos extremos e o AG não entender o que fazer. Para resolver isto, se $p_m$ ficar travado em um destes limites, $p_{m0}$ começará a variar na direção oposta. Isto é, se $p_m$ atingir o valor de 0.5, $p_{m0}$ começará a diminuir em direção ao valor 0.001, e vice-versa.
+
+	\item O incremento/decremento para $p_m$ e $p_{m0}$ será linear e igual a 0.001;
+	
+	\item Como há uma divisão por $\bar{f}$, se este valor for zero ou muito próximo de zero para alguma geração, este AGA não será executado.
+
+\end{itemize}
+
+Traduzindo-se a explicação para um algoritmo, chegamos ao código mostrado a seguir. Este trabalho avaliará o desempenho deste AGA comparando a evolução da população com e sem o uso do AGA para um mesmo valor inicial de $p_m$. O intuito não é o de encontrar um AGA ideal, mas sim o de avaliar se o uso dele ajuda ou não no encontro de soluções melhores.
+
+\begin{algorithm}[ht]
 \Begin{
-	\If{$f_{pais} / f_{filhos} - 1 < -K_f$} {
-		$p_c \gets min(p_c + K_c, 1.0)$\;
-		$p_m \gets min(p_m + K_m, 0.1)$\;
-	}
-	\ElseIf{$f_{pais} / f_{filhos} - 1 > K_f$} {
-		$p_c \gets max(p_c - K_c, 0.5)$\;
-		$p_m \gets max(p_m - K_m, 0)$\;
-	}
-	\Else{
-		$p_c \gets p_c$\;
-		$p_m \gets p_m$\;
+	$p_{m0} \gets $ (valor inicial de $p_m$ na inicialização do AG)\;
+	$\epsilon \gets 0.0001$\;
+	\ForEach{ciclo de operações de evolução} {
+		$\bar{f} \gets $ (média dos valores de fitness)\;
+		\If{$\bar{f} < \epsilon$} {
+			\Return
+		}
+		$f_{best} \gets $ (melhor valor de fitness na população)\;
+		$desvio \gets \left| \frac{f_{best} - \bar{f}}{\bar{f}} \right|$\;
+		\If{desvio < $p_{m0}$} {
+			$p_m \gets min(0.5, p_m + 0.001)$\;
+			\If{$p_m == 0.5$} {
+				$p_{m0} \gets max(0.001, p_{m0} - 0.001)$\;
+			}
+		}
+		\Else{
+			$p_m \gets max(0.001, p_m - 0.001)$\;
+			\If{$p_m == 0.001$} {
+				$p_{m0} \gets min(0.5, p_{m0} + 0.001)$\;
+			}
+		}
 	}
 }
-\caption{Pseudocódigo de um Algoritmo Evolutivo.}
+\caption{Pseudocódigo do Algoritmo Genético Adaptativo (AGA).}
 \label{alg:aga}
 \end{algorithm}
-
-Valores consistentes com outras literaturas sugerem $K_c = 0.05$ e $K_m = 0.015$, com $K_f$ sendo normalmente igual a 0.1 se o fitness crescer, e 10 se o fitness decrescer (em busca de uma boa solução). Os limites de $[0.5, 1]$ para $p_c$ e $[0, 0.1]$ para $p_m$ servem justamente para se manter a ideia inicial da implementação estática do AG.
-
-Foram feitas execuções tanto com o uso do AGA quanto do uso estático de $p_c$ e $p_m$.
-

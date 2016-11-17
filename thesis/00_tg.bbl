@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{applegate2011traveling}
 D.~L. Applegate, R.~E. Bixby, V.~Chvatal, and W.~J. Cook.
@@ -37,5 +37,36 @@ ICMC-USP.
 \newblock Algoritmos genéticos.
 \newblock \url{http://conteudo.icmc.usp.br/pessoas/andre/research/genetic/}.
 \newblock [Online; acessado em 06 de novembro de 2016].
+
+\bibitem{jakobovic1999adaptive}
+D.~Jakobovi{\'c} and M.~Golub.
+\newblock Adaptive genetic algorithm.
+\newblock {\em CIT. Journal of computing and information technology},
+  7(3):229--235, 1999.
+
+\bibitem{matthias2013variable}
+K.~Matthias, T.~Severin, and H.~Salzwedel.
+\newblock Variable mutation rate at genetic algorithms: introduction of
+  chromosome fitness in connection with multi-chromosome representation.
+\newblock {\em International Journal of Computer Applications}, 72(17), 2013.
+
+\bibitem{mitchell1998introduction}
+M.~Mitchell.
+\newblock {\em An introduction to genetic algorithms}.
+\newblock MIT press, 1998.
+
+\bibitem{srinivas1994adaptive}
+M.~Srinivas and L.~M. Patnaik.
+\newblock Adaptive probabilities of crossover and mutation in genetic
+  algorithms.
+\newblock {\em IEEE Transactions on Systems, Man, and Cybernetics},
+  24(4):656--667, 1994.
+
+\bibitem{wang2001improved}
+L.~Wang and T.~Shen.
+\newblock Improved adaptive genetic algorithm and its application to image
+  segmentation.
+\newblock In {\em Multispectral Image Processing and Pattern Recognition},
+  pages 115--120. International Society for Optics and Photonics, 2001.
 
 \end{thebibliography}

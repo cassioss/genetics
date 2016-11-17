@@ -21,6 +21,7 @@
 \usepackage{pdfpages}
 \usepackage{bookmark}
 \usepackage{enumitem}
+\usepackage{cite}
 
 % início da configuração de listagens
 \lstset{basicstyle=\small, frame=single, breaklines=true, showstringspaces=false}
@@ -139,7 +140,12 @@
 \lstinputlisting[language={python}]{\src/genes.py}
 
 \newpage
-\chapter{Algoritmo Geneflow (geneflow.py)}
+\chapter{Indivíduos para os Problemas (individuals.py)}
+\label{appendix:genes}
+\lstinputlisting[language={python}]{\src/individuals.py}
+
+\newpage
+\chapter{Algoritmo Genético (geneflow.py)}
 \label{appendix:geneflow}
 \lstinputlisting[language={python}]{\src/geneflow.py}
 
