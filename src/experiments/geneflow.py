@@ -12,6 +12,7 @@ class GeneFlow:
         self.fitness = ffit
         self.population = [new_individual(ind_type, gene_type) for x in range(mu)]
         self.pm = pm
+        self.pm0 = pm
         self.pc = pc
         self.mu = mu
         self.ngen = ngen
@@ -19,13 +20,22 @@ class GeneFlow:
         self.maximum = maximum
         self.elitism = elitism
         self.adaptive = adaptive
+        self.difference = 0.0
         new_path = os.path.relpath('../out/' + ind_type + '_' + gene_type + 
             ('' if not adaptive else '_adaptive') + '.csv', os.path.dirname(__file__))
         self.file = open(new_path, 'w')
         self.file.write('Generation,Min,Max,Avg,Std\n')
 
-    def calculate_fitness(self):
+    def calculate_all_fitness(self):
+        self.parent_fitness()
+        self.offspring_fitness()
+
+    def parent_fitness(self):
         for individual in self.population:
+            individual.fitness = self.fitness(individual)
+
+    def offspring_fitness(self):
+        for individual in self.offspring:
             individual.fitness = self.fitness(individual)
 
     def min_fitness(self):
@@ -33,6 +43,9 @@ class GeneFlow:
 
     def max_fitness(self):
         return max([x.fitness for x in self.population])
+
+    def best_fitness(self):
+        return self.max_fitness() if self.maximum else self.min_fitness()
 
     def avg_fitness(self):
         return mean([x.fitness for x in self.population])
@@ -54,7 +67,7 @@ class GeneFlow:
         if self.print_stats:
             print('Generation 0:')
 
-        self.calculate_fitness()
+        self.parent_fitness()
         self.stats()
         self.write_to_file(0)
 
@@ -75,7 +88,6 @@ class GeneFlow:
     # The offspring is selected based on the best fitness values
     def selection(self):
         self.population.sort(key=lambda ind:ind.fitness, reverse=self.maximum)
-        #random.shuffle(self.population)
         self.offspring = []
 
     # Offspring is paired and crossed over with probability pc - two parents generate two children
@@ -112,12 +124,14 @@ class GeneFlow:
         if self.elitism:
             self.population.sort(key=lambda ind:ind.fitness, reverse=self.maximum)
             self.elite = copy.deepcopy(self.population[0])
-            self.population = self.population[1:] + self.offspring
-
-        else:
-            self.population = self.population + self.offspring
+            self.population = self.population[1:]
 
         for ind in self.population:
+            for gene in ind.genes:
+                if random.random() < self.pm:
+                    gene.mutate()
+
+        for ind in self.offspring:
             for gene in ind.genes:
                 if random.random() < self.pm:
                     gene.mutate()
@@ -126,9 +140,31 @@ class GeneFlow:
     def survival(self):
         if self.elitism:
             self.population.append(self.elite)
-        self.calculate_fitness()
+
+        self.calculate_all_fitness()
+        self.population = self.population + self.offspring
         self.population.sort(key=lambda ind:ind.fitness, reverse=self.maximum)
         self.population = self.population[:self.mu]
+
+        if self.adaptive:
+            self.adapt()
+
+
+    def adapt(self):
+        if abs(self.avg_fitness()) < 0.0000001:
+            return
+
+        difference = abs(self.best_fitness() - self.avg_fitness()) / (self.avg_fitness())
+
+        if difference <= self.pm0:
+            self.difference = difference
+            self.pm = min(0.5, self.pm + 0.001)
+
+        else:
+            self.pm = max(0.001, self.pm - 0.001)
+
+        print self.difference, self.pm, self.best_fitness()
+
 
     def write_to_file(self, n):
         self.file.write(str(n))
@@ -144,9 +180,9 @@ class GeneFlow:
 
 
 
-#GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax).generate()
-GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax).generate()
-#GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False).generate()
+#GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax, adaptive=True, print_stats=False).generate()
+#GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.01).generate()
+GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False, adaptive=True, print_stats=True, pm=0.01).generate()
 
 
 

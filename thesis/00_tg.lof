@@ -1,7 +1,7 @@
 \select@language {brazilian}
-\contentsline {figure}{\numberline {1}{\ignorespaces Framework de um algoritmo evolutivo.}}{17}{figure.1.1}
-\contentsline {figure}{\numberline {2}{\ignorespaces A\IeC {\c c}\IeC {\~a}o de crossover em dois pontos.}}{28}{figure.3.2}
-\contentsline {figure}{\numberline {3}{\ignorespaces Evolu\IeC {\c c}\IeC {\~a}o do fitness para o problema do OneMax Booleano com m\IeC {\'\i }nimo, m\IeC {\'a}ximo e valor m\IeC {\'e}dio, com $p_c=0.9$ e $p_m=0.01$.}}{33}{figure.5.3}
-\contentsline {figure}{\numberline {4}{\ignorespaces Desvio padr\IeC {\~a}o ao longo das gera\IeC {\c c}\IeC {\~o}es para o problema do OneMax Booleano, com $p_c=0.9$ e $p_m=0.01$.}}{33}{figure.5.4}
-\contentsline {figure}{\numberline {5}{\ignorespaces Evolu\IeC {\c c}\IeC {\~a}o do fitness para o problema do OneMax Real com m\IeC {\'\i }nimo, m\IeC {\'a}ximo e valor m\IeC {\'e}dio, com $p_c=0.9$ e $p_m=0.01$.}}{34}{figure.5.5}
-\contentsline {figure}{\numberline {6}{\ignorespaces Desvio padr\IeC {\~a}o ao longo das gera\IeC {\c c}\IeC {\~o}es para o problema do OneMax Real, com $p_c=0.9$ e $p_m=0.01$.}}{34}{figure.5.6}
+\contentsline {figure}{\numberline {1}{\ignorespaces Framework de um algoritmo evolutivo.}}{18}{figure.1.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces A\IeC {\c c}\IeC {\~a}o de crossover em dois pontos.}}{29}{figure.3.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces Evolu\IeC {\c c}\IeC {\~a}o do fitness para o problema do OneMax Booleano com m\IeC {\'\i }nimo, m\IeC {\'a}ximo e valor m\IeC {\'e}dio, com $p_c=0.9$ e $p_m=0.01$.}}{35}{figure.5.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Desvio padr\IeC {\~a}o ao longo das gera\IeC {\c c}\IeC {\~o}es para o problema do OneMax Booleano, com $p_c=0.9$ e $p_m=0.01$.}}{35}{figure.5.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Evolu\IeC {\c c}\IeC {\~a}o do fitness para o problema do OneMax Real com m\IeC {\'\i }nimo, m\IeC {\'a}ximo e valor m\IeC {\'e}dio, com $p_c=0.9$ e $p_m=0.01$.}}{36}{figure.5.5}
+\contentsline {figure}{\numberline {6}{\ignorespaces Desvio padr\IeC {\~a}o ao longo das gera\IeC {\c c}\IeC {\~o}es para o problema do OneMax Real, com $p_c=0.9$ e $p_m=0.01$.}}{36}{figure.5.6}

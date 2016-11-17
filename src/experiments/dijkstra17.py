@@ -44,6 +44,4 @@ def create_graph(dijk_map):
 
 	return graph
 
-print create_graph(dijkstra17)
-
 dijkstra17_graph = create_graph(dijkstra17)
