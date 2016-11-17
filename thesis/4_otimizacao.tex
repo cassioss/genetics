@@ -8,7 +8,11 @@ A manutenção de boas soluções foi obtida pelo uso de \emph{elitismo}. A otim
 
 \section{Elitismo}
 
-A literatura mostra uma série de possíveis formas de se interpretar elitismo. De modo geral, uma ação de elitismo age sobre os indivíduos mais adaptados em uma determinada geração, mantendo seus genes fora das ações de mutação. Isso serve para que uma boa solução não seja perdida por conta de tal operação, uma vez que toda a população é sujeita a uma série de mutações. Tais sujeitos ainda são considerados para recombinação, uma vez que o material genético dos pais não é modificado.
+O elitismo é a manutenção do (ou dos $n$) indivíduos mais adaptado(s) de uma geração, imune(s) a mutações \cite{mitchell1998introduction}. Ele serve para que a melhor solução não seja perdida, uma vez que todos os genes da população são submetidos a mutações. Tais sujeitos ainda podem ser considerados para recombinação e geração de filhos, uma vez que as operações de mutação e recombinação são independentes.
+
+Este trabalho utilizou elitismo para o melhor indivíduo em todas as execuções do AG. Para o algoritmo, 
+
+Este trabalho utilizou elitismo como parâmetro de entrada (com default ativo).
 
 É possível desenvolver um AG que permita optar ou não por elitismo na execução de um AG, assim como escolher quantos indivíduos (valor absoluto ou porcentagem da população) serão mantidos fora das operações de mutação. Os benefícios são variados, mas uma taxa muito alta de elitismo pode comprometer a variação dos indivíduos.
 

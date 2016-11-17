@@ -23,7 +23,7 @@
 \usepackage{enumitem}
 
 % início da configuração de listagens
-\lstset{basicstyle=\small, frame=single, breaklines=true}
+\lstset{basicstyle=\small, frame=single, breaklines=true, showstringspaces=false}
 
 \lstset{emph={%  
     MOVE24, DELAY, GOTO%
@@ -35,6 +35,7 @@
 \newcommand{\oes}{\~oes }
 \newcommand{\cao}{\c c\~ao }
 \newcommand{\coes}{\c c\~oes }
+\newcommand{\src}{src/experiments}
 
 % fim da configuração de listagens
 
@@ -129,6 +130,18 @@
 
 \bibliography{referencias}
 \bibliographystyle{plain}
+
+\appendix
+
+\newpage
+\chapter{Genes Utilizados (genes.py)}
+\label{appendix:genes}
+\lstinputlisting[language={python}]{\src/genes.py}
+
+\newpage
+\chapter{Algoritmo Geneflow (geneflow.py)}
+\label{appendix:geneflow}
+\lstinputlisting[language={python}]{\src/geneflow.py}
 
 \includepdf{folha_registro_documento.pdf}
 \bookmark[level=0, page=21]{Folha de Registro do Documento}
