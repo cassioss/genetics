@@ -99,7 +99,7 @@ $\textbf{Dijkstra(} Grafo, cidade \textbf{)}$
 	\While{Q não estiver vazio} {
 		$u \gets VerticeEmQComMenorDist(Q, dist)$\;
 		$Q.remover(u)$\;
-		\ForEach{Vizinho w de u} {
+		\ForEach{vizinho w de u} {
 			$atalho \gets dist[u] + DistanciaEntre(u, w)$\;
 			\If{atalho < dist[w]} {
 				$dist[w] \gets atalho$\;
@@ -115,8 +115,6 @@ $\textbf{Dijkstra(} Grafo, cidade \textbf{)}$
 
 A complexidade de tal algoritmo, por possuir um loop dentro de outro, é, para o pior caso, $O(N^2)$, sendo $N$ o número de cidades. No entanto, ele só descobre a menor distância tendo como referência a cidade utilizada como parâmetro. Por conta disso, o algoritmo precisa ser rodado uma vez para cada cidade, trazendo uma complexidade total $O(N^3)$ para o seu uso.
 
-O requerimento para este algoritmo convergir é o de que a distância entre quaisquer duas cidades seja maior que zero. Para ser utilizada com o AG, foi considerado também que o grafo fosse conexo, de tal forma que qualquer percurso sugerido por um indivíduo tenha uma distância total finita e não-nula.
+O requerimento para este algoritmo convergir é o de que a distância entre quaisquer duas cidades seja maior que zero, e que a distância de uma cidade para ela mesma (se existir) seja zero. Para ser utilizada com o AG, considerou-se também um grafo inicial conexo, de tal forma que qualquer percurso sugerido por um indivíduo fosse sempre possível.
 
-O algoritmo de Dijkstra tenta buscar atalhos entre quaisquer duas cidades em sua execução. Se ele for utilizado para completar o grafo, um percurso como $A \rightarrow B$ pode pedir que sejam visitadas outras cidades (o que, em casos reais de mapeamento de cidades, é comum acontecer).
-
-Um indivíduo que propuser um percurso não saberá dizer se há atalhos entre duas cidades. No entanto, como estamos procurando a menor distância a ser percorrida no grafo, a função de fitness irá visitar todos os atalhos, sem considerar tal cidade como visitada. Esperou-se que, ao longo das gerações, os atalhos acabassem sendo escolhidos para visita naturalmente.
+O algoritmo de Dijkstra buscará atalhos entre as cidades. Um indivíduo que propuser um trajeto, a princípio, não saberá dizer se há atalhos. Se houver um, ele será apresentado na tela, mas a função de fitness não irá considerar as cidades do atalho como visitadas. Esperou-se que, ao longo das gerações, tais cidades fossem escolhidas naturalmente pela população.
