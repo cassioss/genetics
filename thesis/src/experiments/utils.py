@@ -1,15 +1,12 @@
 import numpy.random as random
 
-
 # Boolean variable on 50% chance
 def coin_toss():
 	return random.random() >= 0.5
 
-
 # Mean value between numbers
 def mean(numbers):
     return float(sum(numbers)) / max(len(numbers), 1)
-
 
 # Sum of squares
 def sum2(numbers):

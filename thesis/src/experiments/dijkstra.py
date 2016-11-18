@@ -1,5 +1,4 @@
 import copy
-from dijkstra_manual import dijkstra_manual_graph
 from dijkstra17 import dijkstra17_graph
 
 # Functions that apply Dijkstra's algorithm

@@ -44,3 +44,7 @@
 \contentsline {chapter}{Ap\^endice{} A{} -$\tmspace -\thinmuskip {.1667em}$-{} Genes Utilizados (genes.py)}{40}{appendix.A}
 \contentsline {chapter}{Ap\^endice{} B{} -$\tmspace -\thinmuskip {.1667em}$-{} Indiv\IeC {\'\i }duos para os Problemas (individuals.py)}{43}{appendix.B}
 \contentsline {chapter}{Ap\^endice{} C{} -$\tmspace -\thinmuskip {.1667em}$-{} Algoritmo Gen\IeC {\'e}tico (geneflow.py)}{46}{appendix.C}
+\contentsline {chapter}{Ap\^endice{} D{} -$\tmspace -\thinmuskip {.1667em}$-{} Fun\IeC {\c c}\IeC {\~o}es de fitness (fitness.py)}{53}{appendix.D}
+\contentsline {chapter}{Ap\^endice{} E{} -$\tmspace -\thinmuskip {.1667em}$-{} Arquivo com mapa das cidades - Caixeiro Viajante (dijkstra17.py)}{54}{appendix.E}
+\contentsline {chapter}{Ap\^endice{} F{} -$\tmspace -\thinmuskip {.1667em}$-{} Arquivo com algoritmo de Dijkstra (dijkstra.py)}{57}{appendix.F}
+\contentsline {chapter}{Ap\^endice{} G{} -$\tmspace -\thinmuskip {.1667em}$-{} Fun\IeC {\c c}\IeC {\~o}es de utilidade (utils.py)}{61}{appendix.G}
