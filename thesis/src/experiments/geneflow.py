@@ -7,7 +7,7 @@ from individuals import new_individual, from_genes
 from individuals import Individual
 
 class GeneFlow:
-    def __init__(self, ind_type, gene_type, ffit=None, pc=0.9, pm=0.01, mu=100, ngen=800,
+    def __init__(self, ind_type, gene_type, ffit=None, pc=0.9, pm=0.01, mu=100, ngen=200,
                 print_stats=True, maximum=True, elitism=True, adaptive=False):
         self.fitness = ffit
         self.population = [new_individual(ind_type, gene_type) for x in range(mu)]
@@ -32,7 +32,7 @@ class GeneFlow:
         if self.adaptive:
             new_path = os.path.relpath(file_name + '_pm.csv', os.path.dirname(__file__))
             self.adapt_file = open(new_path, 'w')
-            self.adapt_file.write('Generation,pm\n')
+            self.adapt_file.write('Generation,pm,pm0\n')
 
 
     def calculate_all_fitness(self):
@@ -180,7 +180,8 @@ class GeneFlow:
             if self.pm is 0.001:
                 self.pm0 = min(0.5, self.pm0 + 0.001)
 
-        #print deviation, self.pm, self.pm0, self.best_fitness()
+        if self.print_stats:
+            print deviation, self.pm, self.pm0, self.best_fitness()
 
     def write_to_file(self, n):
         self.file.write(str(n))
@@ -198,13 +199,15 @@ class GeneFlow:
             self.adapt_file.write(str(n))
             self.adapt_file.write(',')
             self.adapt_file.write(str(self.pm))
+            self.adapt_file.write(',')
+            self.adapt_file.write(str(self.pm0))
             self.adapt_file.write('\n')
 
 # Uncomment one of the next three lines to simulate the algorithm
 
-#GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax, adaptive=True, print_stats=True).generate()
+GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax, adaptive=True, print_stats=True).generate()
 #GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.01).generate()
-GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False, adaptive=False, print_stats=True, pm=0.2).generate()
+#GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False, adaptive=False, print_stats=True, pm=0.2).generate()
 
 
 

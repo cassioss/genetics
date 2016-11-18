@@ -2,7 +2,7 @@
 
 \section{Parâmetros analisados}
 
-Foram escolhidos parâmetros simples para analisar a evolução feita ao longo das gerações:
+Como um AG trabalha com tentativa-e-erro, não há uma geração exata para a qual pode ser prevista uma determinada solução (ou proximidade à solução). Para se analisar a evolução dos indivíduos ao longo das gerações, este trabalho focou em analisar os seguintes parâmetros:
 
 \begin{itemize}
 	\item Valor mínimo de fitness em um indivíduo;
@@ -11,26 +11,54 @@ Foram escolhidos parâmetros simples para analisar a evolução feita ao longo d
 	\item Desvio padrão dos valores de fitness.
 \end{itemize}
 
-O desvio padrão aqui foi calculado por:
+O desvio padrão utilizado aqui foi o amostral, dado por:
 
 \begin{equation}
 	\sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (x_i - \overline{x})^2}
 \end{equation}
 
+Os gráficos criados tiveram como base uma única simulação do AG para o problema e parâmetros de entrada escolhidos.
+
+Como já foi comentado antes, se não for mencionado o contrário (mesmo para o caso adaptativo), utilizou-se 0.9 para $p_c$ e 0.01 para $p_m$. Todas as execuções utilizaram 100 indivíduos, 200 gerações e elitismo do melhor indivíduo. Se um problema convergiu completamente para a melhor solução antes das 200 gerações completarem, os gráficos foram reduzidos para melhor visualização, uma vez que os pontos extras não trariam novas informações para nós.
+
+As simulações feitas com uso do AGA foram utilizadas para comparação com a implementação estática do AG. Além disso, foi avaliado o comportamento adaptativo de $p_m$ ao longo das gerações.
+
 \section{OneMax Booleano}
 
-Texto.
+\subsection{Caso Estático}
+
+Este problema foi considerado simples de ser resolvido por um AG, uma vez que poucas mutações em um gene já fariam com que ele trouxesse o valor máximo. As figuras \ref{fig:onemax_boolean} e \ref{fig:onemax_boolean_std} demonstram exatamente isso, com convergência completa dos indivíduos para a solução ótima após 93 gerações.
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_boolean.jpg}
-    \caption{Evolução do fitness para o problema do OneMax Booleano com mínimo, máximo e valor médio, com $p_c=0.9$ e $p_m=0.01$.}
+    \caption{Evolução do fitness para o problema do OneMax Booleano mostrando mínimo, máximo e valor médio ($p_c=0.9$, $p_m=0.01$).}
     \label{fig:onemax_boolean}
 \end{figure}
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_boolean_std.jpg}
-    \caption{Desvio padrão ao longo das gerações para o problema do OneMax Booleano, com $p_c=0.9$ e $p_m=0.01$.}
-    \label{fig:onemax_boolean}
+    \caption{Desvio padrão ao longo das gerações para o problema do OneMax Booleano ($p_c=0.9$, $p_m=0.01$).}
+    \label{fig:onemax_boolean_std}
+\end{figure}
+
+\subsection{Caso Adaptativo}
+
+\begin{figure}[ht!]
+    \centering \includegraphics[width=1.0\textwidth]{onemax_boolean_adaptive.jpg}
+    \caption{Evolução do fitness para o problema do OneMax Booleano Adaptativo mostrando mínimo, máximo e valor médio ($p_c=0.9$, $p_{m0}=0.01$).}
+    \label{fig:onemax_boolean_adaptive}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering \includegraphics[width=1.0\textwidth]{onemax_boolean_adaptive_pm.jpg}
+    \caption{Probabilidade de mutação ao longo das gerações para o problema do OneMax Booleano Adaptativo ($p_c=0.9$, $p_{m0}=0.01$).}
+    \label{fig:onemax_boolean_adaptive_pm}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering \includegraphics[width=1.0\textwidth]{onemax_boolean_adaptive_std.jpg}
+    \caption{Desvio padrão ao longo das gerações para o problema do OneMax Booleano Adaptativo ($p_c=0.9$, $p_{m0}=0.01$).}
+    \label{fig:onemax_boolean_adaptive_std}
 \end{figure}
 
 \section{OneMax Real}
@@ -40,13 +68,13 @@ Texto.
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_real.jpg}
     \caption{Evolução do fitness para o problema do OneMax Real com mínimo, máximo e valor médio, com $p_c=0.9$ e $p_m=0.01$.}
-    \label{fig:onemax_boolean}
+    \label{fig:onemax_real}
 \end{figure}
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_real_std.jpg}
     \caption{Desvio padrão ao longo das gerações para o problema do OneMax Real, com $p_c=0.9$ e $p_m=0.01$.}
-    \label{fig:onemax_boolean}
+    \label{fig:onemax_real_std}
 \end{figure}
 
 \section{Caixeiro Viajante Adaptado}
