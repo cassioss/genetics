@@ -24,7 +24,7 @@ Para este trabalho, optou-se por trabalhar com versões adaptadas de outros AGAs
 
 \begin{itemize}
 
-	\item Apenas o parâmetro de mutação é modificado ao longo das gerações, uma vez que o crossover seja sempre um valor alto (como 0.7 ou 0.9);
+	\item Apenas o parâmetro de mutação é modificado ao longo das gerações, uma vez que o crossover seja sempre um valor alto (como 0.9, padronizado neste trabalho);
 
 	\item A adaptação de $p_m$ acontece apenas depois que um ciclo de operações de evolução acontecer;
 
@@ -35,11 +35,11 @@ Para este trabalho, optou-se por trabalhar com versões adaptadas de outros AGAs
 \label{eq:aga}
 \end{equation}
 
-	\item Se este desvio for maior que um valor $p_{m0}$, isso significa que os indivíduos estão se aproximando de uma mesma solução. Uma possível interpretação seria a de que a mutação está fraca e o AG pode ter travado em uma solução. Por conta disso, $p_m$ irá aumentar;
+	\item Se este desvio for menor que um valor $p_{m0}$, isso significa que a mutação está fraca e os indivíduos estão se aproximando de uma mesma solução, que pode não ser necessariamente a melhor. Para contornar isso, $p_m$ irá aumentar;
 
-	\item Caso contrário, as soluções estão se desviando muito, o que pode ser resultado de uma mutação intensa. Para resolver isso, $p_m$ irá diminuir;
+	\item Caso contrário, as soluções estarão se desviando muito, o que pode ser resultado de uma mutação intensa. Para resolver isso, $p_m$ irá diminuir;
 
-	\item O valor de $p_{m0}$ é, a princípio, arbitrário, mas este trabalho utilizou o valor inicial de $p_m$ para o valor inicial de $p_{m0}$ (o que é razoável, uma vez que uma taxa de mutação muito alta acabará gerando um desvio mais alto, e vice-versa);
+	\item O valor de $p_{m0}$ é o valor inicial de $p_m$ para o valor inicial de $p_{m0}$, de modo a servir de termômetro para quão grande deve ser o desvio;
 
 	\item No entanto, $p_m$ não pode ser igual a zero nem maior que 1, dado que representa uma probabilidade. Seguindo a linha de outros trabalhos \cite{matthias2013variable}, $p_m$ será limitado ao intervalo [0.001, 0.5] (se $p_m$ tentar extrapolar estes limites, ele retornará ao valor extremo mais próximo);
 	

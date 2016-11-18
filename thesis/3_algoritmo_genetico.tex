@@ -46,7 +46,7 @@ A escolha dos pais foi feita ordenando a geração em função de seu valor de f
 
 Escolhidos os pais, avalia-se, com probabilidade $p_c$, se eles serão cruzados. Se sim, seus materiais genéticos serão misturados por uma ação chamada \emph{crossover}.
 
-O crossover envolve a quebra da sequência de genes de dois indivíduos em uma mesma secção, com a subsequente troca de material na região delimitada por esta secção. Este trabalho se utilizou do crossover em dois pontos, o qual divide as sequências em duas partes distintas, ocorrendo troca do material genético entre estas partes. Tal ação é mostrada na figura \ref{fig:evolution-framework}.
+O crossover envolve a troca de genes entre dois indivíduos. Este trabalho se utilizou do crossover de dois pontos, o qual divide as sequências em duas partes distintas, ocorrendo troca do material genético entre estas partes. Tal ação é mostrada na figura \ref{fig:crossover}.
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{crossover.png}
@@ -57,6 +57,8 @@ O crossover envolve a quebra da sequência de genes de dois indivíduos em uma m
 Toda ação bem sucedida de crossover gera duas sequências de genes (filhas) a partir das sequências originais (pais), as quais são transformadas em indivíduos e adicionadas à população.
 
 O valor normalmente associado à variável $p_c$ na literatura costuma ficar entre 0.6 e 0.95 \cite{dejong1975analysis, eiben2011parameter, obitkopc}. Padronizou-se o valor de 0.9 neste trabalho. Ele precisa ser alto para que os filhos tenham maiores chances de variar seus genes e sugerir melhores respostas ao longo das gerações.
+
+Os problemas deste trabalho foram organizados de tal forma que os genes de cada indivíduo fossem capazes de interagir com o problema separadamente. Por conta disso, o crossover de dois pontos pode ser aplicado sem problemas nos indivíduos.
 
 \section{Mutação}
 

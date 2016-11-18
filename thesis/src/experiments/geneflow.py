@@ -158,24 +158,29 @@ class GeneFlow:
         if self.adaptive:
             self.adapt()
 
+    # Adaptive Genetic Algorithm (AGA) module
     def adapt(self):
+
+        # In order to stop division by zero
         if abs(self.avg_fitness()) < 0.0000001:
             return
 
-        deviation = abs(self.best_fitness() - self.avg_fitness()) / (self.avg_fitness())
-        self.going_down = False
+        # Deviation of the best fitness to the average
+        deviation = abs((self.best_fitness() - self.avg_fitness()) / (self.avg_fitness()))
 
+        # Reduce pm if deviation is high
         if deviation <= self.pm0:
             self.pm = min(0.5, self.pm + 0.001)
             if self.pm is 0.5:
                 self.pm0 = max(0.001, self.pm0 - 0.001)
 
+        # Increase it, otherwise
         else:
             self.pm = max(0.001, self.pm - 0.001)
             if self.pm is 0.001:
                 self.pm0 = min(0.5, self.pm0 + 0.001)
 
-        print deviation, self.pm, self.pm0, self.best_fitness()
+        #print deviation, self.pm, self.pm0, self.best_fitness()
 
     def write_to_file(self, n):
         self.file.write(str(n))
