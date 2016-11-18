@@ -36,7 +36,7 @@ O AG possui uma série de algoritmos de entrada. No entanto, excetuando-se os pa
 	\item A probabilidade de mutação ($p_m$).
 \end{itemize}
 
-As variáveis $p_c$ e $p_m$ serão discutidas a seguir. O valor de $NGEN$ variou de acordo com o problema e com sua complexidade, mas foi padronizado um valor empírico de 120 gerações para cada execução do AG. O valor de $\mu$ ficou padronizado como 100.
+As variáveis $p_c$ e $p_m$ serão discutidas a seguir. O valor de $NGEN$ variou de acordo com o problema e com sua complexidade, mas foi padronizado um valor de 200 gerações para cada execução do AG. O tamanho da população $\mu$ ficou padronizado como 100.
 
 \section{Seleção dos pais}
 
@@ -54,15 +54,15 @@ O crossover envolve a quebra da sequência de genes de dois indivíduos em uma m
     \label{fig:crossover}
 \end{figure}
 
-Toda ação bem sucedida de crossover gera duas sequências de genes (filhas) novas a partir das sequências originais (pais), as quais são transformadas em indivíduos e adicionadas à população.
+Toda ação bem sucedida de crossover gera duas sequências de genes (filhas) a partir das sequências originais (pais), as quais são transformadas em indivíduos e adicionadas à população.
 
-O valor normalmente associado à variável $p_c$ na literatura costuma ficar sempre em torno de 0.9 \cite{eiben2011parameter}, valor padronizado neste trabalho. Tal valor precisa ser alto para que os filhos tenham maiores chances de variar seus genes ao longo das gerações.
+O valor normalmente associado à variável $p_c$ na literatura costuma ficar entre 0.6 e 0.95 \cite{dejong1975analysis, eiben2011parameter, obitkopc}. Padronizou-se o valor de 0.9 neste trabalho. Ele precisa ser alto para que os filhos tenham maiores chances de variar seus genes e sugerir melhores respostas ao longo das gerações.
 
 \section{Mutação}
 
 A ação de mutação atua sobre todos os genes da população (pais e filhos), a qual avalia, com probabilidade $p_m$, se a expressividade destes genes será alterada. Se sim, o valor deste gene é alterado de acordo com a assinatura de mutação do gene, tal como foi explicado no capítulo anterior. Normalmente, esta mudança de valor é aleatória.
 
-O valor normalmente associado à variável $p_m$ na literatura costuma ser mais baixo, pois um valor muito alto não seria capaz de permitir a convergência das soluções \cite{eiben2011parameter}. O valor padronizado neste trabalho foi de 0.01.
+O valor associado à variável $p_m$ deve ser baixo, pois um valor muito alto não seria capaz de permitir a convergência das soluções \cite{dejong1975analysis, eiben2011parameter, obitkopc}. O valor padronizado neste trabalho foi de 0.01.
 
 \section{Sobrevivência}
 
