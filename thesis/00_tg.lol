@@ -1,8 +1,8 @@
 \contentsline {lstlisting}{\numberline {5.1}Mapa de cidades para o problema do Caixeiro Viajante Adaptado.}{43}{lstlisting.5.1}
-\contentsline {lstlisting}{\numberline {A.1}Genes Utilizados (genes.py).}{48}{lstlisting.A.1}
-\contentsline {lstlisting}{\numberline {B.1}Indiv\IeC {\'\i }duos dos problemas (individuals.py).}{51}{lstlisting.B.1}
-\contentsline {lstlisting}{\numberline {C.1}Algoritmo Gen\IeC {\'e}tico (geneflow.py).}{54}{lstlisting.C.1}
-\contentsline {lstlisting}{\numberline {D.1}Fun\IeC {\c c}\IeC {\~o}es de fitness (fitness.py).}{61}{lstlisting.D.1}
-\contentsline {lstlisting}{\numberline {E.1}Arquivo com mapa das cidades - Caixeiro Viajante (dijkstra17.py).}{62}{lstlisting.E.1}
-\contentsline {lstlisting}{\numberline {F.1}Arquivo com algoritmo de Dijkstra (dijkstra.py).}{65}{lstlisting.F.1}
-\contentsline {lstlisting}{\numberline {G.1}Fun\IeC {\c c}\IeC {\~o}es de utilidade (utils.py)}{69}{lstlisting.G.1}
+\contentsline {lstlisting}{\numberline {A.1}Genes Utilizados (genes.py).}{50}{lstlisting.A.1}
+\contentsline {lstlisting}{\numberline {B.1}Indiv\IeC {\'\i }duos dos problemas (individuals.py).}{53}{lstlisting.B.1}
+\contentsline {lstlisting}{\numberline {C.1}Algoritmo Gen\IeC {\'e}tico (geneflow.py).}{56}{lstlisting.C.1}
+\contentsline {lstlisting}{\numberline {D.1}Fun\IeC {\c c}\IeC {\~o}es de fitness (fitness.py).}{63}{lstlisting.D.1}
+\contentsline {lstlisting}{\numberline {E.1}Arquivo com mapa das cidades - Caixeiro Viajante (dijkstra17.py).}{64}{lstlisting.E.1}
+\contentsline {lstlisting}{\numberline {F.1}Arquivo com algoritmo de Dijkstra (dijkstra.py).}{67}{lstlisting.F.1}
+\contentsline {lstlisting}{\numberline {G.1}Fun\IeC {\c c}\IeC {\~o}es de utilidade (utils.py)}{71}{lstlisting.G.1}
