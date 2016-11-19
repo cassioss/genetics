@@ -35,17 +35,17 @@ Para este trabalho, optou-se por trabalhar com versões adaptadas de outros AGAs
 \label{eq:aga}
 \end{equation}
 
-	\item Se este desvio for menor que um valor $p_{m0}$, isso significa que a mutação está fraca e os indivíduos estão se aproximando de uma mesma solução, que pode não ser necessariamente a melhor. Para contornar isso, $p_m$ irá aumentar;
+	\item Se este desvio for menor que um valor $p{p_m}_0$, isso significa que a mutação está fraca e os indivíduos estão se aproximando de uma mesma solução, que pode não ser necessariamente a melhor. Para contornar isso, $p_m$ irá aumentar;
 
 	\item Caso contrário, as soluções estarão se desviando muito, o que pode ser resultado de uma mutação intensa. Para resolver isso, $p_m$ irá diminuir;
 
-	\item O valor de $p_{m0}$ é o valor inicial de $p_m$ para o valor inicial de $p_{m0}$, de modo a servir de termômetro para quão grande deve ser o desvio;
+	\item O valor de ${p_m}_0$ é o valor inicial de $p_m$ para o valor inicial de ${p_m}_0$, de modo a servir de termômetro para quão grande deve ser o desvio;
 
 	\item No entanto, $p_m$ não pode ser igual a zero nem maior que 1, dado que representa uma probabilidade. Seguindo a linha de outros trabalhos \cite{matthias2013variable}, $p_m$ será limitado ao intervalo [0.001, 0.5] (se $p_m$ tentar extrapolar estes limites, ele retornará ao valor extremo mais próximo);
 	
-	\item Mesmo assim, pode acontecer de $p_m$ ficar travado em um dos extremos e o AG não entender o que fazer. Para resolver isto, se $p_m$ ficar travado em um destes limites, $p_{m0}$ começará a variar na direção oposta. Isto é, se $p_m$ atingir o valor de 0.5, $p_{m0}$ começará a diminuir em direção ao valor 0.001, e vice-versa.
+	\item Mesmo assim, pode acontecer de $p_m$ ficar travado em um dos extremos e o AG não entender o que fazer. Para resolver isto, se $p_m$ ficar travado em um destes limites, ${p_m}_0$ começará a variar na direção oposta. Isto é, se $p_m$ atingir o valor de 0.5, ${p_m}_0$ começará a diminuir em direção ao valor 0.001, e vice-versa.
 
-	\item O incremento/decremento para $p_m$ e $p_{m0}$ será linear e igual a 0.001;
+	\item O incremento/decremento para $p_m$ e ${p_m}_0$ será linear e igual a 0.001;
 	
 	\item Como há uma divisão por $\bar{f}$, se este valor for zero ou muito próximo de zero para alguma geração, este AGA não será executado.
 
@@ -55,7 +55,7 @@ Traduzindo-se a explicação para um algoritmo, chegamos ao código mostrado a s
 
 \begin{algorithm}[ht]
 \Begin{
-	$p_{m0} \gets $ (valor inicial de $p_m$ na inicialização do AG)\;
+	${p_m}_0 \gets $ (valor inicial de $p_m$ na inicialização do AG)\;
 	$\epsilon \gets 0.0001$\;
 	\ForEach{ciclo de operações de evolução} {
 		$\bar{f} \gets $ (média dos valores de fitness)\;
@@ -64,16 +64,16 @@ Traduzindo-se a explicação para um algoritmo, chegamos ao código mostrado a s
 		}
 		$f_{best} \gets $ (melhor valor de fitness na população)\;
 		$desvio \gets \left| \frac{f_{best} - \bar{f}}{\bar{f}} \right|$\;
-		\If{desvio < $p_{m0}$} {
+		\If{desvio < ${p_m}_0$} {
 			$p_m \gets min(0.5, p_m + 0.001)$\;
 			\If{$p_m == 0.5$} {
-				$p_{m0} \gets max(0.001, p_{m0} - 0.001)$\;
+				${p_m}_0 \gets max(0.001, {p_m}_0 - 0.001)$\;
 			}
 		}
 		\Else{
 			$p_m \gets max(0.001, p_m - 0.001)$\;
 			\If{$p_m == 0.001$} {
-				$p_{m0} \gets min(0.5, p_{m0} + 0.001)$\;
+				${p_m}_0 \gets min(0.5, {p_m}_0 + 0.001)$\;
 			}
 		}
 	}

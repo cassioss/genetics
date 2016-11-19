@@ -95,4 +95,10 @@ L.~Wang and T.~Shen.
 \newblock In {\em Multispectral Image Processing and Pattern Recognition},
   pages 115--120. International Society for Optics and Photonics, 2001.
 
+\bibitem{wolpert1997no}
+D.~H. Wolpert and W.~G. Macready.
+\newblock No free lunch theorems for optimization.
+\newblock {\em IEEE transactions on evolutionary computation}, 1(1):67--82,
+  1997.
+
 \end{thebibliography}

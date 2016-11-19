@@ -1,3 +1,25 @@
 \label{6_conclusoes}
 
-Texto aqui.
+\section{Conclusões}
+
+Este trabalho teve como objetivo o desenvolvimento de um Algoritmo Genético (AG) para a resolução de diferentes problemas de modo otimizado. Foram escolhidos três problemas: OneMax Booleano (variável booleana), OneMax Real (variável real) e Caixeiro Viajante Adaptado (permitindo atalhos). De modo a melhorar a performance do AG, foram implementadas duas otimizações: o elitismo do melhor indivíduo, e o uso de um Algoritmo Genético Adaptativo (AGA) com implementação própria, focada na adaptação do parâmetro de mutação.
+
+Chegou-se à conclusão que utilizar um mesmo algoritmo para resolver um grupo diferente de problemas sem perda de performance é virtualmente impossível. No entanto, o uso do AGA implementado se mostrou mais eficiente no encontro de melhores soluções para o problema do Caixeiro Viajante, um problema NP-Hard. Por conta disso, o uso deste AGA é fortemente incentivado em outros problemas, buscando sempre validações e melhorias. Se isso não for possível, o conceito por trás do desenvolvimento de um algoritmo adaptativo é muito forte e próximo do conceito básico do AG, e seu uso deve ser considerado em outros algoritmos evolutivos.
+
+\section{Trabalhos Futuros}
+
+O desenvolvimento feito neste trabalho resultaram na criação de um algoritmo adaptativo e de implementações próprias tanto do algoritmo genético quanto dos problemas escolhidos. A proposta deste trabalho foi audaz, e muitos conceitos foram desenvolvidos ao mesmo tempo, conceitos que precisam ser quebrados e maturados ainda mais. Sugere-se então as seguintes frentes de trabalho futuro:
+
+\begin{itemize}
+
+	\item Análise mais cuidadosa do problema do OneMax Real, considerando modelagens matemáticas e sua proximidade com o OneMax Booleano;
+
+	\item Análise do problema do Caixeiro Viajante com a distribuição genética deste trabalho, comparada com implementações mais tradicionais (este trabalho distribuiu os genes deste problema de tal forma que o crossover de dois pontos ainda fosse possível);
+
+	\item Conjunto mais abrangente de testes para o AGA desenvolvido neste trabalho, de modo a delimitar prós, contras, limitações e que grupos de problemas podem se beneficiar de seu uso;
+
+	\item Evolução dos conceitos por trás do AGA desenvolvido aqui, buscando formalizar os conceitos por trás de seu desenvolvimento e, onde for possível, melhorá-lo (tanto para performance quanto para busca de soluções);
+
+	\item O algoritmo em si foi pouco trabalhado (mesmo tendo muita coisa sendo discutida aqui), dado o tempo utilizado para este trabalho. Recomenda-se uma melhoria drástica deste algoritmo de modo a comportar outras implementações dos problemas, dos operadores de evolução e de outros algoritmos adaptativos.
+
+\end{itemize}

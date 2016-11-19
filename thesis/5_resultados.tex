@@ -31,7 +31,7 @@ Este problema foi considerado simples de ser resolvido por um AG, uma vez que po
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_boolean.jpg}
-    \caption{Evolução do fitness para o problema do OneMax Booleano mostrando mínimo, máximo e valor médio ($p_c=0.9$, $p_m=0.01$). Foram necessárias 78 gerações para que a solução ótima aparecesse, e 93 gerações para que todos os indivíduos convergissem para ela.}
+    \caption{Evolução do fitness para o problema do OneMax Booleano mostrando mínimo, máximo e valor médio ($p_c=0.9$, $p_m=0.01$). Foram necessárias 78 gerações para que a solução ótima aparecesse, e 93 gerações para que a população inteira convergisse para ela.}
     \label{fig:onemax_boolean}
 \end{figure}
 
@@ -49,27 +49,27 @@ Com o AGA ativado, ficou bem mais complicado para o OneMax atingir a solução �
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_boolean_adaptive.jpg}
-    \caption{Evolução do fitness para o problema do OneMax Booleano Adaptativo mostrando mínimo, máximo e valor médio ($p_c=0.9$, $p_{m0}=0.01$). Foram necessárias 113 gerações para que um indivíduo encontrasse a solução ótima.}
+    \caption{Evolução do fitness para o problema do OneMax Booleano Adaptativo mostrando mínimo, máximo e valor médio ($p_c=0.9$, ${p_m}_0=0.01$). Foram necessárias 113 gerações para que um indivíduo encontrasse a solução ótima.}
     \label{fig:onemax_boolean_adaptive}
 \end{figure}
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_boolean_adaptive_std.jpg}
-    \caption{Desvio padrão ao longo das gerações para o problema do OneMax Booleano Adaptativo ($p_c=0.9$, $p_{m0}=0.01$).}
+    \caption{Desvio padrão ao longo das gerações para o problema do OneMax Booleano Adaptativo ($p_c=0.9$, ${p_m}_0=0.01$).}
     \label{fig:onemax_boolean_adaptive_std}
 \end{figure}
 
-Um efeito interessante pode ser visto na figura \ref{fig:onemax_boolean_adaptive_pm}, com relação à evolução de $p_m$ e $p_{m0}$. É possível ver que as primeiras gerações ainda eram muito dispersas, o que fez com que $p_m$ começasse a cair. No entanto, como mencionado antes, um valor baixo de $p_m$ se mostrou mais do que suficiente para que a população do caso estático fosse capaz de encontrar a solução ótima.
+Um efeito interessante pode ser visto na figura \ref{fig:onemax_boolean_adaptive_pm}, com relação à evolução de $p_m$ e ${p_m}_0$. É possível ver que as primeiras gerações ainda eram muito dispersas, o que fez com que $p_m$ começasse a cair. No entanto, como mencionado antes, um valor baixo de $p_m$ se mostrou mais do que suficiente para que a população do caso estático fosse capaz de encontrar a solução ótima.
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_boolean_adaptive_pm.jpg}
-    \caption{Probabilidade de mutação ao longo das gerações para o problema do OneMax Booleano Adaptativo ($p_c=0.9$, $p_{m0}=0.01$).}
+    \caption{Probabilidade de mutação ao longo das gerações para o problema do OneMax Booleano Adaptativo ($p_c=0.9$, ${p_m}_0=0.01$).}
     \label{fig:onemax_boolean_adaptive_pm}
 \end{figure}
 
-Por conta disso, $p_{m0}$ começou a aumentar enquanto a população evoluía e ficava mais homogênea. O AGA, para uma população homogênea, interpreta isso como se a população tivesse travado em uma solução. Por conta disso, após cerca de 70 gerações, a homogeneização da população e o aumento de $p_{m0}$ se encontraram, e $p_m$ começou a aumentar.
+Por conta disso, ${p_m}_0$ começou a aumentar enquanto a população evoluía e ficava mais homogênea. O AGA, para uma população homogênea, interpreta isso como se a população tivesse travado em uma solução. Por conta disso, após cerca de 70 gerações, a homogeneização da população e o aumento de ${p_m}_0$ se encontraram, e $p_m$ começou a aumentar.
 
-Quando $p_m$ parou de crescer (por volta de 110 gerações), ele estabilizou em torno de um valor mais alto que o inicial (por volta de 0.03). Tal aumento (tanto de $p_m$ quanto de $p_{m0}$) se mostrou suficiente para que a população fosse incapaz de convergir conjuntamente para a solução ótima.
+Quando $p_m$ parou de crescer (por volta de 110 gerações), ele estabilizou em torno de um valor mais alto que o inicial (por volta de 0.03). Tal aumento (tanto de $p_m$ quanto de ${p_m}_0$) se mostrou suficiente para que a população fosse incapaz de convergir conjuntamente para a solução ótima.
 
 Foi possível tirar desta simulação que, mesmo que o intuito inicial deste AGA tivesse sido o de fugir de momentos em que o AG travasse em uma solução, ele veio com um custo, que foi o de evitar que a população fosse capaz de convergir conjuntamente para a solução ótima. Se o intuito de usar o AG for o de encontrar uma boa solução no final, esse custo é baixo.
 
@@ -80,20 +80,21 @@ Os dados de interesse vindos destas simulações podem ser encontrados na tabela
 \label{tab:onemax_boolean}
 
 \center
-\begin{tabular}{ccc}
+\begin{tabular}{|c|cc|}
 	\hline
-	Parâmetro analisado 								& AG Estático	& AG Adaptativo   \\
+	Algoritmo analisado (AG = caso estático) 			& AG		& AGA		\\
 	\hline
-	Solução ótima encontrada?							& Sim			& Sim		\\
-	Gerações p/solução ótima							& $78$			& $113$		\\
-	Convergência da população (gerações)				& $93$			& $--$		\\
-	Fitness médio após 100 gerações						& $100$			& $93.12$	\\
-	Fitness médio após 200 gerações 					& $100$			& $95.09$	\\
-	Valor final de $p_m$								& $0.01$ 		& $0.036$	\\
-	Valor mínimo de $p_m$								& $0.01$		& $0.001$	\\
-	Valor máximo de $p_m$								& $0.01$		& $0.042$	\\
-	Valor médio de $p_m$								& $0.01$		& $0.0196$	\\
-	Valor médio de $p_m$ para as últimas 100 gerações	& $0.01$		& $0.0341$	\\
+	Solução ótima encontrada?							& Sim		& Sim		\\
+	Gerações p/solução ótima							& $78$		& $113$		\\
+	Convergência da população (gerações)				& $93$		& $--$		\\
+	Fitness médio após 100 gerações						& $100$		& $93.12$	\\
+	Fitness médio após 200 gerações 					& $100$		& $95.09$	\\
+	Valor final de $p_m$								& $0.01$ 	& $0.036$	\\
+	Valor mínimo de $p_m$								& $0.01$	& $0.001$	\\
+	Valor máximo de $p_m$								& $0.01$	& $0.042$	\\
+	Valor médio de $p_m$								& $0.01$	& $0.0196$	\\
+	Valor médio de $p_m$ para as últimas 100 gerações	& $0.01$	& $0.0341$	\\
+	Valor final de ${p_m}_0$								& --		& $0.059$	\\
 	\hline
 \end{tabular}
 \end{table}
@@ -130,7 +131,7 @@ Os efeitos notados para o OneMax Booleano se repetiram aqui. Como se pode ver na
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_real_adaptive.jpg}
-    \caption{Evolução do fitness para o problema do OneMax Real Adaptativo mostrando mínimo, máximo e valor médio ($p_c=0.9$, $p_{m0}=0.01$).}
+    \caption{Evolução do fitness para o problema do OneMax Real Adaptativo mostrando mínimo, máximo e valor médio ($p_c=0.9$, ${p_m}_0=0.01$).}
     \label{fig:onemax_real_adaptive}
 \end{figure}
 
@@ -138,13 +139,13 @@ No entanto, na figura \ref{fig:onemax_real_adaptive_std}, vemos que o desvio pad
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_real_adaptive_std.jpg}
-    \caption{Desvio padrão ao longo das gerações para o problema do OneMax Real Adaptativo ($p_c=0.9$, $p_{m0}=0.01$).}
+    \caption{Desvio padrão ao longo das gerações para o problema do OneMax Real Adaptativo ($p_c=0.9$, ${p_m}_0=0.01$).}
     \label{fig:onemax_real_adaptive_std}
 \end{figure}
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_real_adaptive_pm.jpg}
-    \caption{Probabilidade de mutação ao longo das gerações para o problema do OneMax Real Adaptativo ($p_c=0.9$, $p_{m0}=0.01$).}
+    \caption{Probabilidade de mutação ao longo das gerações para o problema do OneMax Real Adaptativo ($p_c=0.9$, ${p_m}_0=0.01$).}
     \label{fig:onemax_real_adaptive_pm}
 \end{figure}
 
@@ -155,19 +156,20 @@ Os dados de interesse vindos destas simulações podem ser encontrados na tabela
 \label{tab:onemax_real}
 
 \center
-\begin{tabular}{ccc}
+\begin{tabular}{|c|cc|}
 	\hline
-	Parâmetro analisado 								& AG Estático		& AG Adaptativo   \\
+	Algoritmo analisado (AG = caso estático) 			& AG		& AGA		\\
 	\hline
-	Fitness máximo após 100 gerações					& $85.1153808292$	& $77.1463140043$	\\
-	Fitness médio após 100 gerações						& $84.0477295035$	& $75.2878839218$	\\
-	Fitness máximo após 200 gerações 					& $93.0831225382$	& $84.5782329066$	\\
-	Fitness médio após 200 gerações 					& $92.3547427661$	& $79.6263987855$	\\
-	Valor final de $p_m$								& $0.01$ 			& $0.034$	\\
-	Valor mínimo de $p_m$								& $0.01$			& $0.001$	\\
-	Valor máximo de $p_m$								& $0.01$			& $0.05$	\\
-	Valor médio de $p_m$								& $0.01$			& $0.0215$	\\
-	Valor médio de $p_m$ para as últimas 100 gerações	& $0.01$			& $0.0382$	\\
+	Fitness máximo após 100 gerações					& $85.115$	& $77.146$	\\
+	Fitness médio após 100 gerações						& $84.048$	& $75.288$	\\
+	Fitness máximo após 200 gerações 					& $93.083$	& $84.578$	\\
+	Fitness médio após 200 gerações 					& $92.355$	& $79.626$	\\
+	Valor final de $p_m$								& $0.01$ 	& $0.034$	\\
+	Valor mínimo de $p_m$								& $0.01$	& $0.001$	\\
+	Valor máximo de $p_m$								& $0.01$	& $0.05$	\\
+	Valor médio de $p_m$								& $0.01$	& $0.0215$	\\
+	Valor médio de $p_m$ para as últimas 100 gerações	& $0.01$	& $0.0382$	\\
+	Valor final de ${p_m}_0$								& --		& $0.055$	\\
 	\hline
 \end{tabular}
 \end{table}
@@ -208,7 +210,7 @@ Para o caso estático com $p_m = 0.01$, mostrado na figura \ref{fig:tsp001}, vem
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{tsp_001_std.jpg}
-    \caption{Desvio padrão ao longo das gerações para o problema do Caixeiro Viajante Adaptado ($p_c=0.9$, $p_{m0}=0.01$).}
+    \caption{Desvio padrão ao longo das gerações para o problema do Caixeiro Viajante Adaptado ($p_c=0.9$, ${p_m}_0=0.01$).}
     \label{fig:tsp001std}
 \end{figure}
 
@@ -228,10 +230,107 @@ O desvio padrão, mostrado na figura \ref{fig:tsp02std}, mostrou que uma mutaç�
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{tsp_02_std.jpg}
-    \caption{Desvio padrão ao longo das gerações para o problema do Caixeiro Viajante Adaptado ($p_c=0.9$, $p_{m0}=0.2$).}
+    \caption{Desvio padrão ao longo das gerações para o problema do Caixeiro Viajante Adaptado ($p_c=0.9$, ${p_m}_0=0.2$).}
     \label{fig:tsp02std}
 \end{figure}
 
-\subsection{Caso Adaptativo}
+\subsection{Caso Adaptativo ($p_m = 0.01$)}
 
-Texto aqui.
+O caso adaptativo para $p_m = 0.01$ mostrou uma evolução bem diferente do caso estático. Como visto na figura \ref{fig:tsp_001_adaptative}, os indivíduos também conseguiram igualar seus valores de fitness de modo relativamente rápido, mas a melhor solução pôde mudar bem mais rápido. A melhor solução ficou travada por não mais que 76 gerações (região azul entre as gerações 80 e 140), e mesmo assim, os demais indivíduos foram capazes de variar nesse intervalo, o que parece ter ajudado no encontro de soluções melhores. Tal comportamento das soluções pode ser observado nos desvios padrões, mostrados na figura \ref{fig:tsp_001_adaptive_std}.
+
+\begin{figure}[ht!]
+    \centering \includegraphics[width=1.0\textwidth]{tsp_001_adaptive.jpg}
+    \caption{Evolução do fitness para o problema do Caixeiro Viajante Adaptado Adaptativo, mostrando mínimo, máximo e valor médio ($p_c=0.9$, ${p_m}_0=0.01$). O menor caminho encontrado tem distância total de 2381.}
+    \label{fig:tsp_001_adaptative}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering \includegraphics[width=1.0\textwidth]{tsp_001_adaptive_std.jpg}
+    \caption{Desvio padrão ao longo das gerações para o problema do Caixeiro Viajante Adaptado Adaptativo ($p_c=0.9$, ${p_m}_0=0.01$).}
+    \label{fig:tsp_001_adaptive_std}
+\end{figure}
+
+O funcionamento do AGA ficou bem mais evidente na figura \ref{fig:tsp_001_adaptive_pm}, com momentos de aumento e de redução de $p_m$ alternados com maior frequência. Fora isso, ${p_m}_0$ convergiu para um valor bem menor no final da execução (0.024). No entanto, ao contrário dos problemas OneMax, $p_m$ oscilou bastante também ao final das 200 gerações. Isso nos leva a crer que $0.01$ talvez não seja o melhor valor para inicializar ${p_m}_0$. Similar ao caso estático, simulou-se também ${p_m}_0 = 0.2$.
+
+\begin{figure}[ht!]
+    \centering \includegraphics[width=1.0\textwidth]{tsp_001_adaptive_pm.jpg}
+    \caption{Probabilidade de mutação ao longo das gerações para o problema do Caixeiro Viajante Adaptado Adaptativo ($p_c=0.9$, ${p_m}_0=0.01$).}
+    \label{fig:tsp_001_adaptive_pm}
+\end{figure}
+
+\subsection{Caso Adaptativo ($p_m = 0.2$)}
+
+O gráfico da figura \ref{fig:tsp_02_adaptative} encontrou o menor percurso dentre as simulações feitas aqui (2160). Não só isso, as melhores soluções pareceram ficar travadas por bem menos tempo (o pior caso, próximo do final da simulação, durou 34 gerações). Um outro efeito interessante também aconteceu: todas as curvas (mínimo, máximo e média) evoluíram de formas semelhantes, mesmo com uma mutação inicial intensa. Isso deu para observar também na evolução do desvio padrão, na figura \ref{fig:tsp_02_adaptive_std}, que conseguiu diminuir com o tempo e ficar mais ou menos estável ao longo das gerações.
+
+\begin{figure}[ht!]
+    \centering \includegraphics[width=1.0\textwidth]{tsp_02_adaptive.jpg}
+    \caption{Evolução do fitness para o problema do Caixeiro Viajante Adaptado Adaptativo, mostrando mínimo, máximo e valor médio ($p_c=0.9$, ${p_m}_0=0.2$). O menor caminho encontrado tem distância total de 2160.}
+    \label{fig:tsp_02_adaptative}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering \includegraphics[width=1.0\textwidth]{tsp_02_adaptive_std.jpg}
+    \caption{Desvio padrão ao longo das gerações para o problema do Caixeiro Viajante Adaptado Adaptativo ($p_c=0.9$, ${p_m}_0=0.2$).}
+    \label{fig:tsp_02_adaptive_std}
+\end{figure}
+
+A curva de interesse aqui foi certamente a da figura \ref{fig:tsp_02_adaptive_pm}. O valor de ${p_m}_0$ não mudou em momento algum, e $p_m$ se estabilizou entorno de seu valor final (0.084). Esta é a curva que melhor demonstra o potencial do AGA desenvolvido aqui: mesmo começando num valor desfavorável para convergência, $p_m$ mudou de patamar e foi estabilizado, trazendo a melhor resposta e a melhor evolução para este problema em 200 gerações.
+
+\begin{figure}[ht!]
+    \centering \includegraphics[width=1.0\textwidth]{tsp_02_adaptive_pm.jpg}
+    \caption{Probabilidade de mutação ao longo das gerações para o problema do Caixeiro Viajante Adaptado Adaptativo ($p_c=0.9$, ${p_m}_0=0.2$).}
+    \label{fig:tsp_02_adaptive_pm}
+\end{figure}
+
+Os dados de interesse destas quatro simulações estão presentes na tabela \ref{tab:tsp}.
+
+\begin{table}
+\caption{Dados coletados do problema do Caixeiro Viajante Adaptado.}
+\label{tab:tsp}
+
+\centering
+\begin{tabular}[!hbt]{|c|cc|cc|}
+	\hline
+	Valor inicial de $p_m$								& \multicolumn{2}{c|}{0.01}		& \multicolumn{2}{c|}{0.2}	\\
+	\hline
+	Algoritmo analisado (AG = caso estático)			& AG		& AGA		& AG		& AGA		\\
+	\hline
+	Fitness mínimo após 100 gerações					& $2631$	& $2631$	& $2418$	& $2430$	\\
+	Fitness médio após 100 gerações						& $2631$	& $2631$	& $3819.5$	& $3325.88$	\\
+	Fitness mínimo após 200 gerações 					& $2375$	& $2381$	& $2300$	& $2160$	\\
+	Fitness médio após 200 gerações 					& $2375$	& $2464.54$	& $3948.11$	& $2615.89$	\\
+	\# máximo de gerações "travado" num mínimo local	& $118$		& $76$		& $127$		& $34$		\\
+	Valor final de $p_m$								& $0.01$	& $0.026$	& $0.2$		& $0.084$	\\
+	Valor mínimo de $p_m$								& $0.01$	& $0.001$	& $0.2$		& $0.077$	\\
+	Valor máximo de $p_m$								& $0.01$	& $0.055$	& $0.2$		& $0.2$		\\
+	Valor médio de $p_m$								& $0.01$	& $0.0249$	& $0.2$		& $0.117$	\\
+	Valor médio de $p_m$ (últimas 100 gerações)			& $0.01$	& $0.0413$	& $0.2$		& $0.0846$	\\
+	Valor final de ${p_m}_0$							& --		& $0.024$	& --		& $0.2$		\\
+	\hline
+\end{tabular}
+\end{table}
+
+\section{Discussões}
+
+Os três problemas foram simulados tanto pelo AG estático quanto pelo AGA. Para os problemas OneMax, foi possível observar uma evolução muito melhor para o caso estático do que para o caso adaptativo. Para o problema do Caixeiro Viajante Adaptado, no entanto, observou-se o oposto. Seria possível validar o AGA a partir destes experimentos?
+
+Pensemos nas operações de variação de um AG. Se associarmos probabilidade de crossover $p_c$ (alta) ao fator de homogeneização do fitness da população, então a probabilidade de mutação $p_m$, combinada com elitismo, pode atuar de duas formas:
+
+\begin{itemize}
+	\item Tornando a população heterogênea;
+	\item \textbf{Melhorando o fitness do melhor indivíduo}.
+\end{itemize}
+
+O efeito que será mais predominante dependerá do valor de $p_m$ e do problema. Como visto no OneMax, um valor de 0.01 ou de 0.001 foi suficiente para priorizar o segundo efeito sobre o primeiro, evoluindo gradualmente o melhor indivíduo.
+
+No entanto, o problema do Caixeiro Viajante Adaptado não conseguiu se beneficiar destes efeitos nem para $p_m=0.01$, nem para $p_m=0.2$. Não que o AG estático não possua um valor ideal para convergência deste problema em específico - isto apenas atesta que o parâmetro ideal para um problema pode não ser ideal para outro problema.
+
+Se tentássemos estressar o problema do Caixeiro, poderíamos eventualmente encontrar um valor ideal para ${p_m}_0$. No entanto, tal problema (mesmo adaptado) ainda é NP-Hard, e um valor estático de $p_m$ pode não ser suficiente para encontrar o mínimo global. O que resolveria este problema, quando um valor muito baixo e um valor muito alto de ${p_m}_0$ não são suficientes?
+
+Tal questionamento trouxe a este trabalho a ideia de se usar um algoritmo adaptativo. Algo a se acrescentar ao AG que permitisse adaptar o valor de $p_m$ ao longo das gerações. Mesmo que o uso do AGA não trouxesse melhores soluções mais rapidamente, ele se mostrou melhor para o encontro de percursos cada vez menores. No entanto, o uso do AGA não trouxe o mesmo benefício para os problemas OneMax. Repensar o AGA é uma ideia válida, mas usar o AGA será sempre uma ideia melhor?
+
+Para isso, é necessário considerar os teoremas "No Free Lunch" (NFL - em português, teriam a mesma origem da expressão "Não existe almoço grátis") \cite{wolpert1997no}. De maneira simples, estes teoremas dizem que, para um algoritmo de busca e otimização (como é o caso do AG e do AGA), uma performance elevada para um grupo de problemas (como os problemas OneMax) tem como preço uma queda de performance para todos os outros grupos de problemas (como o problema do Caixeiro Viajante). O AGA tentaria ser a adaptação do AG para se adequar a outros problemas, e mesmo assim, ele veio com uma perda de performance para os problemas OneMax.
+
+Não é possível utilizar o mesmo algoritmo para todos os problemas. Mesmo que não utilizássemos um AGA, ainda haveria formas melhores de se otimizar o AG para um grupo de problemas, incluindo o Caixeiro Viajante. Isso, no entanto, não tira o mérito do AGA.
+
+Pelos experimentos feitos neste trabalho, ele foi capaz de encontrar soluções melhores para um problema mais complexo que os OneMax. Melhor performance é sempre interessante, mas ser capaz de encontrar soluções cada vez melhores sem ficar travado em extremos locais é, ao olhos deste trabalho, um benefício muito melhor. Restaria então verificar se outros problemas conseguiriam se beneficiar do AGA da mesma forma, e se o algoritmo do AGA poderia ser melhorado também.
