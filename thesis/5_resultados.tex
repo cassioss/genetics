@@ -17,7 +17,7 @@ O desvio padrão utilizado aqui foi o amostral, dado por:
 	\sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (x_i - \overline{x})^2}
 \end{equation}
 
-Os gráficos criados tiveram como base uma única simulação do AG para o problema e parâmetros de entrada escolhidos.
+Os gráficos criados tiveram como base uma única simulação do AG para o problema e parâmetros de entrada escolhidos. Não é possível ter expectativas de valores ou gerações, uma vez que o AG trabalha com tentativa-e-erro, então criá-las ou assumi-las seria difícil de quantizar.
 
 Como já foi comentado antes, se não for mencionado o contrário (mesmo para o caso adaptativo), utilizou-se 0.9 para $p_c$ e 0.01 para $p_m$. Todas as execuções utilizaram 100 indivíduos, 200 gerações e elitismo do melhor indivíduo. Se um problema convergiu completamente para a melhor solução antes das 200 gerações completarem, os gráficos foram reduzidos para melhor visualização, uma vez que os pontos extras não trariam novas informações para nós.
 
@@ -27,11 +27,11 @@ As simulações feitas com uso do AGA foram utilizadas para comparação com a i
 
 \subsection{Caso Estático}
 
-Este problema foi considerado simples de ser resolvido por um AG, uma vez que poucas mutações em um gene já fariam com que ele trouxesse o valor máximo. As figuras \ref{fig:onemax_boolean} e \ref{fig:onemax_boolean_std} demonstram exatamente isso, com convergência completa dos indivíduos para a solução ótima após 93 gerações.
+Este problema foi considerado simples de ser resolvido por um AG, uma vez que poucas mutações em um gene já permitem que ele ficasse igual a 1. As figuras \ref{fig:onemax_boolean} e \ref{fig:onemax_boolean_std} demonstram exatamente isso, com convergência completa dos indivíduos para a solução ótima após 93 gerações, sendo que a própria solução ótima foi encontrada com a melhor solução aparecendo após 78 gerações.
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_boolean.jpg}
-    \caption{Evolução do fitness para o problema do OneMax Booleano mostrando mínimo, máximo e valor médio ($p_c=0.9$, $p_m=0.01$).}
+    \caption{Evolução do fitness para o problema do OneMax Booleano mostrando mínimo, máximo e valor médio ($p_c=0.9$, $p_m=0.01$). Foram necessárias 78 gerações para que a solução ótima aparecesse, e 93 gerações para que todos os indivíduos convergissem para ela.}
     \label{fig:onemax_boolean}
 \end{figure}
 
@@ -41,18 +41,16 @@ Este problema foi considerado simples de ser resolvido por um AG, uma vez que po
     \label{fig:onemax_boolean_std}
 \end{figure}
 
+O comportamento estático para os valores padronizados de $p_c$ e $p_m$ mostrou um crescimento aproximadamente linear dos valores de fitness, tanto para o pior quanto para o melhor indivíduo. Isso demonstra que tais valores demonstram um crescimento equilibrado da população, e a mutação existente é suficiente para evoluir os indivíduos.
+
 \subsection{Caso Adaptativo}
+
+Com o AGA ativado, ficou bem mais complicado para o OneMax atingir a solução ótima. Como mostrado na figura \ref{fig:onemax_boolean_adaptive}, foram necessárias 113 gerações para que o melhor indivíduo atingisse a solução ótima, e a média dos valores de fitness oscilou entre 93 e 95 para as últimas gerações. Em termos de desvio padrão, como mostrado na figura \ref{fig:onemax_boolean_adaptive_std}, o valor nunca passou de 2.0 (de um máximo de 100), o que nos diz que a população não se dispersou completamente pelo efeito adaptativo.
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_boolean_adaptive.jpg}
-    \caption{Evolução do fitness para o problema do OneMax Booleano Adaptativo mostrando mínimo, máximo e valor médio ($p_c=0.9$, $p_{m0}=0.01$).}
+    \caption{Evolução do fitness para o problema do OneMax Booleano Adaptativo mostrando mínimo, máximo e valor médio ($p_c=0.9$, $p_{m0}=0.01$). Foram necessárias 113 gerações para que um indivíduo encontrasse a solução ótima.}
     \label{fig:onemax_boolean_adaptive}
-\end{figure}
-
-\begin{figure}[ht!]
-    \centering \includegraphics[width=1.0\textwidth]{onemax_boolean_adaptive_pm.jpg}
-    \caption{Probabilidade de mutação ao longo das gerações para o problema do OneMax Booleano Adaptativo ($p_c=0.9$, $p_{m0}=0.01$).}
-    \label{fig:onemax_boolean_adaptive_pm}
 \end{figure}
 
 \begin{figure}[ht!]
@@ -61,9 +59,52 @@ Este problema foi considerado simples de ser resolvido por um AG, uma vez que po
     \label{fig:onemax_boolean_adaptive_std}
 \end{figure}
 
+Um efeito interessante pode ser visto na figura \ref{fig:onemax_boolean_adaptive_pm}, com relação à evolução de $p_m$ e $p_{m0}$. É possível ver que as primeiras gerações ainda eram muito dispersas, o que fez com que $p_m$ começasse a cair. No entanto, como mencionado antes, um valor baixo de $p_m$ se mostrou mais do que suficiente para que a população do caso estático fosse capaz de encontrar a solução ótima.
+
+\begin{figure}[ht!]
+    \centering \includegraphics[width=1.0\textwidth]{onemax_boolean_adaptive_pm.jpg}
+    \caption{Probabilidade de mutação ao longo das gerações para o problema do OneMax Booleano Adaptativo ($p_c=0.9$, $p_{m0}=0.01$).}
+    \label{fig:onemax_boolean_adaptive_pm}
+\end{figure}
+
+Por conta disso, $p_{m0}$ começou a aumentar enquanto a população evoluía e ficava mais homogênea. O AGA, para uma população homogênea, interpreta isso como se a população tivesse travado em uma solução. Por conta disso, após cerca de 70 gerações, a homogeneização da população e o aumento de $p_{m0}$ se encontraram, e $p_m$ começou a aumentar.
+
+Quando $p_m$ parou de crescer (por volta de 110 gerações), ele estabilizou em torno de um valor mais alto que o inicial (por volta de 0.03). Tal aumento (tanto de $p_m$ quanto de $p_{m0}$) se mostrou suficiente para que a população fosse incapaz de convergir conjuntamente para a solução ótima.
+
+Foi possível tirar desta simulação que, mesmo que o intuito inicial deste AGA tivesse sido o de fugir de momentos em que o AG travasse em uma solução, ele veio com um custo, que foi o de evitar que a população fosse capaz de convergir conjuntamente para a solução ótima. Se o intuito de usar o AG for o de encontrar uma boa solução no final, esse custo é baixo.
+
+Os dados de interesse vindos destas simulações podem ser encontrados na tabela \ref{tab:onemax_boolean}.
+
+\begin{table}
+\caption{Dados coletados do problema do OneMax Booleano ($p_m = 0.01$).}
+\label{tab:onemax_boolean}
+
+\center
+\begin{tabular}{ccc}
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  \hline
+	Parâmetro analisado 					& AG Estático	& AG Adaptativo   \\
+	\hline
+	Solução ótima encontrada?				& Sim			& Sim		\\
+	Gerações p/solução ótima				& $78$			& $113$		\\
+	Convergência da população (gerações)	& $93$			& $--$		\\
+	Fitness médio após 100 gerações			& $100$			& $93.12$	\\
+	Fitness médio após 200 gerações 		& $100$			& $95.09$	\\
+	Valor final de $p_m$					& $0.01$ 		& $0.036$	\\
+	Valor mínimo de $p_m$					& $0.01$		& $0.001$	\\
+	Valor máximo de $p_m$					& $0.01$		& $0.042$	\\
+	Valor médio de $p_m$					& $0.01$		& $0.0196$	\\
+	\hline
+\end{tabular}
+\end{table}
+
 \section{OneMax Real}
 
-Texto.
+Para o OneMax Real, é virtualmente impossível chegar ao valor máximo de fitness (100.0), uma vez que a mutação para um número aleatório trabalha no intervalo [0, 1). Por conta disso, as análises feitas aqui focaram no comportamento da curva e na diferença de comportamento frente aos resultados do OneMax Booleano.
+
+\subsection{Caso Estático}
+
+Para o OneMax Real, foi possível ver, na figura \ref{fig:onemax_real}, que a população, mesmo não sendo capaz de atingir o fitness máximo, conseguiu se adaptar de modo cada vez mais homogêneo ao longo das gerações, o que é demonstrado pela queda do desvio padrão, mostrada na figura \ref{fig:onemax_real_std}.
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_real.jpg}
@@ -76,6 +117,16 @@ Texto.
     \caption{Desvio padrão ao longo das gerações para o problema do OneMax Real, com $p_c=0.9$ e $p_m=0.01$.}
     \label{fig:onemax_real_std}
 \end{figure}
+
+Os pontos de qualquer uma das medições (média, mínimo e máximo) parecem formar uma curva. Descobri-la fugiu do escopo deste trabalho, mas tal formato pode estar associado à probabilidade de se aumentar a expressividade de um gene. Na execução deste AG, cada gene é levado para mutação com probabilidade $p_m$. Se um gene tiver uma expressividade $0 < x < 1$, a mutação (assumida uniforme) possui uma probabilidade $x$ de diminuir este valor. Logo, a expressividade aumentará (frente a uma mutação) com probabilidade:
+
+\begin{equation}
+	1 - p_mx
+\end{equation}
+
+\subsection{Caso Adaptativo}
+
+
 
 \section{Caixeiro Viajante Adaptado}
 
