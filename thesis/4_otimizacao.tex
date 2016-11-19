@@ -20,7 +20,7 @@ Se fosse possível modificar tais parâmetros enquanto o AG é executado, de mod
 
 O conceito por trás de um AGA envolve implementar em cima de um AG de modo a modificar os parâmetros de crossover e/ou mutação ao longo do tempo. Não obstante, é possível moldar um AGA de modo a tratar crossover e mutação com probabilidades diferentes para cada indivíduo, de acordo com seus valores de fitness.
 
-Para este trabalho, optou-se por trabalhar com versões adaptadas de outros AGAs \cite{jakobovic1999adaptive, wang2001improved} e implementar uma versão única, explicada a seguir:
+Para este trabalho, optou-se por trabalhar com versões adaptadas de outros AGAs \cite{jakobovic1999adaptive, wang2001improved, srinivas1994adaptive} e implementar uma versão própria, explicada a seguir:
 
 \begin{itemize}
 
@@ -81,3 +81,5 @@ Traduzindo-se a explicação para um algoritmo, chegamos ao código mostrado a s
 \caption{Pseudocódigo do Algoritmo Genético Adaptativo (AGA).}
 \label{alg:aga}
 \end{algorithm}
+
+A ideia por trás de uma implementação própria foi a de testar a implementação de um AGA a partir de conceitos fáceis de interpretar. Se a ideia de adaptação de um AGA, conforme vista na literatura, for tão simples quanto a base evolutiva do AG, o formato dele também deverá buscar uma implementação simples.

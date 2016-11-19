@@ -81,19 +81,19 @@ Os dados de interesse vindos destas simulações podem ser encontrados na tabela
 
 \center
 \begin{tabular}{ccc}
-  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
-  \hline
-	Parâmetro analisado 					& AG Estático	& AG Adaptativo   \\
 	\hline
-	Solução ótima encontrada?				& Sim			& Sim		\\
-	Gerações p/solução ótima				& $78$			& $113$		\\
-	Convergência da população (gerações)	& $93$			& $--$		\\
-	Fitness médio após 100 gerações			& $100$			& $93.12$	\\
-	Fitness médio após 200 gerações 		& $100$			& $95.09$	\\
-	Valor final de $p_m$					& $0.01$ 		& $0.036$	\\
-	Valor mínimo de $p_m$					& $0.01$		& $0.001$	\\
-	Valor máximo de $p_m$					& $0.01$		& $0.042$	\\
-	Valor médio de $p_m$					& $0.01$		& $0.0196$	\\
+	Parâmetro analisado 								& AG Estático	& AG Adaptativo   \\
+	\hline
+	Solução ótima encontrada?							& Sim			& Sim		\\
+	Gerações p/solução ótima							& $78$			& $113$		\\
+	Convergência da população (gerações)				& $93$			& $--$		\\
+	Fitness médio após 100 gerações						& $100$			& $93.12$	\\
+	Fitness médio após 200 gerações 					& $100$			& $95.09$	\\
+	Valor final de $p_m$								& $0.01$ 		& $0.036$	\\
+	Valor mínimo de $p_m$								& $0.01$		& $0.001$	\\
+	Valor máximo de $p_m$								& $0.01$		& $0.042$	\\
+	Valor médio de $p_m$								& $0.01$		& $0.0196$	\\
+	Valor médio de $p_m$ para as últimas 100 gerações	& $0.01$		& $0.0341$	\\
 	\hline
 \end{tabular}
 \end{table}
@@ -104,7 +104,7 @@ Para o OneMax Real, é virtualmente impossível chegar ao valor máximo de fitne
 
 \subsection{Caso Estático}
 
-Para o OneMax Real, foi possível ver, na figura \ref{fig:onemax_real}, que a população, mesmo não sendo capaz de atingir o fitness máximo, conseguiu se adaptar de modo cada vez mais homogêneo ao longo das gerações, o que é demonstrado pela queda do desvio padrão, mostrada na figura \ref{fig:onemax_real_std}.
+Para o OneMax Real, foi possível ver, na figura \ref{fig:onemax_real}, que a população, mesmo não sendo capaz de atingir o fitness máximo, conseguiu se homogeneizar e continuar crescendo ao longo das gerações, o que foi demonstrado também pela queda do desvio padrão, mostrado na figura \ref{fig:onemax_real_std}.
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_real.jpg}
@@ -118,19 +118,63 @@ Para o OneMax Real, foi possível ver, na figura \ref{fig:onemax_real}, que a po
     \label{fig:onemax_real_std}
 \end{figure}
 
-Os pontos de qualquer uma das medições (média, mínimo e máximo) parecem formar uma curva. Descobri-la fugiu do escopo deste trabalho, mas tal formato pode estar associado à probabilidade de se aumentar a expressividade de um gene. Na execução deste AG, cada gene é levado para mutação com probabilidade $p_m$. Se um gene tiver uma expressividade $0 < x < 1$, a mutação (assumida uniforme) possui uma probabilidade $x$ de diminuir este valor. Logo, a expressividade aumentará (frente a uma mutação) com probabilidade:
+Os pontos de qualquer uma das medições (média, mínimo e máximo) parecem formar uma curva. Descobri-la fugiu do escopo deste trabalho, mas tal formato pode estar associado à probabilidade de se aumentar a expressividade de um gene. Na execução deste AG, cada gene é levado para mutação com probabilidade $p_m$. Se um gene tiver uma expressividade $0 < x < 1$, a mutação (assumida uniforme) possui uma probabilidade $(1-x)$ de aumentá-la. Logo, a expressividade aumentará em uma dada geração com probabilidade:
 
 \begin{equation}
-	1 - p_mx
+	p_m(1-x)
 \end{equation}
 
 \subsection{Caso Adaptativo}
 
+Os efeitos notados para o OneMax Booleano se repetiram aqui. Como se pode ver nas figuras \ref{fig:onemax_real_adaptive}, a população se estabilizou após cerca de 110 gerações, o que indica que a mutação se estabilizou em um determinado valor.
 
+\begin{figure}[ht!]
+    \centering \includegraphics[width=1.0\textwidth]{onemax_real_adaptive.jpg}
+    \caption{Evolução do fitness para o problema do OneMax Real Adaptativo mostrando mínimo, máximo e valor médio ($p_c=0.9$, $p_{m0}=0.01$). Foram necessárias 113 gerações para que um indivíduo encontrasse a solução ótima.}
+    \label{fig:onemax_real_adaptive}
+\end{figure}
+
+No entanto, na figura \ref{fig:onemax_real_adaptive_std}, vemos que o desvio padrão dos valores de fitness aparentou crescer ao longo das gerações. Isso se deu mais por conta do aumento de $p_m$ após 73 gerações, mostrado na figura \ref{fig:onemax_real_adaptive_pm}. Comparado ao OneMax Booleano, o $p_m$ atingiu valores maiores próximo às últimas gerações (oscilando em torno de 0.04), o que pode ter contribuído para o aumento do desvio padrão, mesmo com a média dos valores de fitness se mantendo relativamente no mesmo valor.
+
+\begin{figure}[ht!]
+    \centering \includegraphics[width=1.0\textwidth]{onemax_real_adaptive_std.jpg}
+    \caption{Desvio padrão ao longo das gerações para o problema do OneMax Real Adaptativo ($p_c=0.9$, $p_{m0}=0.01$).}
+    \label{fig:onemax_real_adaptive_std}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering \includegraphics[width=1.0\textwidth]{onemax_real_adaptive_pm.jpg}
+    \caption{Probabilidade de mutação ao longo das gerações para o problema do OneMax Real Adaptativo ($p_c=0.9$, $p_{m0}=0.01$).}
+    \label{fig:onemax_real_adaptive_pm}
+\end{figure}
+
+Os dados de interesse vindos destas simulações podem ser encontrados na tabela  \ref{tab:onemax_real}.
+
+\begin{table}
+\caption{Dados coletados do problema do OneMax Real ($p_m = 0.01$).}
+\label{tab:onemax_real}
+
+\center
+\begin{tabular}{ccc}
+	\hline
+	Parâmetro analisado 								& AG Estático		& AG Adaptativo   \\
+	\hline
+	Fitness máximo após 100 gerações					& $85.1153808292$	& $77.1463140043$	\\
+	Fitness médio após 100 gerações						& $84.0477295035$	& $75.2878839218$	\\
+	Fitness máximo após 200 gerações 					& $93.0831225382$	& $84.5782329066$	\\
+	Fitness médio após 200 gerações 					& $92.3547427661$	& $79.6263987855$	\\
+	Valor final de $p_m$								& $0.01$ 			& $0.034$	\\
+	Valor mínimo de $p_m$								& $0.01$			& $0.001$	\\
+	Valor máximo de $p_m$								& $0.01$			& $0.05$	\\
+	Valor médio de $p_m$								& $0.01$			& $0.0215$	\\
+	Valor médio de $p_m$ para as últimas 100 gerações	& $0.01$			& $0.0382$	\\
+	\hline
+\end{tabular}
+\end{table}
 
 \section{Caixeiro Viajante Adaptado}
 
-Texto.
+Para as simulações deste problema, foi necessário utilizar um grafo de cidades. Utilizou-se então o grafo feito para o programa Open-Source DEAP, com 17 cidades \cite{DEAP_JMLR2012, deap2016tsp}. Tal grafo é conexo, completo e bidirecionado. Tal grafo está presente na listagem \ref{lst:cidades}.
 
 \begin{lstlisting}[float, floatplacement=H, caption={Mapa de cidades para o problema do Caixeiro Viajante Adaptado.}, label=lst:cidades]
 [0, 633, 257, 91, 412, 150, 80, 134, 259, 505, 353, 324, 70, 211, 268, 246, 121],
@@ -151,3 +195,8 @@ Texto.
 [246, 745, 472, 237, 528, 364, 332, 349, 202, 685, 542, 157, 289, 426, 483, 0, 336],
 [121, 518, 142, 84, 297, 35, 29, 36, 236, 390, 238, 301, 55, 96, 153, 336, 0]
 \end{lstlisting}
+
+\subsection{Caso Estático}
+
+\subsection{Caso Adaptativo}
+

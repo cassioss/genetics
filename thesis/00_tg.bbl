@@ -31,6 +31,20 @@ A.~E. Eiben and J.~E. Smith.
 \newblock {\em Introduction To Evolutionary Computing}, volume~53.
 \newblock Springer-Verlag, 2003.
 
+\bibitem{deap2016tsp}
+F\'elix-Antoine Fortin, Fran\c{c}ois-Michel {De Rainville}, Marc-Andr\'e
+  Gardner, Marc Parizeau, and Christian Gagn\'e.
+\newblock Deap examples - tsp.
+\newblock
+  \url{https://github.com/DEAP/deap/blob/master/examples/ga/tsp/gr17.json}.
+\newblock [Online; acessado em 19 de novembro de 2016].
+
+\bibitem{DEAP_JMLR2012}
+F\'elix-Antoine Fortin, Fran\c{c}ois-Michel {De Rainville}, Marc-Andr\'e
+  Gardner, Marc Parizeau, and Christian Gagn\'e.
+\newblock {DEAP}: Evolutionary algorithms made easy.
+\newblock {\em Journal of Machine Learning Research}, 13:2171--2175, jul 2012.
+
 \bibitem{giguere1998population}
 P.~Giguere and D.~E. Goldberg.
 \newblock Population sizing for optimum sampling with genetic algorithms: A
