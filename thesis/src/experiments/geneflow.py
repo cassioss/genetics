@@ -212,7 +212,7 @@ class GeneFlow:
 
 # Uncomment one of the next three lines to simulate the algorithm
 
-GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.5).generate()
+GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.3).generate()
 #GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.05).generate()
 #GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False, adaptive=True, print_stats=True, pm=0.2).generate()
 
