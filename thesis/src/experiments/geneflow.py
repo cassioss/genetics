@@ -7,7 +7,7 @@ from individuals import new_individual, from_genes
 from individuals import Individual
 
 class GeneFlow:
-    def __init__(self, ind_type, gene_type, ffit=None, pc=0.9, pm=0.01, mu=100, ngen=200,
+    def __init__(self, ind_type, gene_type, ffit=None, pc=0.9, pm=0.01, mu=100, ngen=500,
                 print_stats=True, maximum=True, elitism=True, adaptive=False):
         self.fitness = ffit
         self.population = [new_individual(ind_type, gene_type) for x in range(mu)]
@@ -32,7 +32,7 @@ class GeneFlow:
         if self.adaptive:
             new_path = os.path.relpath(file_name + '_pm.csv', os.path.dirname(__file__))
             self.adapt_file = open(new_path, 'w')
-            self.adapt_file.write('Generation,pm,pm0\n')
+            self.adapt_file.write('Generation,pm,pm0,deviation,best_fitness\n')
 
 
     def calculate_all_fitness(self):
@@ -158,18 +158,21 @@ class GeneFlow:
         if self.adaptive:
             self.adapt()
 
+    # Deviation of the best fitness to the average
+    def deviation(self):
+        if abs(self.avg_fitness()) < 0.0000001:
+            return 0.0
+        return abs((self.best_fitness() - self.avg_fitness()) / (self.avg_fitness()))
+
     # Adaptive Genetic Algorithm (AGA) module
     def adapt(self):
 
-        # In order to stop division by zero
+        # In order to avoid division by zero
         if abs(self.avg_fitness()) < 0.0000001:
             return
 
-        # Deviation of the best fitness to the average
-        deviation = abs((self.best_fitness() - self.avg_fitness()) / (self.avg_fitness()))
-
-        # Reduce pm if deviation is high
-        if deviation <= self.pm0:
+        # Reduce pm if the deviation is high
+        if self.deviation() <= self.pm0:
             self.pm = min(0.5, self.pm + 0.001)
             if self.pm is 0.5:
                 self.pm0 = max(0.001, self.pm0 - 0.001)
@@ -177,11 +180,11 @@ class GeneFlow:
         # Increase it, otherwise
         else:
             self.pm = max(0.001, self.pm - 0.001)
-            if self.pm is 0.001:
-                self.pm0 = min(0.5, self.pm0 + 0.001)
+            #if self.pm is 0.001:
+            #    self.pm0 = min(0.5, self.pm0 + 0.001)
 
         if self.print_stats:
-            print deviation, self.pm, self.pm0, self.best_fitness()
+            print self.deviation(), self.pm, self.pm0, self.best_fitness()
 
     def write_to_file(self, n):
         self.file.write(str(n))
@@ -201,13 +204,17 @@ class GeneFlow:
             self.adapt_file.write(str(self.pm))
             self.adapt_file.write(',')
             self.adapt_file.write(str(self.pm0))
+            self.adapt_file.write(',')
+            self.adapt_file.write(str(self.deviation()))
+            self.adapt_file.write(',')
+            self.adapt_file.write(str(self.best_fitness()))
             self.adapt_file.write('\n')
 
 # Uncomment one of the next three lines to simulate the algorithm
 
-#GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax, adaptive=True, print_stats=True).generate()
-#GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.01).generate()
-GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False, adaptive=True, print_stats=True, pm=0.01).generate()
+GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.5).generate()
+#GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.05).generate()
+#GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False, adaptive=True, print_stats=True, pm=0.2).generate()
 
 
 
