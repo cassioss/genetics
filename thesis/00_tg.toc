@@ -48,14 +48,14 @@
 \contentsline {subsection}{\numberline {5.4.3}Caso Adaptativo ($p_m = 0.01$)}{45}{subsection.5.4.3}
 \contentsline {subsection}{\numberline {5.4.4}Caso Adaptativo ($p_m = 0.2$)}{48}{subsection.5.4.4}
 \contentsline {section}{\numberline {5.5}Discuss\IeC {\~o}es}{49}{section.5.5}
-\contentsline {chapter}{\numberline {6}Conclus\~oes e Trabalhos Futuros}{52}{chapter.6}
-\contentsline {section}{\numberline {6.1}Conclus\IeC {\~o}es}{52}{section.6.1}
-\contentsline {section}{\numberline {6.2}Trabalhos Futuros}{52}{section.6.2}
-\contentsline {chapter}{Refer\^encias}{54}{section.6.2}
-\contentsline {chapter}{Ap\^endice{} A{} -$\tmspace -\thinmuskip {.1667em}$-{} Genes Utilizados}{56}{appendix.A}
-\contentsline {chapter}{Ap\^endice{} B{} -$\tmspace -\thinmuskip {.1667em}$-{} Indiv\IeC {\'\i }duos dos problemas}{59}{appendix.B}
-\contentsline {chapter}{Ap\^endice{} C{} -$\tmspace -\thinmuskip {.1667em}$-{} Algoritmo Gen\IeC {\'e}tico}{62}{appendix.C}
-\contentsline {chapter}{Ap\^endice{} D{} -$\tmspace -\thinmuskip {.1667em}$-{} Fun\IeC {\c c}\IeC {\~o}es de fitness}{69}{appendix.D}
-\contentsline {chapter}{Ap\^endice{} E{} -$\tmspace -\thinmuskip {.1667em}$-{} Mapa das cidades - Caixeiro Viajante}{70}{appendix.E}
-\contentsline {chapter}{Ap\^endice{} F{} -$\tmspace -\thinmuskip {.1667em}$-{} Implementa\IeC {\c c}\IeC {\~a}o do Algoritmo de Dijkstra}{73}{appendix.F}
-\contentsline {chapter}{Ap\^endice{} G{} -$\tmspace -\thinmuskip {.1667em}$-{} Fun\IeC {\c c}\IeC {\~o}es de utilidade}{77}{appendix.G}
+\contentsline {chapter}{\numberline {6}Conclus\~oes e Trabalhos Futuros}{53}{chapter.6}
+\contentsline {section}{\numberline {6.1}Conclus\IeC {\~o}es}{53}{section.6.1}
+\contentsline {section}{\numberline {6.2}Trabalhos Futuros}{53}{section.6.2}
+\contentsline {chapter}{Refer\^encias}{55}{section.6.2}
+\contentsline {chapter}{Ap\^endice{} A{} -$\tmspace -\thinmuskip {.1667em}$-{} Genes Utilizados}{57}{appendix.A}
+\contentsline {chapter}{Ap\^endice{} B{} -$\tmspace -\thinmuskip {.1667em}$-{} Indiv\IeC {\'\i }duos dos problemas}{60}{appendix.B}
+\contentsline {chapter}{Ap\^endice{} C{} -$\tmspace -\thinmuskip {.1667em}$-{} Algoritmo Gen\IeC {\'e}tico}{63}{appendix.C}
+\contentsline {chapter}{Ap\^endice{} D{} -$\tmspace -\thinmuskip {.1667em}$-{} Fun\IeC {\c c}\IeC {\~o}es de fitness}{70}{appendix.D}
+\contentsline {chapter}{Ap\^endice{} E{} -$\tmspace -\thinmuskip {.1667em}$-{} Mapa das cidades - Caixeiro Viajante}{71}{appendix.E}
+\contentsline {chapter}{Ap\^endice{} F{} -$\tmspace -\thinmuskip {.1667em}$-{} Implementa\IeC {\c c}\IeC {\~a}o do Algoritmo de Dijkstra}{74}{appendix.F}
+\contentsline {chapter}{Ap\^endice{} G{} -$\tmspace -\thinmuskip {.1667em}$-{} Fun\IeC {\c c}\IeC {\~o}es de utilidade}{78}{appendix.G}
