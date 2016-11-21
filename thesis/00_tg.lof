@@ -1,7 +1,7 @@
 \select@language {brazilian}
 \contentsline {figure}{\numberline {1}{\ignorespaces Framework de um algoritmo evolutivo.}}{19}{figure.1.1}
 \contentsline {figure}{\numberline {2}{\ignorespaces A\IeC {\c c}\IeC {\~a}o de crossover em dois pontos.}}{29}{figure.3.2}
-\contentsline {figure}{\numberline {3}{\ignorespaces Evolu\IeC {\c c}\IeC {\~a}o dos valores de $p_m$ e ${p_m}_0$ para o problema OneMax para valores diferentes de ${p_m}_0$.}}{35}{figure.4.3}
+\contentsline {figure}{\numberline {3}{\ignorespaces Evolu\IeC {\c c}\IeC {\~a}o dos valores de $p_m$ e ${p_m}_0$ para o problema OneMax para valores diferentes de ${p_m}_0$ (em vermelho) ao longo de 500 gera\IeC {\c c}\IeC {\~o}es.}}{35}{figure.4.3}
 \contentsline {figure}{\numberline {4}{\ignorespaces Evolu\IeC {\c c}\IeC {\~a}o do fitness para o problema do OneMax Booleano mostrando m\IeC {\'\i }nimo, m\IeC {\'a}ximo e valor m\IeC {\'e}dio ($p_c=0.9$, $p_m=0.01$). Foram necess\IeC {\'a}rias 78 gera\IeC {\c c}\IeC {\~o}es para que a solu\IeC {\c c}\IeC {\~a}o \IeC {\'o}tima aparecesse, e 93 gera\IeC {\c c}\IeC {\~o}es para que a popula\IeC {\c c}\IeC {\~a}o inteira convergisse para ela.}}{37}{figure.5.4}
 \contentsline {figure}{\numberline {5}{\ignorespaces Desvio padr\IeC {\~a}o ao longo das gera\IeC {\c c}\IeC {\~o}es para o problema do OneMax Booleano ($p_c=0.9$, $p_m=0.01$).}}{38}{figure.5.5}
 \contentsline {figure}{\numberline {6}{\ignorespaces Evolu\IeC {\c c}\IeC {\~a}o do fitness para o problema do OneMax Booleano Adaptativo mostrando m\IeC {\'\i }nimo, m\IeC {\'a}ximo e valor m\IeC {\'e}dio ($p_c=0.9$, ${p_m}_0=0.01$). Foram necess\IeC {\'a}rias 113 gera\IeC {\c c}\IeC {\~o}es para que um indiv\IeC {\'\i }duo encontrasse a solu\IeC {\c c}\IeC {\~a}o \IeC {\'o}tima.}}{39}{figure.5.6}
