@@ -39,25 +39,19 @@ O comportamento estático para os valores padronizados de $p_c$ e $p_m$ mostrou 
 
 \subsection{Caso Adaptativo}
 
-Com o AGA ativado, ficou bem mais complicado para o OneMax atingir a solução ótima. Como mostrado na figura \ref{fig:onemax_boolean_adaptive}, foram necessárias 113 gerações para que o melhor indivíduo atingisse a solução ótima, e a média dos valores de fitness oscilou entre 93 e 95 para as últimas gerações. Em termos de desvio padrão, como mostrado na figura \ref{fig:onemax_boolean_adaptive_std}, o valor nunca passou de 2.0 (de um máximo de 100), o que nos diz que a população não se dispersou completamente pelo efeito adaptativo.
+Com o AGA ativado, ficou bem mais complicado para o OneMax atingir a solução ótima. Como mostrado na figura \ref{fig:onemax_boolean_adaptive}, foram necessárias 140 gerações para que o melhor indivíduo atingisse a solução ótima, e a média dos valores de fitness oscilou entre 98 e 99 para as últimas gerações. Em termos de desvio padrão, o valor nunca passou de 2.0 (de um máximo de 100), o que nos diz que a população não se dispersou completamente pelo efeito adaptativo.
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_boolean_adaptive.jpg}
-    \caption{Evolução do fitness para o problema do OneMax Booleano Adaptativo mostrando mínimo, máximo e valor médio ($p_c=0.9$, ${p_m}_0=0.01$). Foram necessárias 113 gerações para que um indivíduo encontrasse a solução ótima.}
+    \caption{Evolução do fitness para o problema do OneMax Booleano Adaptativo mostrando mínimo, máximo, valor médio e desvio padrão ($p_c=0.9$, ${p_m}_0=0.01$). Foram necessárias 140 gerações para que um indivíduo encontrasse a solução ótima.}
     \label{fig:onemax_boolean_adaptive}
 \end{figure}
 
-\begin{figure}[ht!]
-    \centering \includegraphics[width=1.0\textwidth]{onemax_boolean_adaptive_std.jpg}
-    \caption{Desvio padrão ao longo das gerações para o problema do OneMax Booleano Adaptativo ($p_c=0.9$, ${p_m}_0=0.01$).}
-    \label{fig:onemax_boolean_adaptive_std}
-\end{figure}
-
-Um efeito interessante pode ser visto na figura \ref{fig:onemax_boolean_adaptive_pm}, com relação à evolução de $p_m$ e ${p_m}_0$. É possível ver que as primeiras gerações ainda eram muito dispersas, o que fez com que $p_m$ começasse a cair. No entanto, como mencionado antes, um valor baixo de $p_m$ se mostrou mais do que suficiente para que a população do caso estático fosse capaz de encontrar a solução ótima.
+Um efeito interessante pode ser visto na figura \ref{fig:onemax_boolean_adaptive_pm} com relação à evolução de $p_m$ e ${p_m}_0$. É possível ver que as primeiras gerações ainda eram muito dispersas, o que fez com que $p_m$ começasse a cair. No entanto, como mencionado antes, um valor baixo de $p_m$ se mostrou mais do que suficiente para que a população do caso estático fosse capaz de encontrar a solução ótima.
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_boolean_adaptive_pm.jpg}
-    \caption{Probabilidade de mutação ao longo das gerações para o problema do OneMax Booleano Adaptativo ($p_c=0.9$, ${p_m}_0=0.01$).}
+    \caption{Evolução da probabilidade de mutação $p_m$ ao longo das gerações, juntamente com o desvio do melhor valor de fitness com relação à média ($p_c=0.9$, ${p_m}_0=0.01$).}
     \label{fig:onemax_boolean_adaptive_pm}
 \end{figure}
 
@@ -79,16 +73,15 @@ Os dados de interesse vindos destas simulações podem ser encontrados na tabela
 	Algoritmo analisado (AG = caso estático) 			& AG		& AGA		\\
 	\hline
 	Solução ótima encontrada?							& Sim		& Sim		\\
-	Gerações p/solução ótima							& $78$		& $113$		\\
+	Gerações p/solução ótima							& $78$		& $140$		\\
 	Convergência da população (gerações)				& $93$		& $--$		\\
-	Fitness médio após 100 gerações						& $100$		& $93.12$	\\
-	Fitness médio após 200 gerações 					& $100$		& $95.09$	\\
-	Valor final de $p_m$								& $0.01$ 	& $0.036$	\\
+	Fitness médio após 100 gerações						& $100$		& $82.67$	\\
+	Fitness médio após 200 gerações 					& $100$		& $99.17$	\\
+	Valor final de $p_m$								& $0.01$ 	& $0.019$	\\
 	Valor mínimo de $p_m$								& $0.01$	& $0.001$	\\
-	Valor máximo de $p_m$								& $0.01$	& $0.042$	\\
-	Valor médio de $p_m$								& $0.01$	& $0.0196$	\\
-	Valor médio de $p_m$ para as últimas 100 gerações	& $0.01$	& $0.0341$	\\
-	Valor final de ${p_m}_0$								& --		& $0.059$	\\
+	Valor máximo de $p_m$								& $0.01$	& $0.021$	\\
+	Valor médio de $p_m$								& $0.01$	& $0.00594$	\\
+	Valor médio de $p_m$ para as últimas 100 gerações	& $0.01$	& $0.0105$	\\
 	\hline
 \end{tabular}
 \end{table}
