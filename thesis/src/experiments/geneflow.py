@@ -7,7 +7,7 @@ from individuals import new_individual, from_genes
 from individuals import Individual
 
 class GeneFlow:
-    def __init__(self, ind_type, gene_type, ffit=None, pc=0.9, pm=0.01, mu=100, ngen=500,
+    def __init__(self, ind_type, gene_type, ffit=None, pc=0.9, pm=0.01, mu=100, ngen=200,
                 print_stats=True, maximum=True, elitism=True, adaptive=False):
         self.fitness = ffit
         self.population = [new_individual(ind_type, gene_type) for x in range(mu)]
@@ -209,7 +209,7 @@ class GeneFlow:
 
 # Uncomment one of the next three lines to simulate the algorithm
 
-GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.5).generate()
+GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.01).generate()
 #GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.05).generate()
 #GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False, adaptive=True, print_stats=True, pm=0.2).generate()
 

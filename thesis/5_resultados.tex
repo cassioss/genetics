@@ -27,18 +27,12 @@ As simulações feitas com uso do AGA foram utilizadas para comparação com a i
 
 \subsection{Caso Estático}
 
-Este problema foi considerado simples de ser resolvido por um AG, uma vez que poucas mutações em um gene já permitem que ele ficasse igual a 1. As figuras \ref{fig:onemax_boolean} e \ref{fig:onemax_boolean_std} demonstram exatamente isso, com convergência completa dos indivíduos para a solução ótima após 93 gerações, sendo que a própria solução ótima foi encontrada com a melhor solução aparecendo após 78 gerações.
+Este problema foi considerado simples de ser resolvido por um AG, uma vez que poucas mutações em um gene já permitem que ele ficasse igual a 1. A figura \ref{fig:onemax_boolean} demonstra exatamente isso, com convergência completa dos indivíduos para a solução ótima após 93 gerações, sendo que a própria solução ótima foi encontrada com a melhor solução aparecendo após 78 gerações.
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{onemax_boolean.jpg}
-    \caption{Evolução do fitness para o problema do OneMax Booleano mostrando mínimo, máximo e valor médio ($p_c=0.9$, $p_m=0.01$). Foram necessárias 78 gerações para que a solução ótima aparecesse, e 93 gerações para que a população inteira convergisse para ela.}
+    \caption{Evolução do fitness para o problema do OneMax Booleano mostrando mínimo, máximo, valor médio e desvio padrão ($p_c=0.9$, $p_m=0.01$). Foram necessárias 78 gerações para que a solução ótima aparecesse, e 93 gerações para que a população inteira convergisse para ela.}
     \label{fig:onemax_boolean}
-\end{figure}
-
-\begin{figure}[ht!]
-    \centering \includegraphics[width=1.0\textwidth]{onemax_boolean_std.jpg}
-    \caption{Desvio padrão ao longo das gerações para o problema do OneMax Booleano ($p_c=0.9$, $p_m=0.01$).}
-    \label{fig:onemax_boolean_std}
 \end{figure}
 
 O comportamento estático para os valores padronizados de $p_c$ e $p_m$ mostrou um crescimento aproximadamente linear dos valores de fitness, tanto para o pior quanto para o melhor indivíduo. Isso demonstra que tais valores demonstram um crescimento equilibrado da população, e a mutação existente é suficiente para evoluir os indivíduos.
