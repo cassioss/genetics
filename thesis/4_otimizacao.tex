@@ -39,13 +39,11 @@ Para este trabalho, optou-se por trabalhar com versões adaptadas de outros AGAs
 
 	\item Caso contrário, as soluções estarão se desviando muito, o que pode ser resultado de uma mutação intensa. Para resolver isso, $p_m$ irá diminuir;
 
-	\item O valor de ${p_m}_0$ é o valor inicial de $p_m$ para o valor inicial de ${p_m}_0$, de modo a servir de termômetro para quão grande deve ser o desvio;
+	\item O valor de ${p_m}_0$ é o valor inicial de $p_m$ para o valor inicial de ${p_m}_0$, de modo a servir de termômetro para o valor do desvio;
 
 	\item No entanto, $p_m$ não pode ser igual a zero nem maior que 1, dado que representa uma probabilidade. Seguindo a linha de outros trabalhos \cite{matthias2013variable}, $p_m$ será limitado ao intervalo [0.001, 0.5] (se $p_m$ tentar extrapolar estes limites, ele retornará ao valor extremo mais próximo);
 
-	\item Para valores muito altos de ${p_m}_0$, existe a chance de, por conta de a mutação ser muito intensa, o AG não ser capaz de manter o desvio entorno de um valor estável. Para contornar isso, caso $p_m$ fique igual a 0.5 em uma geração, ${p_m}_0$ irá diminuir, para equilibrar este efeito (se $p_m$ ficar travado em 0.001, a homogeneização da população irá aumentar $p_m$ eventualmente);
-
-	\item O incremento/decremento para $p_m$ e ${p_m}_0$ será linear e igual a 0.001;
+	\item O incremento/decremento para $p_m$ será linear e igual a 0.001;
 
 	\item Como há uma divisão por $\bar{f}$, se este valor for zero ou muito próximo de zero para alguma geração, este AGA não será executado.
 
@@ -64,14 +62,11 @@ Traduzindo-se a explicação para um algoritmo, chegamos ao código mostrado no 
 		}
 		$f_{best} \gets $ (melhor valor de fitness na população)\;
 		$desvio \gets \left| \frac{f_{best} - \bar{f}}{\bar{f}} \right|$\;
-		\If{desvio < ${p_m}_0$} {
+		\If{desvio <= ${p_m}_0$} {
 			$p_m \gets min(0.5, p_m + 0.001)$\;
 		}
 		\Else{
 			$p_m \gets max(0.001, p_m - 0.001)$\;
-			\If{$p_m == 0.001$} {
-				${p_m}_0 \gets min(0.5, {p_m}_0 + 0.001)$\;
-			}
 		}
 	}
 }
@@ -87,5 +82,5 @@ Para exemplificar o funcionamento do AGA, foram feitas simulações para diferen
     \label{fig:aga_test}
 \end{figure}
 
-A ideia por trás de uma implementação própria foi a de testar a implementação de um AGA a partir de conceitos fáceis de interpretar. Se a ideia de adaptação de um AGA, conforme vista na literatura, for tão simples quanto a base evolutiva do AG, o formato dele também deverá buscar uma implementação simples.
+A ideia por trás de uma implementação própria foi a de testar a implementação de um AGA a partir de conceitos mais simples. Se a ideia de adaptação de um AGA, conforme vista na literatura, for tão simples quanto a base evolutiva do AG, o formato dele também deverá buscar uma implementação simples.
 

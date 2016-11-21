@@ -162,6 +162,7 @@ class GeneFlow:
     def deviation(self):
         if abs(self.avg_fitness()) < 0.0000001:
             return 0.0
+
         return abs((self.best_fitness() - self.avg_fitness()) / (self.avg_fitness()))
 
     # Adaptive Genetic Algorithm (AGA) module
@@ -171,17 +172,13 @@ class GeneFlow:
         if abs(self.avg_fitness()) < 0.0000001:
             return
 
-        # Reduce pm if the deviation is high
+        # Increment pm if the deviation is lower than pm0
         if self.deviation() <= self.pm0:
             self.pm = min(0.5, self.pm + 0.001)
-            if self.pm is 0.5:
-                self.pm0 = max(0.001, self.pm0 - 0.001)
 
-        # Increase it, otherwise
+        # Decrement pm, otherwise
         else:
             self.pm = max(0.001, self.pm - 0.001)
-            #if self.pm is 0.001:
-            #    self.pm0 = min(0.5, self.pm0 + 0.001)
 
         if self.print_stats:
             print self.deviation(), self.pm, self.pm0, self.best_fitness()
@@ -212,7 +209,7 @@ class GeneFlow:
 
 # Uncomment one of the next three lines to simulate the algorithm
 
-GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.3).generate()
+GeneFlow('OneMaxIndividual', 'BooleanGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.5).generate()
 #GeneFlow('OneMaxIndividual', 'RealGene', fitness.onemax, adaptive=True, print_stats=True, pm=0.05).generate()
 #GeneFlow('TSPIndividual', 'IntegerGene', fitness.tsp, maximum=False, adaptive=True, print_stats=True, pm=0.2).generate()
 
