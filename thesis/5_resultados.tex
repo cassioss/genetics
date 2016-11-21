@@ -234,18 +234,12 @@ O funcionamento do AGA ficou bem mais evidente na figura \ref{fig:tsp_001_adapti
 
 \subsection{Caso Adaptativo ($p_m = 0.2$)}
 
-O gráfico da figura \ref{fig:tsp_02_adaptative} encontrou o menor percurso dentre as simulações feitas aqui (2160). Não só isso, as melhores soluções pareceram ficar travadas por bem menos tempo (o pior caso, próximo do final da simulação, durou 34 gerações). Um outro efeito interessante também aconteceu: todas as curvas (mínimo, máximo e média) evoluíram de formas semelhantes, mesmo com uma mutação inicial intensa. Isso deu para observar também na evolução do desvio padrão, na figura \ref{fig:tsp_02_adaptive_std}, que conseguiu diminuir com o tempo e ficar mais ou menos estável ao longo das gerações.
+O gráfico da figura \ref{fig:tsp_02_adaptative} encontrou o menor percurso dentre as simulações feitas aqui (2160). Não só isso, as melhores soluções pareceram ficar travadas por bem menos tempo (o pior caso, próximo do final da simulação, durou 34 gerações). Um outro efeito interessante também aconteceu: todas as curvas (mínimo, máximo e média) evoluíram de formas semelhantes, mesmo com uma mutação inicial intensa. Isso deu para observar também na evolução do desvio padrão, que conseguiu diminuir com o tempo e ficar mais ou menos estável ao longo das gerações.
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{tsp_02_adaptive.jpg}
-    \caption{Evolução do fitness para o problema do Caixeiro Viajante Adaptado Adaptativo, mostrando mínimo, máximo e valor médio ($p_c=0.9$, ${p_m}_0=0.2$). O menor caminho encontrado tem distância total de 2160.}
+    \caption{Evolução do fitness para o problema do Caixeiro Viajante Adaptado Adaptativo, mostrando mínimo, máximo, valor médio e desvio padrão ($p_c=0.9$, ${p_m}_0=0.2$). O menor caminho encontrado tem distância total de 2160.}
     \label{fig:tsp_02_adaptative}
-\end{figure}
-
-\begin{figure}[ht!]
-    \centering \includegraphics[width=1.0\textwidth]{tsp_02_adaptive_std.jpg}
-    \caption{Desvio padrão ao longo das gerações para o problema do Caixeiro Viajante Adaptado Adaptativo ($p_c=0.9$, ${p_m}_0=0.2$).}
-    \label{fig:tsp_02_adaptive_std}
 \end{figure}
 
 A curva de interesse aqui foi certamente a da figura \ref{fig:tsp_02_adaptive_pm}. O valor de ${p_m}_0$ não mudou em momento algum, e $p_m$ se estabilizou entorno de seu valor final (0.084). Esta é a curva que melhor demonstra o potencial do AGA desenvolvido aqui: mesmo começando num valor desfavorável para convergência, $p_m$ mudou de patamar e foi estabilizado, trazendo a melhor resposta e a melhor evolução para este problema em 200 gerações.
