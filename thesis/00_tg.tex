@@ -52,7 +52,23 @@
     }
 }
 
+\newcommand*{\BeginNoToc}{%
+  \addtocontents{toc}{%
+    \edef\protect\SavedTocDepth{\protect\the\protect\value{tocdepth}}%
+  }%
+  \addtocontents{toc}{%
+    \protect\setcounter{tocdepth}{-10}%
+  }%
+}
+\newcommand*{\EndNoToc}{%
+  \addtocontents{toc}{%
+    \protect\setcounter{tocdepth}{\protect\SavedTocDepth}%
+  }%
+}
+
 \begin{document}
+
+\BeginNoToc
 
 \includepdf{capa_tg.pdf}
 \bookmark[level=0, page=1]{Capa}
@@ -86,10 +102,6 @@
 \input{abstract}
 \thispagestyle{empty}
 
-\tableofcontents
-\bookmark[level=0, page=10]{Sum\'ario}
-\addtocontents{sumario}{\protect\thispagestyle{empty}}
-\thispagestyle{empty}
 % TODO: Descobrir como tirar numeração do Sumário
 
 \listoffigures
@@ -111,6 +123,13 @@
 	\acro{AG}{Algoritmo Gen\'etico}
 	\acro{AGA}{Algoritmo Gen\'etico Adaptativo}
 \end{acronym}
+\thispagestyle{empty}
+
+\EndNoToc
+
+\tableofcontents
+\bookmark[level=0, page=10]{Sum\'ario}
+\addtocontents{sumario}{\protect\thispagestyle{empty}}
 \thispagestyle{empty}
 
 \chapter{Introdu\cao}
