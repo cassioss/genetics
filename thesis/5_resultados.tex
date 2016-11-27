@@ -174,54 +174,36 @@ Para as simulações deste problema, utilizou-se então o grafo do programa Open
 
 \subsection{Caso Estático ($p_m = 0.01$)}
 
-Para o caso estático com $p_m = 0.01$, mostrado na figura \ref{fig:tsp001}, vemos que este valor de $p_m$ incentiva pouco o encontro de soluções melhores, demonstrado pela melhor solução (pontos azuis) ter mantido o mesmo valor por mais de 100 gerações. Em termos de desvio padrão, na figura \ref{fig:tsp001std}, percebeu-se que $p_m = 0.01$ foi capaz apenas de igualar os valores de fitness de modo rápido (uma vez que há apenas 15 genes a serem recombinados).
+Para o caso estático com $p_m = 0.01$, mostrado na figura \ref{fig:tsp001}, vemos que este valor de $p_m$ incentiva pouco o encontro de soluções melhores, demonstrado pela melhor solução (pontos azuis) ter mantido o mesmo valor por mais de 100 gerações. Em termos de desvio padrão, percebeu-se que $p_m = 0.01$ foi capaz apenas de igualar os valores de fitness de modo rápido (uma vez que há apenas 15 genes a serem recombinados).
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{tsp_001.jpg}
-    \caption{Evolução do fitness para o problema do Caixeiro Viajante Adaptado mostrando mínimo, máximo e valor médio ($p_c=0.9$, $p_m=0.01$). O menor caminho encontrado tem distância total de 2375.}
+    \caption{Evolução do fitness para o problema do Caixeiro Viajante Adaptado mostrando mínimo, máximo, valor médio e desvio padrão ($p_c=0.9$, $p_m=0.01$). O menor caminho encontrado tem distância total de 2375.}
     \label{fig:tsp001}
-\end{figure}
-
-\begin{figure}[ht!]
-    \centering \includegraphics[width=1.0\textwidth]{tsp_001_std.jpg}
-    \caption{Desvio padrão ao longo das gerações para o problema do Caixeiro Viajante Adaptado ($p_c=0.9$, ${p_m}_0=0.01$).}
-    \label{fig:tsp001std}
 \end{figure}
 
 Uma possível interpretação foi a de que o AG travou em um mínimo local, e um valor maior de $p_m$ poderia resolver este problema. Optou-se então por testar $p_m = 0.2$.
 
 \subsection{Caso Estático ($p_m = 0.2$)}
 
-Para o caso estático com $p_m = 0.2$, mostrado na figura \ref{fig:tsp02}, vemos que $p_m = 0.2$ conseguiu chegar a uma solução melhor (2300 contra 2375). No entanto, o comportamento do valor mínimo de fitness ainda foi muito próximo daquele visto para $p_m = 0.01$ (agora mantendo a melhor solução por mais de 120 gerações).
+Para o caso estático com $p_m = 0.2$, mostrado na figura \ref{fig:tsp02}, vemos que $p_m = 0.2$ conseguiu chegar a uma solução melhor (2300 contra 2375). No entanto, o comportamento do valor mínimo de fitness ainda foi muito próximo daquele visto para $p_m = 0.01$ (agora mantendo a melhor solução por mais de 120 gerações). 
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{tsp_02.jpg}
-    \caption{Evolução do fitness para o problema do Caixeiro Viajante Adaptado mostrando mínimo, máximo e valor médio ($p_c=0.9$, $p_m=0.2$). O menor caminho encontrado tem distância total de 2300.}
+    \caption{Evolução do fitness para o problema do Caixeiro Viajante Adaptado mostrando mínimo, máximo, valor médio e desvio padrão ($p_c=0.9$, $p_m=0.2$). O menor caminho encontrado tem distância total de 2300.}
     \label{fig:tsp02}
 \end{figure}
 
-O desvio padrão, mostrado na figura \ref{fig:tsp02std}, mostrou que uma mutação mais intensa incentiva o surgimento de muito mais soluções. No entanto, tais soluções são igualmente imprevisíveis aos olhos do problema, o que fez crer que aumentar $p_m$ (para 20\%, que já é absurdamente alto) não fez diferença para o caso estático.
-
-\begin{figure}[ht!]
-    \centering \includegraphics[width=1.0\textwidth]{tsp_02_std.jpg}
-    \caption{Desvio padrão ao longo das gerações para o problema do Caixeiro Viajante Adaptado ($p_c=0.9$, ${p_m}_0=0.2$).}
-    \label{fig:tsp02std}
-\end{figure}
+O desvio padrão mostrou que uma mutação mais intensa incentiva o surgimento de muito mais soluções. No entanto, tais soluções são igualmente imprevisíveis aos olhos do problema, o que fez crer que aumentar $p_m$ (para 20\%, que já é absurdamente alto) não fez diferença para o caso estático.
 
 \subsection{Caso Adaptativo ($p_m = 0.01$)}
 
-O caso adaptativo para $p_m = 0.01$ mostrou uma evolução bem diferente do caso estático. Como visto na figura \ref{fig:tsp_001_adaptative}, os indivíduos também conseguiram igualar seus valores de fitness de modo relativamente rápido, mas a melhor solução pôde mudar bem mais rápido. A melhor solução ficou travada por não mais que 76 gerações (região azul entre as gerações 80 e 140), e mesmo assim, os demais indivíduos foram capazes de variar nesse intervalo, o que parece ter ajudado no encontro de soluções melhores. Tal comportamento das soluções pode ser observado nos desvios padrões, mostrados na figura \ref{fig:tsp_001_adaptive_std}.
+O caso adaptativo para $p_m = 0.01$ mostrou uma evolução bem diferente do caso estático. Como visto na figura \ref{fig:tsp_001_adaptative}, os indivíduos também conseguiram igualar seus valores de fitness de modo relativamente rápido, mas a melhor solução pôde mudar bem mais rápido. A melhor solução ficou travada por não mais que 76 gerações (região azul entre as gerações 80 e 140), e mesmo assim, os demais indivíduos foram capazes de variar nesse intervalo, o que parece ter ajudado no encontro de soluções melhores. Tal comportamento das soluções pode ser observado também nos desvios padrões.
 
 \begin{figure}[ht!]
     \centering \includegraphics[width=1.0\textwidth]{tsp_001_adaptive.jpg}
-    \caption{Evolução do fitness para o problema do Caixeiro Viajante Adaptado Adaptativo, mostrando mínimo, máximo e valor médio ($p_c=0.9$, ${p_m}_0=0.01$). O menor caminho encontrado tem distância total de 2381.}
+    \caption{Evolução do fitness para o problema do Caixeiro Viajante Adaptado Adaptativo, mostrando mínimo, máximo, valor médio e desvio padrão ($p_c=0.9$, ${p_m}_0=0.01$). O menor caminho encontrado tem distância total de 2381.}
     \label{fig:tsp_001_adaptative}
-\end{figure}
-
-\begin{figure}[ht!]
-    \centering \includegraphics[width=1.0\textwidth]{tsp_001_adaptive_std.jpg}
-    \caption{Desvio padrão ao longo das gerações para o problema do Caixeiro Viajante Adaptado Adaptativo ($p_c=0.9$, ${p_m}_0=0.01$).}
-    \label{fig:tsp_001_adaptive_std}
 \end{figure}
 
 O funcionamento do AGA ficou bem mais evidente na figura \ref{fig:tsp_001_adaptive_pm}, com momentos de aumento e de redução de $p_m$ alternados com maior frequência. Fora isso, ${p_m}_0$ convergiu para um valor bem menor no final da execução (0.024). No entanto, ao contrário dos problemas OneMax, $p_m$ oscilou bastante também ao final das 200 gerações. Isso nos leva a crer que $0.01$ talvez não seja o melhor valor para inicializar ${p_m}_0$. Similar ao caso estático, simulou-se também ${p_m}_0 = 0.2$.
