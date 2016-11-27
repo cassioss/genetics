@@ -18,30 +18,34 @@ A forma mais tradicional de implementação de um AG atribui valores estáticos 
 
 Se fosse possível modificar tais parâmetros enquanto o AG é executado, de modo a se adaptar às mudanças de fitness dos próprios indivíduos, teríamos uma solução. Um bom candidato para isso são os chamados Algoritmos Genéticos Adaptivos (AGAs) \cite{srinivas1994adaptive}.
 
-O conceito por trás de um AGA envolve implementar em cima de um AG de modo a modificar os parâmetros de crossover e/ou mutação ao longo do tempo. Não obstante, é possível moldar um AGA de modo a tratar crossover e mutação com probabilidades diferentes para cada indivíduo, de acordo com seus valores de fitness.
+O conceito por trás de um AGA envolve implementar um novo módulo em cima de um AG de modo a modificar os parâmetros de crossover e/ou mutação ao longo do tempo. Não obstante, é possível moldar um AGA de modo a tratar crossover e mutação com probabilidades diferentes para cada indivíduo, de acordo com seus valores de fitness.
 
 Para este trabalho, optou-se por trabalhar com versões adaptadas de outros AGAs \cite{jakobovic1999adaptive, wang2001improved, srinivas1994adaptive} e implementar uma versão própria, explicada a seguir:
 
 \begin{itemize}
 
-	\item Apenas o parâmetro de mutação é modificado ao longo das gerações, uma vez que o crossover seja sempre um valor alto (como 0.9, padronizado neste trabalho);
+	\item Apenas o parâmetro de mutação é modificado ao longo das gerações, uma vez que o parâmetro de crossover ideal possui sempre um valor alto (como 0.9, padronizado neste trabalho);
 
-	\item A adaptação de $p_m$ acontece apenas depois que um ciclo de operações de evolução acontecer;
+	\item A adaptação de $p_m$ acontece apenas ao final de um ciclo de operações de evolução;
 
-	\item O que decidirá se $p_m$ mudará será o desvio do melhor valor de fitness $f_{best}$ em comparação com o fitness médio $\bar{f}$, como na equação a seguir:
+	\item O que decidirá se $p_m$ mudará será o desvio do melhor valor de fitness $f_{best}$ em comparação com o fitness médio $\bar{f}$, descrito pela equação a seguir:
 
 \begin{equation}
 	\left| \frac{f_{best} - \bar{f}}{\bar{f}} \right|
 \label{eq:aga}
 \end{equation}
 
-	\item Se este desvio for menor que um valor $p{p_m}_0$, isso significa que a mutação está fraca e os indivíduos estão se aproximando de uma mesma solução, que pode não ser necessariamente a melhor. Para contornar isso, $p_m$ irá aumentar;
+	\item Se este desvio for menor que um valor ${p_m}_0$, $p_m$ irá aumentar. Caso contrário, $p_m$ irá diminuir;
+	
+	\item Um valor baixo de desvio é indicativo de uma mutação fraca, com os indivíduos convergindo todos para soluções semelhantes. Como estas soluções podem não ser as melhores, a ideia é a de intensificar a mutação;
 
-	\item Caso contrário, as soluções estarão se desviando muito, o que pode ser resultado de uma mutação intensa. Para resolver isso, $p_m$ irá diminuir;
+	\item Um valor alto de desvio indica que as soluções estão se desviando muito, e a população precisa ser controlada de alguma forma. A ideia aqui é a de enfraquecer a mutação;
 
-	\item O valor de ${p_m}_0$ é o valor inicial de $p_m$ para o valor inicial de ${p_m}_0$, de modo a servir de termômetro para o valor do desvio;
+	\item O valor de ${p_m}_0$ é o valor inicial de $p_m$. Tal métrica foi utilizada como termômetro para o valor de desvio (se ele começou alto, já se esperava que as soluções se desviassem mais);
 
-	\item No entanto, $p_m$ não pode ser igual a zero nem maior que 1, dado que representa uma probabilidade. Seguindo a linha de outros trabalhos \cite{matthias2013variable}, $p_m$ será limitado ao intervalo [0.001, 0.5] (se $p_m$ tentar extrapolar estes limites, ele retornará ao valor extremo mais próximo);
+	\item No entanto, $p_m$ não pode ser zero (o que limitaria drasticamente o encontro de soluções) nem igual a 1 (tanto por ser uma probabilidade, quanto por 100\% de mutação trazer resultados completamente aleatórios);
+	
+	\item Seguindo a linha de outros trabalhos \cite{matthias2013variable}, $p_m$ será limitado ao intervalo [0.001, 0.5]. Se $p_m$ tentar extrapolar estes limites, ele retornará ao valor extremo mais próximo;
 
 	\item O incremento/decremento para $p_m$ será linear e igual a 0.001;
 
@@ -82,5 +86,4 @@ Para exemplificar o funcionamento do AGA, foram feitas simulações para diferen
     \label{fig:aga_test}
 \end{figure}
 
-A ideia por trás de uma implementação própria foi a de testar a implementação de um AGA a partir de conceitos mais simples. Se a ideia de adaptação de um AGA, conforme vista na literatura, for tão simples quanto a base evolutiva do AG, sua implementação também deve buscar algo simples.
-
+A ideia por trás de uma implementação própria foi a de testar a implementação de um AGA a partir de conceitos mais simples. Se a ideia de adaptação de um AGA, conforme vista na literatura, for tão simples quanto a base evolutiva de um AG, sua implementação também deve buscar algo simples.
