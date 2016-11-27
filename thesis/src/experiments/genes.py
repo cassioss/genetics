@@ -1,11 +1,9 @@
 import numpy.random as random
 from utils import coin_toss
 
-
 def new_gene(gene_name, args=None):
     constructor = globals()[gene_name]
     return constructor() if args is None else constructor(args)
-
 
 class Gene:
     def __init__(self):
@@ -19,7 +17,6 @@ class Gene:
 
     def mutate(self):
         pass
-
 
 class BooleanGene(Gene):
     def __init__(self, val=False):
@@ -35,7 +32,6 @@ class BooleanGene(Gene):
     def mutate(self):
         self.val = coin_toss()
 
-
 class RealGene(Gene):
     def __init__(self, val=0.0):
         Gene.__init__(self)
@@ -46,7 +42,6 @@ class RealGene(Gene):
 
     def mutate(self):
         self.val = random.random()
-
 
 class IntegerGene(Gene):
     def __init__(self, k=2):

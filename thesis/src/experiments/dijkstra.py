@@ -12,7 +12,6 @@ def dijkstra_all(graph):
 		full_map[source]['prev'] = prev
 	return full_map
 
-
 def dijkstra(graph, source):
 	Q = set()
 	dist = {}
@@ -37,7 +36,6 @@ def dijkstra(graph, source):
 
 	return dist, prev
 
-
 def min_value(Q, dist):
 	u = next(iter(Q))
 	for v in Q:
@@ -46,16 +44,13 @@ def min_value(Q, dist):
 	return u
 
 # Global variables
-
 complete_graph = dijkstra_all(dijkstra17_graph)
 all_cities = [node for node in complete_graph]
 all_cities.sort()
 
 # Functions to calculate distance
-
 def dist_between(a, b, dijkstra_graph=complete_graph):
 	return dijkstra_graph[a]['dist'][b]
-
 
 def tsp_dist(sequence):
 	copy_cities = copy.copy(all_cities)
@@ -71,8 +66,7 @@ def tsp_dist(sequence):
 	tsp_sum += dist_between(copy_cities[0], init)
 	return tsp_sum
 
-# Functions to find path
-
+# Functions to find paths
 def path_between(a, b, dijkstra_graph=complete_graph):
 	path = [b]
 	prev = dijkstra_graph[a]['prev'][b]
@@ -80,7 +74,6 @@ def path_between(a, b, dijkstra_graph=complete_graph):
 		path.insert(0, prev)
 		prev = dijkstra_graph[a]['prev'][prev]
 	return path
-
 
 def tsp_path(sequence):
 	copy_sequence = copy.copy(sequence)
@@ -96,7 +89,6 @@ def tsp_path(sequence):
 	tsp_path.append(init)
 	return tsp_path
 
-
 def tsp_full_path(sequence):
 	path = tsp_path(sequence)
 	full_path = []
@@ -104,6 +96,4 @@ def tsp_full_path(sequence):
 		full_path = full_path[:-1] + path_between(first, second)
 	return full_path
 
-
 dijkstra_gsize = len(all_cities)
-
